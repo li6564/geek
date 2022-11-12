@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 分页结果返回
- * @author linan
+ * @author linan    
  */
 @Data
 public class PageDTO<T> {

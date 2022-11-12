@@ -22,6 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtSecurityFilter jwtSecurityFilter;
 
+
+
 //    @Autowired
 //    private AccessDeniedHandlerImpl accessDeniedHandler;
 //

@@ -1,5 +1,7 @@
 package cn.lico.geek.modules.user.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +18,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User{
     //用户id
+    @TableId
     private String userId;
     //用户名
     private String userName;
