@@ -16,7 +16,7 @@ import java.util.Objects;
  * @Date：2022/11/11 15:11
  */
 @Service
-public class BlogSortMapperImpl extends ServiceImpl<BlogSortMapper, BlogSort> implements BlogSortService {
+public class BlogSortImpl extends ServiceImpl<BlogSortMapper, BlogSort> implements BlogSortService {
     /**
      * 查询所有的博客分类
      * @return

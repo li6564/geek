@@ -1,5 +1,10 @@
 package cn.lico.geek.modules.blog.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,9 +14,13 @@ import java.io.Serializable;
  * @author makejava
  * @since 2022-11-11 14:56:01
  */
-@SuppressWarnings("serial")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@TableName(value = "t_blog")
 public class Blog{
     //唯一uid
+    @TableId(value = "uid",type = IdType.ASSIGN_UUID)
     private String uid;
     //博客标题
     private String title;
@@ -19,19 +28,20 @@ public class Blog{
     private String summary;
     //博客内容
     private String content;
-    //标签uid
-    private String tagUid;
+
     //博客点击数
     private Integer clickCount;
     //博客收藏数
     private Integer collectCount;
-    //标题图片uid
-    private String fileUid;
+    //标题图片路径
+    private String photoList;
     //状态
     private Integer status;
     //创建时间
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     //更新时间
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
     //管理员uid
     private String adminUid;

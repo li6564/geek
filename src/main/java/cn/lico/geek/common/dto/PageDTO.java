@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,40 +14,54 @@ import java.util.List;
 @Data
 public class PageDTO<T> {
 
-    /**
-     * 总页数
-     */
-    private long totalPage;
+//    /**
+//     * 总页数
+//     */
+//    private long totalPage;
 
     /**
      * 总记录数
      */
-    private long totalRecords;
+    private Integer total;
 
     /**
      * 每页数据量
      */
-    private long pageSize;
+    private Integer size;
 
     /**
      * 数据
      */
-    private List<T> dataList;
+    private List<T> records;
+
+    /**
+     * 当前页数
+     */
+    private Integer current;
+
+    private boolean optimizeCountSql = true;
+
+    private boolean isSearchCount = true;
+
+    private boolean hitCount = false;
+
+    private List orders = new ArrayList();
 
     public PageDTO() {
     }
 
     public PageDTO(IPage<T> page) {
-        setDataList(page.getRecords());
-        setTotalPage(page.getPages());
-        setTotalRecords(page.getTotal());
-        setPageSize(page.getSize());
+        setRecords(page.getRecords());
+        //setTotalPage(page.getPages());
+        setTotal((int)page.getTotal());
+        setSize((int)page.getSize());
+        setCurrent((int)page.getCurrent());
     }
 
     public PageDTO(Page<T> page) {
-        setDataList(page.getContent());
-        setTotalPage(page.getTotalPages());
-        setTotalRecords(page.getTotalElements());
-        setPageSize(page.getSize());
+        setRecords(page.getContent());
+        //setTotalPage(page.getTotalPages());
+        setTotal((int)page.getTotalElements());
+        setSize(page.getSize());
     }
 }

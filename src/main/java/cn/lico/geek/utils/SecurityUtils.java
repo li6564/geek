@@ -28,11 +28,11 @@ public class SecurityUtils
     }
 
     public static Boolean isAdmin(){
-        String id = getLoginUser().getUser().getUserId();
+        String id = getLoginUser().getUser().getUid();
         return StringUtils.isNotEmpty(id);
     }
 
     public static String getUserId() {
-        return getLoginUser().getUser().getUserId();
+        return getLoginUser().getUser().getUid();
     }
 }
