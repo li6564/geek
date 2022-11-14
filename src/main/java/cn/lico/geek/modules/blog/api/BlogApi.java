@@ -12,13 +12,27 @@ import org.springframework.web.bind.annotation.*;
  * @Date：2022/11/8 11:37
  */
 @RestController
-@RequestMapping("/index")
+@RequestMapping("/blog")
 public class BlogApi {
     @Autowired
     private BlogService blogService;
 
+    /**
+     * 获取最新博客
+     * @param pageVo
+     * @return
+     */
     @PostMapping("/getNewBlog")
-    public ResponseResult getBlogByLevel(@RequestBody PageVo pageVo){
+    public ResponseResult getNewBlog(@RequestBody PageVo pageVo){
         return blogService.getNewBlog(pageVo);
     }
+
+    @GetMapping("/getBlogByLevel")
+    public ResponseResult getBlogByLevel(@RequestParam(value = "currentPage",required = false) Integer currentPage,
+                                         @RequestParam(value = "pageSize",required = false) Integer pageSize,
+                                         @RequestParam Integer level,
+                                         @RequestParam Integer useSort){
+        return blogService.getBlogByLevel(currentPage,pageSize,level,useSort);
+    }
+
 }

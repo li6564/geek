@@ -16,13 +16,18 @@ import cn.lico.geek.modules.blog.vo.NewBlogVo;
 import cn.lico.geek.modules.tag.entity.Tag;
 import cn.lico.geek.modules.tag.service.TagService;
 import cn.lico.geek.modules.user.Service.UserService;
+import cn.lico.geek.modules.user.Service.UserWatchService;
 import cn.lico.geek.modules.user.entity.User;
+import cn.lico.geek.modules.user.entity.UserWatch;
 import cn.lico.geek.utils.BeanCopyUtils;
+import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDto;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +52,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Autowired
     private BlogTagService blogTagService;
 
+    @Autowired
+    private UserWatchService userWatchService;
+
     /**
      * 根据文章等级进行推荐展示
      * @param currentPage
@@ -57,7 +65,32 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      */
     @Override
     public ResponseResult getBlogByLevel(Integer currentPage, Integer pageSize, Integer level, Integer useSort) {
-        return null;
+        //根据level条件进行判断
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Blog::getLevel,level);
+        //进行二三级推荐
+        PageDTO<NewBlogVo> pageDTO = new PageDTO<>();
+        if (Objects.nonNull(currentPage)&&Objects.nonNull(pageSize)){
+            //用分页实现选取 pageSize 条数据
+            Page<Blog> page = new Page<>(currentPage,pageSize);
+            page(page,queryWrapper);
+            //封装到分页对象中
+            List<NewBlogVo> newBlogVos = BeanCopyUtils.copyBeanList(page.getRecords(), NewBlogVo.class);
+            pageDTO.setRecords(newBlogVos);
+            pageDTO.setCurrent((int)page.getCurrent());
+            pageDTO.setTotal((int)page.getTotal());
+            pageDTO.setSize((int)page.getSize());
+        }else {//进行一级推荐
+            //获取所有的一级推荐
+            List<Blog> list = list(queryWrapper);
+            List<NewBlogVo> newBlogVos = BeanCopyUtils.copyBeanList(list, NewBlogVo.class);
+            pageDTO.setRecords(newBlogVos);
+            pageDTO.setSize(list.size());
+            pageDTO.setTotal(list.size());
+            pageDTO.setCurrent(1);
+        }
+        return new ResponseResult(pageDTO);
+
     }
 
     /**
@@ -69,6 +102,18 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public ResponseResult getNewBlog(PageVo pageVo) {
         //根据条件查询
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+        if (Objects.nonNull(pageVo.getOrderBy())&&pageVo.getOrderBy().length()>0){
+            //獲取擋墻用戶id
+            String userId = SecurityUtils.getUserId();
+            LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
+            queryWrapper1.eq(UserWatch::getUserUid,userId);
+            List<UserWatch> list = userWatchService.list(queryWrapper1);
+            List Ids = new ArrayList();
+            for (UserWatch userWatch : list) {
+                Ids.add(userWatch.getToUserUid());
+            }
+            queryWrapper.in(Blog::getUserUid,Ids);
+        }
         //判断blogSortUid是否为空，如果不为空则加入判断条件
         queryWrapper.eq(Objects.nonNull(pageVo.getBlogSortUid())&&pageVo.getBlogSortUid().length()>0,Blog::getBlogSortUid,pageVo.getBlogSortUid());
         //进行分页查询
@@ -79,6 +124,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         }else {
             queryWrapper.orderByDesc(Blog::getCreateTime);
         }
+
+
         Page<Blog> page  = new Page<>(pageVo.getCurrentPage(),pageVo.getPageSize());
         page(page, queryWrapper);
 

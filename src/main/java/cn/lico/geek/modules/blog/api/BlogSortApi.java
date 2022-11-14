@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date：2022/11/11 15:38
  */
 @RestController
-@RequestMapping("/index")
+@RequestMapping("/blogsort")
 public class BlogSortApi {
 
     @Autowired
