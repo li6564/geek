@@ -15,9 +15,11 @@ import cn.lico.geek.modules.blog.vo.NewBlogUserVo;
 import cn.lico.geek.modules.blog.vo.NewBlogVo;
 import cn.lico.geek.modules.tag.entity.Tag;
 import cn.lico.geek.modules.tag.service.TagService;
+import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserWatchService;
 import cn.lico.geek.modules.user.entity.User;
+import cn.lico.geek.modules.user.entity.UserPraiseRecord;
 import cn.lico.geek.modules.user.entity.UserWatch;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.SecurityUtils;
@@ -54,6 +56,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 
     @Autowired
     private UserWatchService userWatchService;
+
+    @Autowired
+    private UserPraiseRecordService userPraiseRecordService;
 
     /**
      * 根据文章等级进行推荐展示
@@ -132,6 +137,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //将pages中的信息转换到NewBlogVo中
         List<NewBlogVo> newBlogVos = BeanCopyUtils.copyBeanList(page.getRecords(), NewBlogVo.class);
 
+
+        //填充点赞数量
+        getPraiseCount(newBlogVos);
+
         //填充uer信息
         getUserInformation(newBlogVos);
 
@@ -141,6 +150,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //填充分类信息
         getSortInformation(newBlogVos);
 
+
+
         PageDTO<NewBlogVo> pageDto = new PageDTO<>();
         pageDto.setRecords(newBlogVos);
         pageDto.setCurrent((int)page.getCurrent());
@@ -148,6 +159,26 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         pageDto.setSize((int)page.getSize());
 
         return new ResponseResult(pageDto);
+    }
+
+    /**
+     * 填充点赞数量(有bug)
+     * @param newBlogVos
+     */
+    private void getPraiseCount(List<NewBlogVo> newBlogVos) {
+        LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
+        for (NewBlogVo newBlogVo : newBlogVos) {
+            //aa6e71e0c243b921ca657a900b4b442f
+            String uid = newBlogVo.getUid();
+            //queryWrapper.eq(UserPraiseRecord::getResourceUid,newBlogVo.getUid());
+            queryWrapper.eq(UserPraiseRecord::getResourceUid,uid)
+                    .eq(UserPraiseRecord::getPraiseType,1)
+                    .eq(UserPraiseRecord::getStatus,1);
+            int praiseCount = userPraiseRecordService.count(queryWrapper);
+            //int praiseCount = userPraiseRecordService.list(queryWrapper).size();
+            newBlogVo.setPraiseCount(praiseCount);
+        }
+
     }
 
     /**

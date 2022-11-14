@@ -29,6 +29,8 @@ public class NewBlogVo {
 
     private Integer collectCount;
 
+    private Integer praiseCount;
+
     private Date createTime;
 
     private String outsideLink;
@@ -43,4 +45,6 @@ public class NewBlogVo {
     private BlogSort blogSort;
 
     private List tagList;
+
+
 }
