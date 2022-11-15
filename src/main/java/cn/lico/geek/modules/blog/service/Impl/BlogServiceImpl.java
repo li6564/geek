@@ -108,7 +108,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //根据条件查询
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         if (Objects.nonNull(pageVo.getOrderBy())&&pageVo.getOrderBy().length()>0){
-            //獲取擋墻用戶id
+            //获取用戶id
             String userId = SecurityUtils.getUserId();
             LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
             queryWrapper1.eq(UserWatch::getUserUid,userId);
@@ -117,7 +117,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             for (UserWatch userWatch : list) {
                 Ids.add(userWatch.getToUserUid());
             }
-            queryWrapper.in(Blog::getUserUid,Ids);
+            if (Objects.isNull(Ids)||Ids.size()== 0){
+                queryWrapper.eq(Blog::getUserUid,"-1");
+            }else {
+                queryWrapper.in(Blog::getUserUid,Ids);
+            }
+
         }
         //判断blogSortUid是否为空，如果不为空则加入判断条件
         queryWrapper.eq(Objects.nonNull(pageVo.getBlogSortUid())&&pageVo.getBlogSortUid().length()>0,Blog::getBlogSortUid,pageVo.getBlogSortUid());

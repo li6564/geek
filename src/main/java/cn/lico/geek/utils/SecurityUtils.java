@@ -1,7 +1,7 @@
 package cn.lico.geek.utils;
 
 
-import cn.lico.geek.modules.user.form.UserForm;
+import cn.lico.geek.modules.user.form.UserDetailsForm;
 import com.aliyuncs.utils.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,9 +15,9 @@ public class SecurityUtils
     /**
      * 获取用户
      **/
-    public static UserForm getLoginUser()
+    public static UserDetailsForm getLoginUser()
     {
-        return (UserForm) getAuthentication().getPrincipal();
+        return (UserDetailsForm) getAuthentication().getPrincipal();
     }
 
     /**

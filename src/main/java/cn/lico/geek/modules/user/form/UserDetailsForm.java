@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserForm implements UserDetails {
+public class UserDetailsForm implements UserDetails, Serializable {
 
     private User user;
 
@@ -22,31 +23,31 @@ public class UserForm implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return user.getPassWord();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getUserName();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

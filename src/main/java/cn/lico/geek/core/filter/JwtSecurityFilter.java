@@ -1,7 +1,7 @@
 package cn.lico.geek.core.filter;
 
 
-import cn.lico.geek.modules.user.form.UserForm;
+import cn.lico.geek.modules.user.form.UserDetailsForm;
 import cn.lico.geek.utils.JwtUtil;
 import cn.lico.geek.utils.RedisCache;
 import com.aliyun.oss.common.utils.StringUtils;
@@ -26,7 +26,7 @@ public class JwtSecurityFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         //从请求头中获取token
-        String token = httpServletRequest.getHeader("token");
+        String token = httpServletRequest.getHeader("Authorization");
         //判断客户端是否携带token，不携带则直接放行
         if (StringUtils.isNullOrEmpty(token)){
             filterChain.doFilter(httpServletRequest,httpServletResponse);
@@ -42,14 +42,14 @@ public class JwtSecurityFilter extends OncePerRequestFilter {
             throw new RuntimeException("token非法");
         }
         //从redis中获取用户信息
-        String key = "BLOGlogin"+user_id;
-        UserForm userForm = redisCache.getCacheObject(key);
-        if (Objects.isNull(userForm)){
+        String key = "login"+user_id;
+        UserDetailsForm userDetails = redisCache.getCacheObject(key);
+        if (Objects.isNull(userDetails)){
             throw new RuntimeException("用户未登录");
         }
 
         //将用户信息封装到SecurityContextHolder
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userForm,null,null);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails,null,null);
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
         filterChain.doFilter(httpServletRequest,httpServletResponse);

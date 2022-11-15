@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login").anonymous()
+                //.antMatchers("/login").anonymous()
                 //注销接口需要认证才能访问
                // .antMatchers("/logout").authenticated()
                 .antMatchers("/user/userInfo").authenticated()

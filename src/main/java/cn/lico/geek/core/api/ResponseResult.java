@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class ResponseResult<T> implements Serializable {
     private String code;
     private T data;
+    private String message;
 
     public ResponseResult() {
         this.code = AppHttpCodeEnum.SUCCESS.getMsg();
@@ -28,9 +29,9 @@ public class ResponseResult<T> implements Serializable {
         this.code = code;
     }
 
-    public static ResponseResult errorResult(String code) {
+    public static ResponseResult errorResult(String message) {
         ResponseResult result = new ResponseResult();
-        return result.error(code);
+        return result.error(message);
     }
     public static ResponseResult okResult() {
         ResponseResult result = new ResponseResult();
@@ -48,8 +49,8 @@ public class ResponseResult<T> implements Serializable {
     }
 
 
-    public ResponseResult<?> error(String code) {
-        this.code = code;
+    public ResponseResult<?> error(String message) {
+        this.message = message;
         return this;
     }
 
