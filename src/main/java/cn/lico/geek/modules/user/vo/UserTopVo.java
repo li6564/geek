@@ -26,4 +26,6 @@ public class UserTopVo {
     private Integer questionNum;
 
     private Integer postNum;
+
+    private Integer gender;
 }

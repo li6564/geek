@@ -2,6 +2,7 @@ package cn.lico.geek.modules.blog.service;
 
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.modules.blog.entity.BlogSort;
+import cn.lico.geek.modules.blog.form.PageVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,4 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface BlogSortService extends IService<BlogSort> {
 
     public ResponseResult getHotBlogSort();
+
+    ResponseResult getBlogSortList(PageVo pageVo);
 }

@@ -6,6 +6,7 @@ package cn.lico.geek.core.emuns;
 public enum AppHttpCodeEnum {
     // 成功
     SUCCESS(200,"success"),
+    ERROR(400,"error"),
     // 登录
     NEED_LOGIN(401,"需要登录后操作"),
     NO_OPERATOR_AUTH(403,"无权限操作"),

@@ -72,7 +72,6 @@
     <!-- swagger2 end -->
 
     <!--   JWT start   -->
-
     <!--jwt依赖-->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
@@ -115,6 +114,13 @@
       <version>3.8.0</version>
     </dependency>
     <!--    阿里sdk end    -->
+
+    <!-- 七牛云-->
+    <dependency>
+      <groupId>com.qiniu</groupId>
+      <artifactId>qiniu-java-sdk</artifactId>
+      <version>[7.7.0, 7.7.99]</version>
+    </dependency>
 
     <dependency>
       <groupId>mysql</groupId>

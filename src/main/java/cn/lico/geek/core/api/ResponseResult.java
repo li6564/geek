@@ -2,9 +2,10 @@ package cn.lico.geek.core.api;
 
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
 
 import java.io.Serializable;
-
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseResult<T> implements Serializable {
     private String code;
@@ -14,7 +15,10 @@ public class ResponseResult<T> implements Serializable {
     public ResponseResult() {
         this.code = AppHttpCodeEnum.SUCCESS.getMsg();
     }
-
+    public ResponseResult(String message,String code){
+        this.message = message;
+        this.code = code;
+    }
     public ResponseResult(T data) {
         this.data = data;
         this.code = AppHttpCodeEnum.SUCCESS.getMsg();

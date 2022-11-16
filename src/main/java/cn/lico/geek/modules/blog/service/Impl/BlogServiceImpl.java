@@ -6,6 +6,7 @@ import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.entity.BlogSort;
 import cn.lico.geek.modules.blog.entity.BlogTag;
+import cn.lico.geek.modules.blog.form.BlogForm;
 import cn.lico.geek.modules.blog.form.PageVo;
 import cn.lico.geek.modules.blog.mapper.BlogMapper;
 import cn.lico.geek.modules.blog.service.BlogService;
@@ -31,6 +32,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,6 +166,51 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         pageDto.setSize((int)page.getSize());
 
         return new ResponseResult(pageDto);
+    }
+
+    /**
+     * 发布博客
+     * @param blogForm
+     * @return
+     */
+    @Override
+    @Transactional
+    public ResponseResult addBlog(BlogForm blogForm) {
+        //获取当前用户id
+        String userId = SecurityUtils.getUserId();
+        //根据id获取用户昵称
+        String nickName = userService.getById(userId).getNickName();
+        //填充blog对象
+        Blog blog = new Blog();
+        //判空
+        if (blogForm.getPhotoList().size()>0&&Objects.nonNull(blogForm.getPhotoList())){
+            blog.setPhotoList(blogForm.getPhotoList().get(0));
+        }
+
+        blog.setBlogSortUid(blogForm.getBlogSortUid());
+        blog.setContent(blogForm.getContent());
+        blog.setSummary(blogForm.getSummary());
+        blog.setTitle(blogForm.getTitle());
+        blog.setIsPublish(blogForm.getIsPublish());
+        blog.setAdminUid(userId);
+        blog.setAuthor(nickName);
+        blog.setUserUid(userId);
+        boolean flag = save(blog);
+        if (flag){
+            //添加博客标签表
+            String uid = blog.getUid();
+            String tagUids = blogForm.getTagUid();
+            String[] list = tagUids.split(",");
+            for (String s : list) {
+                BlogTag blogTag = new BlogTag();
+                blogTag.setBlogId(uid);
+                blogTag.setTagId(s);
+                blogTagService.save(blogTag);
+            }
+
+            return new ResponseResult("发布成功！",AppHttpCodeEnum.SUCCESS.getMsg());
+        }
+        return new ResponseResult("发布失败，请重新检查！",AppHttpCodeEnum.ERROR.getMsg());
     }
 
     /**
