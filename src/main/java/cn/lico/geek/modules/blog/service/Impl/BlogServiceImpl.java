@@ -12,16 +12,21 @@ import cn.lico.geek.modules.blog.mapper.BlogMapper;
 import cn.lico.geek.modules.blog.service.BlogService;
 import cn.lico.geek.modules.blog.service.BlogSortService;
 import cn.lico.geek.modules.blog.service.BlogTagService;
+import cn.lico.geek.modules.blog.vo.BlogInfoUser;
+import cn.lico.geek.modules.blog.vo.BlogInfoVo;
 import cn.lico.geek.modules.blog.vo.NewBlogUserVo;
 import cn.lico.geek.modules.blog.vo.NewBlogVo;
 import cn.lico.geek.modules.tag.entity.Tag;
 import cn.lico.geek.modules.tag.service.TagService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
+import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.Service.UserWatchService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
+import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.entity.UserWatch;
+import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -61,6 +66,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 
     @Autowired
     private UserPraiseRecordService userPraiseRecordService;
+
+    @Autowired
+    private UserStatisticsService userStatisticsService;
+
+
 
     /**
      * 根据文章等级进行推荐展示
@@ -186,10 +196,13 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         if (blogForm.getPhotoList().size()>0&&Objects.nonNull(blogForm.getPhotoList())){
             blog.setPhotoList(blogForm.getPhotoList().get(0));
         }
-
+        if (Objects.isNull(blogForm.getSummary())|| blogForm.getSummary().length() == 0){
+            blog.setSummary(AbstractUtils.extractWithoutHtml(blogForm.getContent(),20));
+        }else{
+            blog.setSummary(blogForm.getSummary());
+        }
         blog.setBlogSortUid(blogForm.getBlogSortUid());
         blog.setContent(blogForm.getContent());
-        blog.setSummary(blogForm.getSummary());
         blog.setTitle(blogForm.getTitle());
         blog.setIsPublish(blogForm.getIsPublish());
         blog.setAdminUid(userId);
@@ -211,6 +224,60 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             return new ResponseResult("发布成功！",AppHttpCodeEnum.SUCCESS.getMsg());
         }
         return new ResponseResult("发布失败，请重新检查！",AppHttpCodeEnum.ERROR.getMsg());
+    }
+
+    /**
+     *根据博客id获取博文
+     * @param oid
+     * @param isLazy
+     * @return
+     */
+    @Override
+    public ResponseResult getBlogByUid(Integer oid, Integer isLazy) {
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+        //根据oid进行查询
+        queryWrapper.eq(Blog::getOid,oid);
+        //判断博客是否有效
+        queryWrapper.eq(Blog::getStatus,1);
+        //根据条件获取博客
+        Blog blog = getOne(queryWrapper);
+
+        BlogInfoVo blogInfoVo = BeanCopyUtils.copyBean(blog, BlogInfoVo.class);
+        //获取博文作者id
+        String userUid = blogInfoVo.getUserUid();
+        //获取博文作者对象
+        User user = userService.getById(userUid);
+        BlogInfoUser blogInfoUser = BeanCopyUtils.copyBean(user, BlogInfoUser.class);
+        //根据userUid获取用户统计信息
+        UserStatistics userStatistics = userStatisticsService.getById(userUid);
+        //填充用户博客发布量和博客总浏览量
+        blogInfoUser.setBlogPublishCount(userStatistics.getBlogNum());
+        blogInfoUser.setBlogVisitCount(userStatistics.getBlogViewNum());
+        //填充blogInfoVo的user
+        blogInfoVo.setUser(blogInfoUser);
+
+        //填充获取博客标签列表
+        //根据博客id获取博客标签列表
+        String blogUid = blogInfoVo.getUid();
+        LambdaQueryWrapper<BlogTag> queryWrapper1 = new LambdaQueryWrapper<>();
+        queryWrapper1.eq(BlogTag::getBlogId,blogUid);
+        List<BlogTag> list = blogTagService.list(queryWrapper1);
+        List<Tag> tags = new ArrayList<>();
+        for (BlogTag blogTag : list) {
+            LambdaQueryWrapper<Tag> queryWrapper2 = new LambdaQueryWrapper<>();
+            queryWrapper2.eq(Tag::getUid,blogTag.getTagId());
+            Tag tag = tagService.getOne(queryWrapper2);
+            tags.add(tag);
+        }
+        blogInfoVo.setTagList(tags);
+
+        //填充博客分类
+        //根据博客分类id获取分类信息
+        String blogSortUid = blogInfoVo.getBlogSortUid();
+        BlogSort blogSort = blogSortService.getById(blogSortUid);
+        blogInfoVo.setBlogSort(blogSort);
+
+        return new ResponseResult(blogInfoVo);
     }
 
     /**

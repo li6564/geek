@@ -18,4 +18,6 @@ public interface BlogService extends IService<Blog> {
     ResponseResult getNewBlog(PageVo pageVo);
 
     ResponseResult addBlog(BlogForm blogForm);
+
+    ResponseResult getBlogByUid(Integer oid, Integer isLazy);
 }

@@ -27,6 +27,14 @@ public class BlogApi {
         return blogService.getNewBlog(pageVo);
     }
 
+    /**
+     * 根据推荐等级获取博客
+     * @param currentPage
+     * @param pageSize
+     * @param level
+     * @param useSort
+     * @return
+     */
     @GetMapping("/getBlogByLevel")
     public ResponseResult getBlogByLevel(@RequestParam(value = "currentPage",required = false) Integer currentPage,
                                          @RequestParam(value = "pageSize",required = false) Integer pageSize,
@@ -35,4 +43,16 @@ public class BlogApi {
         return blogService.getBlogByLevel(currentPage,pageSize,level,useSort);
     }
 
+    /**
+     * 根据博客id获取博文
+     * @param oid
+     * @param isLazy
+     * @return
+     */
+    @GetMapping("/getBlogByUid")
+    public ResponseResult getBlogByUid(@RequestParam Integer oid,
+                                       @RequestParam Integer isLazy){
+
+        return blogService.getBlogByUid(oid,isLazy);
+    }
 }

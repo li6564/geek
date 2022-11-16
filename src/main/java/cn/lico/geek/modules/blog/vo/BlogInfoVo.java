@@ -1,26 +1,25 @@
-package cn.lico.geek.modules.blog.entity;
+package cn.lico.geek.modules.blog.vo;
 
-import com.baomidou.mybatisplus.annotation.*;
+import cn.lico.geek.modules.blog.entity.BlogSort;
+import cn.lico.geek.modules.blog.entity.BlogTag;
+import cn.lico.geek.modules.tag.entity.Tag;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.io.Serializable;
+import java.util.List;
 
 /**
- * 博客表(Blog)表实体类
- *
- * @author makejava
- * @since 2022-11-11 14:56:01
+ * @Author：linan
+ * @Date：2022/11/16 14:40
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName(value = "t_blog")
-public class Blog{
-    //唯一uid
-    @TableId(value = "uid",type = IdType.ASSIGN_UUID)
+public class BlogInfoVo {
     private String uid;
     //博客标题
     private String title;
@@ -38,10 +37,8 @@ public class Blog{
     //状态
     private Integer status;
     //创建时间
-    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     //更新时间
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
     //管理员uid
     private String adminUid;
@@ -76,7 +73,6 @@ public class Blog{
     //审批人
     private String auditName;
     //审批时间
-    @TableField(fill = FieldFill.INSERT)
     private Date auditTime;
     //审批拒绝原因
     private String rejectReason;
@@ -87,5 +83,9 @@ public class Blog{
     //是否仅专栏可见：0 否，1 是
     private Integer isOnlySubjectShow;
 
-}
+    private List<Tag> tagList;
 
+    private BlogSort blogSort;
+
+    private BlogInfoUser user;
+}
