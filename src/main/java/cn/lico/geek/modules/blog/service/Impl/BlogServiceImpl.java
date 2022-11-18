@@ -294,13 +294,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      * @param newBlogVos
      */
     private void getPraiseCount(List<NewBlogVo> newBlogVos) {
-        LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
+
         for (NewBlogVo newBlogVo : newBlogVos) {
+            LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
             //aa6e71e0c243b921ca657a900b4b442f
             String uid = newBlogVo.getUid();
             //queryWrapper.eq(UserPraiseRecord::getResourceUid,newBlogVo.getUid());
             queryWrapper.eq(UserPraiseRecord::getResourceUid,uid)
-                    .eq(UserPraiseRecord::getPraiseType,1)
+                    .eq(UserPraiseRecord::getResourceType,"1")
                     .eq(UserPraiseRecord::getStatus,1);
             int praiseCount = userPraiseRecordService.count(queryWrapper);
             //int praiseCount = userPraiseRecordService.list(queryWrapper).size();

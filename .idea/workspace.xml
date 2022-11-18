@@ -2,122 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421f8124-d429-4bfe-a89c-220d9e1db833" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/GeekApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/GeekApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/dto/PageDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/dto/PageDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/form/PageForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/form/PageForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/handler/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/handler/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/handler/mybatisplus/MyMetaObjectHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/common/handler/mybatisplus/MyMetaObjectHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/MbatisPlusConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/MbatisPlusConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/RedisConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/RedisConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/config/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/IErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/IErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/api/ResponseResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/api/ResponseResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/constant/SystemConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/constant/SystemConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/emuns/AppHttpCodeEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/emuns/AppHttpCodeEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/emuns/AuthorizationErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/emuns/AuthorizationErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/exception/ServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/exception/ServiceException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/exception/SystemException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/exception/SystemException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/filter/JwtSecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/core/filter/JwtSecurityFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/BlogApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/BlogApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/BlogSortApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/BlogSortApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/CommentApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/CommentApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/CreateBlog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/CreateBlog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/UploadApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/UploadApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/UploadPicturesApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/UploadPicturesApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/Blog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/BlogSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/BlogSort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/BlogTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/BlogTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/entity/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogCommentErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogCommentErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogPraiseErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogPraiseErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogPraiseType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogPraiseType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogSortErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/enums/BlogSortErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogCommentServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogCommentServiceException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogPraiseServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogPraiseServiceException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogServiceException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogSortServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/exception/BlogSortServiceException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/BlogForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/BlogForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/CommentForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/CommentForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/CommentListForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/CommentListForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/PageVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/form/PageVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/BlogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/BlogMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/BlogSortMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/BlogSortMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/BlogTagMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/BlogTagMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/CommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/mapper/CommentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/BlogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/BlogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/BlogSortService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/BlogSortService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/BlogTagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/BlogTagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/CommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/BlogSortImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/BlogSortImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/BlogTagServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/BlogTagServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/CommentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/OssUploadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/OssUploadService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/UploadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/UploadService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/BlogInfoUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/BlogInfoUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/BlogInfoVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/BlogInfoVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/CommentChildVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/CommentChildVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/CommentUserVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/CommentUserVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/CommentVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/CommentVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/NewBlogUserVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/NewBlogUserVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/NewBlogVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/vo/NewBlogVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/api/TagApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/api/TagApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/entity/Tag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/entity/Tag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/mapper/TagMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/mapper/TagMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/service/Impl/TagServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/service/Impl/TagServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/service/TagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/tag/service/TagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/LocalLoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/LocalLoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserDetailsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserStatisticsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserStatisticsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserWatchServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/Impl/UserWatchServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/LocalLoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/LocalLoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserPraiseRecordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserPraiseRecordService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserStatisticsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserStatisticsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserWatchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/Service/UserWatchService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/api/UserApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/api/UserApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/UserPraiseRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/UserPraiseRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/UserStatistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/UserStatistics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/UserWatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/entity/UserWatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/enums/LoginErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/enums/LoginErrorCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/exception/UserDetailsServiceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/exception/UserDetailsServiceException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/form/LoginForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/form/LoginForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/form/PageForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/form/PageForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/form/UserDetailsForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/form/UserDetailsForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserPraiseRecordMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserPraiseRecordMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserStatisticsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserStatisticsMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserWatchMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/mapper/UserWatchMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/vo/UserTopVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/user/vo/UserTopVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/api/WebNavbarApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/api/WebNavbarApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/entity/WebNavbar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/entity/WebNavbar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/mapper/WebNavbarMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/mapper/WebNavbarMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/service/Impl/WebNavbarServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/service/Impl/WebNavbarServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/service/WebNavbarService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/service/WebNavbarService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/vo/WebNavbarVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/webNavbar/vo/WebNavbarVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/AbstractUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/AbstractUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/BeanCopyUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/BeanCopyUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/FastJsonRedisSerializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/FastJsonRedisSerializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/JsonUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/JsonUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/JwtUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/PathUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/PathUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/RedisCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/RedisCache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/SecurityUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/utils/SecurityUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cn/lico/geek/modules/user/Service/Impl/UserPraiseCountTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cn/lico/geek/modules/user/Service/Impl/UserPraiseCountTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/UserPraiseRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/UserPraiseRecordService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -162,11 +50,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="232" selection-start-line="232" selection-end-line="232" />
+            <state relative-caret-position="115">
+              <caret line="297" column="48" selection-start-line="297" selection-start-column="48" selection-end-line="297" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,40 +63,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/queue/service/impl/IMessageQueueServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/entity/UserPraiseRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="95">
+              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/NewBlogVo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/core/listener/DataItemChangeListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/queue/service/IMessageQueueService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+            <state relative-caret-position="286">
+              <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -216,26 +83,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="972">
+              <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/BlogPraiseCountForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/core/queue/consumer/DataItemChangeConsumer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="33" column="76" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
+            <state relative-caret-position="246">
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -273,10 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/BlogSortService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/tag/service/TagService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/tag/service/Impl/TagServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/PathUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/JsonUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/UploadService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/UploadApi.java" />
@@ -288,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/BlogForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/entity/Blog.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/BlogService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/BlogInfoUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/BlogInfoVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/entity/Comment.java" />
@@ -316,14 +172,19 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/listener/DataItemChangeListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/config/KafkaInitialConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/LocalLoginServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/queue/message/DataItemChangeMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/queue/service/IMessageQueueService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/queue/service/impl/IMessageQueueServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/listener/UserStatisticsListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/queue/consumer/DataItemChangeConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/BlogPraiseCountForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/BlogPraiseCountVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogPraiseApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/UserPraiseRecordService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -361,7 +222,7 @@
     <option name="runMavenInBackground" value="false" />
     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="420" />
     <option name="y" value="275" />
     <option name="width" value="960" />
@@ -448,32 +309,7 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="listener" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
-              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -496,7 +332,7 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -508,7 +344,33 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -521,9 +383,22 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
+              <item name="Impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -548,7 +423,58 @@
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="listener" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
+              <item name="Impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -685,7 +611,7 @@
       <workItem from="1668688232695" duration="29000" />
       <workItem from="1668688273323" duration="9213000" />
       <workItem from="1668736507353" duration="9000" />
-      <workItem from="1668736538306" duration="3148000" />
+      <workItem from="1668736538306" duration="10981000" />
     </task>
     <servers />
   </component>
@@ -722,7 +648,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143422000" />
+    <option name="totallyTimeSpent" value="151255000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -734,10 +660,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34480432" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.041160595" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -747,11 +673,11 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.055474453" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6944444" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.114035085" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39327484" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="6" weight="0.34356725" />
+      <window_info anchor="bottom" id="Terminal" order="6" weight="0.5760234" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.329927" />
@@ -810,49 +736,19 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java</url>
+          <line>297</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/UploadService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/entity/Blog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="74" column="32" lean-forward="true" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/BlogService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/tag/entity/Tag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/CommentMapper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/mapper/CommentMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -867,13 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/NewBlogVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -918,13 +807,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1202,13 +1084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -1220,16 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1271,6 +1136,89 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
           <caret line="33" column="76" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/NewBlogVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/entity/UserPraiseRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/BlogPraiseCountForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/UserPraiseRecordService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/BlogPraiseCountVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogPraiseApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/core/api/ResponseResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding>
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="297" column="48" selection-start-line="297" selection-start-column="48" selection-end-line="297" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
