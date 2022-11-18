@@ -88,7 +88,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
         save(comment);
 
-        CommentChildVo commentChildVo = BeanCopyUtils.copyBean(comment, CommentChildVo.class);
+        Comment comment1 = getById(comment.getUid());
+        CommentChildVo commentChildVo = BeanCopyUtils.copyBean(comment1, CommentChildVo.class);
 
         User user = userService.getById(userUid);
 

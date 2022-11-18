@@ -1,12 +1,31 @@
 {
   "groups": [
     {
+      "name": "geek.kafka.topics",
+      "type": "cn.lico.geek.config.properties.GeekKafkaTopicProperties",
+      "sourceType": "cn.lico.geek.config.properties.GeekKafkaTopicProperties"
+    },
+    {
       "name": "oss",
       "type": "cn.lico.geek.modules.blog.service.Impl.OssUploadService",
       "sourceType": "cn.lico.geek.modules.blog.service.Impl.OssUploadService"
     }
   ],
   "properties": [
+    {
+      "name": "geek.kafka.topics.data-item-change",
+      "type": "java.lang.String",
+      "description": "数据条目更新",
+      "sourceType": "cn.lico.geek.config.properties.GeekKafkaTopicProperties",
+      "defaultValue": "topic.geek.dataitem.change"
+    },
+    {
+      "name": "geek.kafka.topics.user-action",
+      "type": "java.lang.String",
+      "description": "用户相关操作",
+      "sourceType": "cn.lico.geek.config.properties.GeekKafkaTopicProperties",
+      "defaultValue": "topic.geek.useraction"
+    },
     {
       "name": "oss.access-key",
       "type": "java.lang.String",

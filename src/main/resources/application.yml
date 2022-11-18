@@ -7,6 +7,17 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mogu_blog_business?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
+  # kafka
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: beyond-clouds
+      enable-auto-commit: true
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 # mybatis-plus
 mybatis-plus:
@@ -24,3 +35,10 @@ oss:
   accessKey: JHNbeGgqjKENX-mWDHpXu5CBuiXmMW8YHSNuC-cq
   secretKey: tbUM1edpmMGrcThk3JH3TksOUcJm74CARNQZBvrv
   bucket: ln-blog
+
+geek:
+  kafka:
+    topics:
+      data-item-change: topic.beyondclouds.dataitem.change
+
+

@@ -12,4 +12,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserPraiseRecordServiceImpl extends ServiceImpl<UserPraiseRecordMapper, UserPraiseRecord> implements UserPraiseRecordService {
+
 }

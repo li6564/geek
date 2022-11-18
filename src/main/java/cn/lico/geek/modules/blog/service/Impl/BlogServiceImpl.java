@@ -3,6 +3,9 @@ package cn.lico.geek.modules.blog.service.Impl;
 import cn.lico.geek.common.dto.PageDTO;
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.core.queue.message.DataItemChangeMessage;
+import cn.lico.geek.core.queue.message.DataItemChangeType;
+import cn.lico.geek.core.queue.message.DataItemType;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.entity.BlogSort;
 import cn.lico.geek.modules.blog.entity.BlogTag;
@@ -16,6 +19,7 @@ import cn.lico.geek.modules.blog.vo.BlogInfoUser;
 import cn.lico.geek.modules.blog.vo.BlogInfoVo;
 import cn.lico.geek.modules.blog.vo.NewBlogUserVo;
 import cn.lico.geek.modules.blog.vo.NewBlogVo;
+import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.tag.entity.Tag;
 import cn.lico.geek.modules.tag.service.TagService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
@@ -30,12 +34,9 @@ import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDto;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,7 +71,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Autowired
     private UserStatisticsService userStatisticsService;
 
-
+    @Autowired
+    private IMessageQueueService messageQueueService;
 
     /**
      * 根据文章等级进行推荐展示
@@ -220,7 +222,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
                 blogTag.setTagId(s);
                 blogTagService.save(blogTag);
             }
-
+            //发送添加博客信息
+//            DataItemChangeMessage dataItemChangeMessage = DataItemChangeMessage.addMessage(DataItemType.BLOG, userId);
+            DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+            dataItemChangeMessage.setItemType(DataItemType.BLOG);
+            dataItemChangeMessage.setOperatorId(userId);
+            dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+            System.out.println(dataItemChangeMessage.toString());
+            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
             return new ResponseResult("发布成功！",AppHttpCodeEnum.SUCCESS.getMsg());
         }
         return new ResponseResult("发布失败，请重新检查！",AppHttpCodeEnum.ERROR.getMsg());

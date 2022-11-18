@@ -115,6 +115,13 @@
     </dependency>
     <!--    阿里sdk end    -->
 
+    <!--    kafka start-->
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+    </dependency>
+    <!--    kafka end-->
+
     <!-- 七牛云-->
     <dependency>
       <groupId>com.qiniu</groupId>
@@ -224,5 +231,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>9</source>
+                  <target>9</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>
