@@ -23,7 +23,7 @@ public class UserStatisticsListener implements DataItemChangeListener {
 
 
     /**
-     * 博客浏览量改变或回答被采纳
+     * 博客浏览量改变或博客数量新增或新增关注
      * @param dataItemChangeMessage
      */
     @Override
@@ -35,9 +35,23 @@ public class UserStatisticsListener implements DataItemChangeListener {
         }else if (dataItemChangeMessage.getItemType().equals(DataItemType.BLOG)){
             //发布博客事件增加博客数量
             onDataChange(dataItemChangeMessage);
-        }
-
+        }else if (dataItemChangeMessage.getItemType().equals(DataItemType.USER));
+            //新增关注
+            onDataChange(dataItemChangeMessage);
     }
+
+    /**
+     * 取消关注或删除博客
+     * @param dataItemChangeMessage
+     */
+    @Override
+    public void onDataItemDelete(DataItemChangeMessage dataItemChangeMessage){
+        //用户粉丝数-1，用户关注数-1
+        if (dataItemChangeMessage.getItemType().equals(DataItemType.USER)){
+            onDataChange(dataItemChangeMessage);
+        }
+    }
+
 
     /**
      * 更新用户统计信息
@@ -64,6 +78,27 @@ public class UserStatisticsListener implements DataItemChangeListener {
                 UserStatistics userStatistics = userStatisticsService.getById(operatorId);
                 userStatistics.setBlogViewNum(userStatistics.getBlogViewNum()+1);
                 userStatisticsService.updateById(userStatistics);
+            }
+        //更新用户粉丝数和关注数
+        }else if (itemType.equals(DataItemType.USER)){
+            if (changeType.equals(DataItemChangeType.ADD)){
+                //更新粉丝数
+                UserStatistics userStatistics = userStatisticsService.getById(itemId);
+                userStatistics.setFansNum(userStatistics.getFansNum()+1);
+                userStatisticsService.updateById(userStatistics);
+                //更新关注数
+                UserStatistics userStatistics1 = userStatisticsService.getById(operatorId);
+                userStatistics1.setFollowedNum(userStatistics1.getFollowedNum()+1);
+                userStatisticsService.updateById(userStatistics1);
+            }else if (changeType.equals(DataItemChangeType.DELETE)){
+                //更新粉丝数
+                UserStatistics userStatistics = userStatisticsService.getById(itemId);
+                userStatistics.setFansNum(userStatistics.getFansNum()-1);
+                userStatisticsService.updateById(userStatistics);
+                //更新关注数
+                UserStatistics userStatistics1 = userStatisticsService.getById(operatorId);
+                userStatistics1.setFollowedNum(userStatistics1.getFollowedNum()-1);
+                userStatisticsService.updateById(userStatistics1);
             }
         }
     }

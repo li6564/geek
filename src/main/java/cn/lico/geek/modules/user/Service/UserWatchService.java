@@ -11,4 +11,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserWatchService extends IService<UserWatch> {
     UserWatchDto checkCurrentUserWatch(String toUserUid);
+
+    ResponseResult addUserWatch(String toUserUid);
+
+    ResponseResult deleteUserWatch(String toUserUid);
 }
