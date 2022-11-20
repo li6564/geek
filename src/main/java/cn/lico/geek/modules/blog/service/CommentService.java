@@ -2,6 +2,7 @@ package cn.lico.geek.modules.blog.service;
 
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.modules.blog.entity.Comment;
+import cn.lico.geek.modules.blog.form.CommentDeleteForm;
 import cn.lico.geek.modules.blog.form.CommentListForm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,6 @@ public interface CommentService extends IService<Comment> {
     ResponseResult getList(CommentListForm commentListForm);
 
     ResponseResult add(String blogUid, String content, String source, String userUid, String toUid, String toUserUid);
+
+    ResponseResult delete(CommentDeleteForm deleteForm);
 }

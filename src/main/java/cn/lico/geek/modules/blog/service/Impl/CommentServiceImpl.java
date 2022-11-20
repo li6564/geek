@@ -2,8 +2,10 @@ package cn.lico.geek.modules.blog.service.Impl;
 
 import cn.lico.geek.common.dto.PageDTO;
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.entity.Comment;
+import cn.lico.geek.modules.blog.form.CommentDeleteForm;
 import cn.lico.geek.modules.blog.form.CommentListForm;
 import cn.lico.geek.modules.blog.mapper.CommentMapper;
 import cn.lico.geek.modules.blog.service.CommentService;
@@ -16,9 +18,11 @@ import cn.lico.geek.utils.BeanCopyUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -98,6 +102,46 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         commentChildVo.setUser(commentUserVo);
 
         return new ResponseResult(commentChildVo);
+    }
+
+    /**
+     * 删除评论及其子评论
+     * @param deleteForm
+     * @return
+     */
+    @Override
+    public ResponseResult delete(CommentDeleteForm deleteForm) {
+        //先获取要删除的评论
+        LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Comment::getUid,deleteForm.getUid());
+        queryWrapper.eq(Comment::getUserUid,deleteForm.getUserUid());
+        Comment comment = getOne(queryWrapper);
+
+        List<String> list = new ArrayList<>();
+
+        //获取子评论
+        List<String> ChildCommentIds = getChildCommentIds(comment.getUid(),list);
+        ChildCommentIds.add(comment.getUid());
+        removeByIds(ChildCommentIds);
+
+        return new ResponseResult("删除成功", AppHttpCodeEnum.SUCCESS.getMsg());
+    }
+
+    /**
+     * 获取子评论的uid集合
+     * @param uid
+     * @return
+     */
+    private List<String> getChildCommentIds(String uid,List list) {
+        LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Comment::getToUid,uid);
+        List<Comment> comments = list(queryWrapper);
+
+        for (Comment comment : comments) {
+            list.add(comment.getUid());
+        }
+
+        return list;
     }
 
 

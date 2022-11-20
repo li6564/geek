@@ -1,6 +1,7 @@
 package cn.lico.geek.modules.blog.api;
 
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.modules.blog.form.CommentDeleteForm;
 import cn.lico.geek.modules.blog.form.CommentForm;
 import cn.lico.geek.modules.blog.form.CommentListForm;
 import cn.lico.geek.modules.blog.service.CommentService;
@@ -28,17 +29,23 @@ public class CommentApi {
 
     /**
      * 发表评论
-     * @param blogUid
-     * @param content
-     * @param source
-     * @param userUid
-     * @param toUid
-     * @param toUserUid
+     * @param commentForm
+     *
      * @return
      */
     @PostMapping("/add")
     public ResponseResult add(@RequestBody CommentForm commentForm){
         return commentService.add(commentForm.getBlogUid(),commentForm.getContent(),commentForm.getSource(),
                 commentForm.getUserUid(),commentForm.getToUid(),commentForm.getToUserUid());
+    }
+
+    /**
+     * 删除评论
+     * @param deleteForm
+     * @return
+     */
+    @PostMapping("/delete")
+    public ResponseResult delete(@RequestBody CommentDeleteForm deleteForm){
+        return commentService.delete(deleteForm);
     }
 }
