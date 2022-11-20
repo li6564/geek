@@ -25,21 +25,40 @@ public class UserApi {
     @Autowired
     private UserStatisticsService userStatisticsService;
 
+    /**
+     * 获得社区精英列表
+     * @param pageForm
+     * @return
+     */
     @PostMapping("/getUserTopN")
     public ResponseResult getUserTopN(@RequestBody PageForm pageForm){
         return userStatisticsService.getUserTopN(pageForm);
     }
 
+    /**
+     * 用户账号密码登录
+     * @param loginForm
+     * @return
+     */
     @PostMapping("/login")
     public ResponseResult localLogin(@RequestBody LoginForm loginForm){
         return localLoginService.login(loginForm);
     }
 
+    /**
+     *
+     * @param token
+     * @return
+     */
     @GetMapping("/verify/{token}")
     public ResponseResult authVerify(@PathVariable("token") String token){
         return userService.authVerify(token);
     }
 
+    /**
+     * 退出登录
+     * @return
+     */
     @PostMapping("/logout")
     public ResponseResult logout(){
         return localLoginService.logout();

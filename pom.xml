@@ -115,6 +115,13 @@
     </dependency>
     <!--    阿里sdk end    -->
 
+    <!--    aop Start-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <!--    aop end-->
+
     <!--    kafka start-->
     <dependency>
       <groupId>org.springframework.kafka</groupId>

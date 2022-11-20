@@ -19,5 +19,5 @@ public interface BlogService extends IService<Blog> {
 
     ResponseResult addBlog(BlogForm blogForm);
 
-    ResponseResult getBlogByUid(Integer oid, Integer isLazy);
+    ResponseResult getBlogByUid(Integer oid, Integer isLazy,String remeteHost);
 }

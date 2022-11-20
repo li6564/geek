@@ -29,7 +29,9 @@ public class UserStatisticsListener implements DataItemChangeListener {
     @Override
     public void onDataItemAdd(DataItemChangeMessage dataItemChangeMessage){
         if (dataItemChangeMessage.getItemType().equals(DataItemType.BLOG_VIEW_NUM)){
+            System.out.println("执行了123111");
             onDataChange(dataItemChangeMessage);
+
         }else if (dataItemChangeMessage.getItemType().equals(DataItemType.BLOG)){
             //发布博客事件增加博客数量
             onDataChange(dataItemChangeMessage);
@@ -45,13 +47,22 @@ public class UserStatisticsListener implements DataItemChangeListener {
         DataItemType itemType = dataItemChangeMessage.getItemType();
         String itemId = dataItemChangeMessage.getItemId();
         String operatorId = dataItemChangeMessage.getOperatorId();
+        DataItemChangeType changeType = dataItemChangeMessage.getChangeType();
         //更新博客发布量
         if (itemType.equals(DataItemType.BLOG)){
             //新增博客发布量
-            if (dataItemChangeMessage.getChangeType().equals(DataItemChangeType.ADD)){
+            if (changeType.equals(DataItemChangeType.ADD)){
                 UserStatistics userStatistics = userStatisticsService.getById(operatorId);
                 Integer blogNum = userStatistics.getBlogNum();
                 userStatistics.setBlogNum(blogNum+1);
+                userStatisticsService.updateById(userStatistics);
+            }
+        //更新博客浏览量
+        }else if (itemType.equals(DataItemType.BLOG_VIEW_NUM)){
+            //博客浏览量+1
+            if (changeType.equals(DataItemChangeType.ADD)){
+                UserStatistics userStatistics = userStatisticsService.getById(operatorId);
+                userStatistics.setBlogViewNum(userStatistics.getBlogViewNum()+1);
                 userStatisticsService.updateById(userStatistics);
             }
         }

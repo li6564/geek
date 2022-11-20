@@ -32,6 +32,7 @@ import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.entity.UserWatch;
 import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
+import cn.lico.geek.utils.RedisCache;
 import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -74,6 +75,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Autowired
     private IMessageQueueService messageQueueService;
 
+    @Autowired
+    private RedisCache redisCache;
     /**
      * 根据文章等级进行推荐展示
      * @param currentPage
@@ -228,7 +231,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             dataItemChangeMessage.setItemType(DataItemType.BLOG);
             dataItemChangeMessage.setOperatorId(userId);
             dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
-            System.out.println(dataItemChangeMessage.toString());
             messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
             return new ResponseResult("发布成功！",AppHttpCodeEnum.SUCCESS.getMsg());
         }
@@ -242,7 +244,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      * @return
      */
     @Override
-    public ResponseResult getBlogByUid(Integer oid, Integer isLazy) {
+    public ResponseResult getBlogByUid(Integer oid, Integer isLazy,String remoteHost) {
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         //根据oid进行查询
         queryWrapper.eq(Blog::getOid,oid);
@@ -250,7 +252,24 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         queryWrapper.eq(Blog::getStatus,1);
         //根据条件获取博客
         Blog blog = getOne(queryWrapper);
+        //设置博客浏览量
+        //根据Ip 地址在 redis查询结果
+        Object cacheObject = redisCache.getCacheObject(oid+remoteHost);
+        //如果查询结果为空，则新增记录到redids中，并且将该博客浏览量加1
+        if (Objects.isNull(cacheObject)){
+            //新增记录到redids中
+            redisCache.setCacheObject(oid+remoteHost,"1");
+            //将博客浏览量+1
+            blog.setClickCount(blog.getClickCount()+1);
+            updateById(blog);
 
+            //发送博客浏览记录消息
+            DataItemChangeMessage dataItemChangeMessage  = new DataItemChangeMessage();
+            dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+            dataItemChangeMessage.setItemType(DataItemType.BLOG_VIEW_NUM);
+            dataItemChangeMessage.setOperatorId(blog.getUserUid());
+            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+        }
         BlogInfoVo blogInfoVo = BeanCopyUtils.copyBean(blog, BlogInfoVo.class);
         //获取博文作者id
         String userUid = blogInfoVo.getUserUid();
@@ -285,6 +304,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         String blogSortUid = blogInfoVo.getBlogSortUid();
         BlogSort blogSort = blogSortService.getById(blogSortUid);
         blogInfoVo.setBlogSort(blogSort);
+
 
         return new ResponseResult(blogInfoVo);
     }
