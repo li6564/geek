@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421f8124-d429-4bfe-a89c-220d9e1db833" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/queue/message/DataItemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/queue/message/DataItemType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/UploadApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/UploadApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/OssUploadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/OssUploadService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/UploadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/UploadService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/api/MomentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/api/MomentApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/UserMomentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/UserMomentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/vo/UserMomentVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/vo/UserMomentVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/listener/UserStatisticsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/listener/UserStatisticsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/UploadApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/api/UploadApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/OssUploadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/Impl/OssUploadService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/UploadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/lico/geek/modules/blog/service/UploadService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,91 +48,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/api/MomentApi.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="65" column="41" lean-forward="true" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/UserMomentService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/vo/UserMomentVo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/CommentVo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-208">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/CommentApi.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/CommentServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/CommentListForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/form/UserMomentDeleteForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="218" selection-start-line="218" selection-end-line="218" />
+            <state relative-caret-position="110">
+              <caret line="55" column="66" lean-forward="true" selection-start-line="55" selection-start-column="66" selection-end-line="55" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,10 +60,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/listener/UserStatisticsListener.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="-729">
+              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="274" column="61" lean-forward="true" selection-start-line="274" selection-start-column="61" selection-end-line="274" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/vo/QuestionListVo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,23 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/BlogService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/aspect/BrowseTimesAspect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/form/AddUserWatchForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/UserWatchService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserWatchServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/form/ToUserUid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/form/ToUserUidForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/api/UserWatchApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/CommentDeleteForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/CommentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/CommentApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/CommentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/UserMomentTopicMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/xml/UserMomentTopicMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/exception/UserMomentTopicServiceException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/enums/UserMomentTopicErrorCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/form/UserMomentTopicPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/UserMomentTopicService.java" />
@@ -236,6 +147,23 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/vo/UserMomentVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/listener/UserStatisticsListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/QuestionMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/xml/QuestionMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/QuestionTag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/Question.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/QuestionTagMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/xml/QuestionTagMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/QuestionTagService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionTagServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/enums/QuestionErrorCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/enums/QuestionTagErrorCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/exception/QuestionServiceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/exception/QuestionTagServiceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/form/QuestionListForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/QuestionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/api/QuestionApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/vo/QuestionListVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -360,85 +288,7 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="Impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="moment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="moment" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -477,7 +327,8 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="moment" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -489,8 +340,86 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="listener" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="geek" type="b2602c69:ProjectViewProjectNode" />
@@ -516,25 +445,28 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/mogu/mogu_blog_business" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cn.lico.geek.modules.question.form" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.lico.geek.modules.question.exception" />
+      <recent name="cn.lico.geek.modules.question.enums" />
       <recent name="cn.lico.geek.modules.moment.exception" />
       <recent name="cn.lico.geek.modules.moment.enums" />
       <recent name="cn.lico.geek.config" />
-      <recent name="cn.lico.geek.core.listener" />
-      <recent name="cn.lico.geek.core.queue.consumer" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\webNavbar\mapper\xml" />
-      <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\tag\mapper\xml" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -631,7 +563,7 @@
       <workItem from="1668736538306" duration="15533000" />
       <workItem from="1668848100066" duration="4994000" />
       <workItem from="1668913709751" duration="23644000" />
-      <workItem from="1669018286520" duration="12765000" />
+      <workItem from="1669018286520" duration="18678000" />
     </task>
     <servers />
   </component>
@@ -668,7 +600,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197210000" />
+    <option name="totallyTimeSpent" value="203123000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -682,7 +614,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32186234" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.317139" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -692,11 +624,11 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.055474453" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37518248" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5518248" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.52554744" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46569344" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="6" weight="0.20437956" />
+      <window_info anchor="bottom" id="Terminal" order="6" weight="0.4540146" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.329927" />
@@ -755,170 +687,19 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionServiceImpl.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/xml/UserMomentTopicMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="75" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/enums/UserMomentTopicErrorCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/exception/UserMomentTopicServiceException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/CommentDeleteForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/BlogPraiseCountForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/LocalLoginServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/form/UserMomentTopicPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentTopicServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/UserMomentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/xml/UserMomentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="70" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/BlogForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/CommentForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/form/PageVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/form/UserMomentListForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/BlogInfoUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/MomentPhotoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/MomentTopicMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/xml/MomentTopicMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/mapper/xml/MomentPhotoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/MomentTopicService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -950,16 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="146" column="30" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1180,16 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="218" selection-start-line="218" selection-end-line="218" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/listener/UserStatisticsListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1197,6 +958,179 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="262" selection-start-line="262" selection-end-line="262" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/QuestionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/xml/QuestionMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="70" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/QuestionTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/QuestionTagMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/xml/QuestionTagMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="73" selection-start-line="2" selection-start-column="73" selection-end-line="2" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/QuestionTagService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionTagServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/enums/QuestionErrorCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/enums/QuestionTagErrorCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/exception/QuestionServiceException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/QuestionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="55" column="26" lean-forward="true" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/api/QuestionApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/exception/QuestionTagServiceException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/form/QuestionListForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="274" column="61" lean-forward="true" selection-start-line="274" selection-start-column="61" selection-end-line="274" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/vo/QuestionListVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="55" column="66" lean-forward="true" selection-start-line="55" selection-start-column="66" selection-end-line="55" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-729">
+          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
         </state>
       </provider>
     </entry>

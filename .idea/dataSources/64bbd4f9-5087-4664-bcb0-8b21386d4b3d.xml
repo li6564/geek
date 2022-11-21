@@ -4006,21 +4006,21 @@ oid</ColNames>
     <column id="775" parent="327" name="uid">
       <Position>1</Position>
       <Comment>id</Comment>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="776" parent="327" name="moment_uid">
       <Position>2</Position>
       <Comment>动态id</Comment>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="777" parent="327" name="topic_uid">
       <Position>3</Position>
       <Comment>主题id</Comment>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -4983,197 +4983,191 @@ oid</ColNames>
     </column>
     <column id="925" parent="338" name="title">
       <Position>3</Position>
-      <Comment>博客标题</Comment>
+      <Comment>问答标题</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
     <column id="926" parent="338" name="summary">
       <Position>4</Position>
-      <Comment>博客简介</Comment>
+      <Comment>问答简介</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
     <column id="927" parent="338" name="content">
       <Position>5</Position>
-      <Comment>博客内容</Comment>
+      <Comment>问答内容</Comment>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="928" parent="338" name="question_tag_uid">
+    <column id="928" parent="338" name="click_count">
       <Position>6</Position>
-      <Comment>问答uid</Comment>
-      <DataType>varchar(255)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="929" parent="338" name="click_count">
-      <Position>7</Position>
       <Comment>问答点击数</Comment>
       <DataType>int|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="930" parent="338" name="collect_count">
-      <Position>8</Position>
+    <column id="929" parent="338" name="collect_count">
+      <Position>7</Position>
       <Comment>问答收藏数</Comment>
       <DataType>int|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="931" parent="338" name="reply_count">
-      <Position>9</Position>
+    <column id="930" parent="338" name="reply_count">
+      <Position>8</Position>
       <Comment>回答次数</Comment>
       <DataType>int|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="932" parent="338" name="file_uid">
-      <Position>10</Position>
-      <Comment>标题图片uid</Comment>
+    <column id="931" parent="338" name="photo_url">
+      <Position>9</Position>
+      <Comment>标题图片url</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="933" parent="338" name="status">
-      <Position>11</Position>
+    <column id="932" parent="338" name="status">
+      <Position>10</Position>
       <Comment>状态</Comment>
       <DataType>tinyint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="934" parent="338" name="create_time">
-      <Position>12</Position>
+    <column id="933" parent="338" name="create_time">
+      <Position>11</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="935" parent="338" name="update_time">
-      <Position>13</Position>
+    <column id="934" parent="338" name="update_time">
+      <Position>12</Position>
       <Comment>更新时间</Comment>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="936" parent="338" name="admin_uid">
-      <Position>14</Position>
+    <column id="935" parent="338" name="admin_uid">
+      <Position>13</Position>
       <Comment>管理员uid</Comment>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="937" parent="338" name="user_uid">
-      <Position>15</Position>
+    <column id="936" parent="338" name="user_uid">
+      <Position>14</Position>
       <Comment>用户UID</Comment>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="938" parent="338" name="is_publish">
-      <Position>16</Position>
+    <column id="937" parent="338" name="is_publish">
+      <Position>15</Position>
       <Comment>是否发布：0：否，1：是</Comment>
       <DataType>varchar(1)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="939" parent="338" name="question_status">
-      <Position>17</Position>
+    <column id="938" parent="338" name="question_status">
+      <Position>16</Position>
       <Comment>问答状态，0:创建，1:进行，2:已采纳</Comment>
       <DataType>tinyint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="940" parent="338" name="sort">
-      <Position>18</Position>
+    <column id="939" parent="338" name="sort">
+      <Position>17</Position>
       <Comment>排序字段</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="941" parent="338" name="open_comment">
-      <Position>19</Position>
+    <column id="940" parent="338" name="open_comment">
+      <Position>18</Position>
       <Comment>是否开启评论(0:否 1:是)</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="942" parent="338" name="question_template_uid">
-      <Position>20</Position>
+    <column id="941" parent="338" name="question_template_uid">
+      <Position>19</Position>
       <Comment>问答模板UID</Comment>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="943" parent="338" name="question_source">
-      <Position>21</Position>
+    <column id="942" parent="338" name="question_source">
+      <Position>20</Position>
       <Comment>问答来源【0 后台添加，1 用户投稿】</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="944" parent="338" name="audit_status">
-      <Position>22</Position>
+    <column id="943" parent="338" name="audit_status">
+      <Position>21</Position>
       <Comment>审批状态【0：待审批，1：审核未通过，2：审核通过】</Comment>
       <DataType>tinyint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="945" parent="338" name="audit_name">
-      <Position>23</Position>
+    <column id="944" parent="338" name="audit_name">
+      <Position>22</Position>
       <Comment>审批人</Comment>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="946" parent="338" name="reject_reason">
-      <Position>24</Position>
+    <column id="945" parent="338" name="reject_reason">
+      <Position>23</Position>
       <Comment>审批拒绝原因</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="947" parent="338" name="audit_time">
-      <Position>25</Position>
+    <column id="946" parent="338" name="audit_time">
+      <Position>24</Position>
       <Comment>审批时间</Comment>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="948" parent="338" name="oid">
+    <index id="947" parent="338" name="oid">
       <ColNames>oid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="949" parent="338" name="PRIMARY">
+    <key id="948" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uid
 oid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="950" parent="339" name="uid">
+    <column id="949" parent="339" name="uid">
       <Position>1</Position>
       <Comment>唯一uid</Comment>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="951" parent="339" name="parent_uid">
+    <column id="950" parent="339" name="parent_uid">
       <Position>2</Position>
       <Comment>父uid</Comment>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="952" parent="339" name="name">
+    <column id="951" parent="339" name="name">
       <Position>3</Position>
       <Comment>标签名</Comment>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="953" parent="339" name="summary">
+    <column id="952" parent="339" name="summary">
       <Position>4</Position>
       <Comment>标签简介</Comment>
       <DataType>varchar(1000)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="954" parent="339" name="status">
+    <column id="953" parent="339" name="status">
       <Position>5</Position>
       <Comment>状态</Comment>
       <DataType>tinyint unsigned|0s</DataType>
@@ -5181,30 +5175,37 @@ oid</ColNames>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="955" parent="339" name="click_count">
+    <column id="954" parent="339" name="click_count">
       <Position>6</Position>
       <Comment>点击数</Comment>
       <DataType>int|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="956" parent="339" name="create_time">
+    <column id="955" parent="339" name="create_time">
       <Position>7</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="957" parent="339" name="update_time">
+    <column id="956" parent="339" name="update_time">
       <Position>8</Position>
       <Comment>更新时间</Comment>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="958" parent="339" name="sort">
+    <column id="957" parent="339" name="sort">
       <Position>9</Position>
       <Comment>排序字段，越大越靠前</Comment>
       <DataType>int|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="958" parent="339" name="questiono_uid">
+      <Position>10</Position>
+      <Comment>问答uid</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="959" parent="339" name="PRIMARY">
