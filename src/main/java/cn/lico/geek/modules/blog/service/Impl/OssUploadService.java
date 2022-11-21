@@ -4,6 +4,7 @@ import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import cn.lico.geek.core.exception.SystemException;
 import cn.lico.geek.modules.blog.service.UploadService;
+import cn.lico.geek.modules.moment.dto.UploadDto;
 import cn.lico.geek.utils.JsonUtils;
 import cn.lico.geek.utils.PathUtils;
 import com.google.gson.Gson;
@@ -19,14 +20,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 @Data
 @ConfigurationProperties(prefix = "oss")
 public class OssUploadService implements UploadService {
+    /**
+     * 上传图片
+     * @param img
+     * @return
+     */
     @Override
     public Map uploadImg(MultipartFile img) {
         //判断文件类型
@@ -42,6 +51,25 @@ public class OssUploadService implements UploadService {
         String filePath = PathUtils.generateFilePath(originalFilename);
 
         return uploadOss(img,filePath);
+    }
+
+    /**
+     * 动态模块上传多个图片
+     * @param request
+     * @param filedatas
+     * @return
+     */
+    @Override
+    public ResponseResult uploadPics(HttpServletRequest request, List<MultipartFile> filedatas) {
+        List<UploadDto> list = new ArrayList<>();
+        //传来的遍历图片集合
+        if (filedatas.size()>0){
+            for (MultipartFile filedata : filedatas) {
+                Map map = uploadImg(filedata);
+                list.add(new UploadDto(map.get("url").toString()));
+            }
+        }
+        return new ResponseResult(list);
     }
 
     private String accessKey;

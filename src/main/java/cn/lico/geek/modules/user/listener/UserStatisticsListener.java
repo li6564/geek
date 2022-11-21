@@ -35,9 +35,13 @@ public class UserStatisticsListener implements DataItemChangeListener {
         }else if (dataItemChangeMessage.getItemType().equals(DataItemType.BLOG)){
             //发布博客事件增加博客数量
             onDataChange(dataItemChangeMessage);
-        }else if (dataItemChangeMessage.getItemType().equals(DataItemType.USER));
-            //新增关注
+        }else if (dataItemChangeMessage.getItemType().equals(DataItemType.USER)){
+            //新增关注数量
             onDataChange(dataItemChangeMessage);
+        }else if (dataItemChangeMessage.getItemType().equals(DataItemType.POST)){
+            //新增动态发布量
+            onDataChange(dataItemChangeMessage);
+        }
     }
 
     /**
@@ -48,6 +52,9 @@ public class UserStatisticsListener implements DataItemChangeListener {
     public void onDataItemDelete(DataItemChangeMessage dataItemChangeMessage){
         //用户粉丝数-1，用户关注数-1
         if (dataItemChangeMessage.getItemType().equals(DataItemType.USER)){
+            onDataChange(dataItemChangeMessage);
+        }else if (dataItemChangeMessage.getItemType().equals(DataItemType.POST)){
+            //动态发布量-1
             onDataChange(dataItemChangeMessage);
         }
     }
@@ -99,6 +106,18 @@ public class UserStatisticsListener implements DataItemChangeListener {
                 UserStatistics userStatistics1 = userStatisticsService.getById(operatorId);
                 userStatistics1.setFollowedNum(userStatistics1.getFollowedNum()-1);
                 userStatisticsService.updateById(userStatistics1);
+            }
+        }else if (itemType.equals(DataItemType.POST)){
+            //新增动态发布数
+            if (changeType.equals(DataItemChangeType.ADD)){
+                UserStatistics userStatistics = userStatisticsService.getById(operatorId);
+                userStatistics.setPostNum(userStatistics.getPostNum()+1);
+                userStatisticsService.updateById(userStatistics);
+            }else if (changeType.equals(DataItemChangeType.DELETE)){
+                //动态数-1
+                UserStatistics userStatistics = userStatisticsService.getById(operatorId);
+                userStatistics.setPostNum(userStatistics.getPostNum()-1);
+                userStatisticsService.updateById(userStatistics);
             }
         }
     }

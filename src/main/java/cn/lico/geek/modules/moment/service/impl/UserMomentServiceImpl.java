@@ -2,11 +2,17 @@ package cn.lico.geek.modules.moment.service.impl;
 
 import cn.lico.geek.common.dto.PageDTO;
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.core.queue.message.DataItemChangeMessage;
+import cn.lico.geek.core.queue.message.DataItemChangeType;
+import cn.lico.geek.core.queue.message.DataItemType;
 import cn.lico.geek.modules.blog.vo.BlogInfoUser;
 import cn.lico.geek.modules.moment.entity.MomentPhoto;
 import cn.lico.geek.modules.moment.entity.MomentTopic;
 import cn.lico.geek.modules.moment.entity.UserMoment;
 import cn.lico.geek.modules.moment.entity.UserMomentTopic;
+import cn.lico.geek.modules.moment.form.UserMomentAddForm;
+import cn.lico.geek.modules.moment.form.UserMomentDeleteForm;
 import cn.lico.geek.modules.moment.form.UserMomentListForm;
 import cn.lico.geek.modules.moment.mapper.UserMomentMapper;
 import cn.lico.geek.modules.moment.service.MomentPhotoService;
@@ -15,6 +21,7 @@ import cn.lico.geek.modules.moment.service.UserMomentService;
 import cn.lico.geek.modules.moment.service.UserMomentTopicService;
 import cn.lico.geek.modules.moment.vo.PraiseInfo;
 import cn.lico.geek.modules.moment.vo.UserMomentVo;
+import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserWatchService;
@@ -55,6 +62,9 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
 
     @Autowired
     private UserMomentTopicService userMomentTopicService;
+
+    @Autowired
+    private IMessageQueueService messageQueueService;
 
     /**
      * 获取动态内容
@@ -122,6 +132,92 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
         pageDTO.setTotal((int)page.getTotal());
         pageDTO.setSize((int)page.getSize());
         return new ResponseResult(pageDTO);
+    }
+
+    /**
+     *发布动态
+     * @param userMomentAddForm
+     * @return
+     */
+    @Override
+    public ResponseResult addUserMoment(UserMomentAddForm userMomentAddForm) {
+        //获取当前用户id
+        String userId = SecurityUtils.getUserId();
+
+        UserMoment userMoment = new UserMoment();
+        userMoment.setContent(userMomentAddForm.getContent());
+        userMoment.setIsPublish(1);
+        userMoment.setUrl(userMomentAddForm.getUrl());
+        userMoment.setUrlInfo(userMomentAddForm.getUrlInfo());
+        userMoment.setUserUid(userId);
+        //保存动态
+        save(userMoment);
+        //获取动态uid
+        String uid = userMoment.getUid();
+        //获取话题列表
+        String[] topicList = userMomentAddForm.getTopicUids().split(",");
+        //保存动态话题表
+        for (String s : topicList) {
+            MomentTopic momentTopic = new MomentTopic();
+            momentTopic.setTopicUid(s);
+            momentTopic.setMomentUid(uid);
+            momentTopicService.save(momentTopic);
+        }
+
+        //获取 图片链接链表
+        String[] photoUrlList = userMomentAddForm.getPictureUrl().split(",");
+        //保存动态链接表
+        for (String s : photoUrlList) {
+            MomentPhoto momentPhoto = new MomentPhoto();
+            momentPhoto.setMomentUid(uid);
+            momentPhoto.setPhotoUrl(s);
+            momentPhotoService.save(momentPhoto);
+        }
+        //
+
+        //发送新增动态消息
+        DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setOperatorId(userId);
+        dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+        dataItemChangeMessage.setItemType(DataItemType.POST);
+        messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+
+        return new ResponseResult("发表动态成功", AppHttpCodeEnum.SUCCESS.getMsg());
+    }
+
+    /**
+     * 删除动态
+     * @param userMomentDeleteForm
+     * @return
+     */
+    @Override
+    public ResponseResult deleteBatch(UserMomentDeleteForm userMomentDeleteForm) {
+        //获取当前用户的id
+        String userId = SecurityUtils.getUserId();
+
+        //获取要删除动态的uid
+        String uid = userMomentDeleteForm.getUid();
+        //获取要删除的动态记录
+        UserMoment userMoment = getById(uid);
+        //删除动态
+        userMoment.setStatus(0);
+        updateById(userMoment);
+        //删除动态对应的话题
+        LambdaQueryWrapper<MomentTopic> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(MomentTopic::getMomentUid,uid);
+        momentTopicService.remove(queryWrapper);
+        //删除动态的图片
+        LambdaQueryWrapper<MomentPhoto> queryWrapper1 = new LambdaQueryWrapper<>();
+        queryWrapper1.eq(MomentPhoto::getMomentUid,uid);
+        momentPhotoService.remove(queryWrapper1);
+        //发送删除动态消息
+        DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setOperatorId(userId);
+        dataItemChangeMessage.setChangeType(DataItemChangeType.DELETE);
+        dataItemChangeMessage.setItemType(DataItemType.POST);
+        messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+
+        return new ResponseResult("删除成功",AppHttpCodeEnum.SUCCESS.getMsg());
     }
 
     /**

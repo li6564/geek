@@ -1,12 +1,16 @@
 package cn.lico.geek.modules.moment.api;
 
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.modules.moment.form.UserMomentAddForm;
+import cn.lico.geek.modules.moment.form.UserMomentDeleteForm;
 import cn.lico.geek.modules.moment.form.UserMomentListForm;
 import cn.lico.geek.modules.moment.form.UserMomentTopicPage;
 import cn.lico.geek.modules.moment.service.UserMomentService;
 import cn.lico.geek.modules.moment.service.UserMomentTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Author：linan
@@ -40,5 +44,25 @@ public class MomentApi {
     @PostMapping("/getUserMomentList")
     public ResponseResult getUserMomentList(@RequestBody UserMomentListForm userMomentListForm){
         return userMomentService.getUserMomentList(userMomentListForm);
+    }
+
+    /**
+     * 发布动态
+     * @param userMomentAddForm
+     * @return
+     */
+    @PostMapping("/addUserMoment")
+    public ResponseResult addUserMoment(@RequestBody UserMomentAddForm userMomentAddForm){
+        return userMomentService.addUserMoment(userMomentAddForm);
+    }
+
+    /**
+     * 删除动态
+     * @param userMomentDeleteFormList
+     * @return
+     */
+    @PostMapping("/deleteBatch")
+    public ResponseResult deleteBatch(@RequestBody List<UserMomentDeleteForm> userMomentDeleteFormList){
+        return userMomentService.deleteBatch(userMomentDeleteFormList.get(0));
     }
 }

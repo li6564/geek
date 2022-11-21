@@ -46,6 +46,7 @@ public class UserMomentVo {
 
     private PraiseInfo praiseInfo;
 
+
     private String uid;
 
     private Integer status;
