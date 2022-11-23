@@ -44,6 +44,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author：linan
@@ -258,7 +259,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //如果查询结果为空，则新增记录到redids中，并且将该博客浏览量加1
         if (Objects.isNull(cacheObject)){
             //新增记录到redids中
-            redisCache.setCacheObject(oid+remoteHost,"1");
+            redisCache.setCacheObject(oid+remoteHost,"1",60*60, TimeUnit.SECONDS);
             //将博客浏览量+1
             blog.setClickCount(blog.getClickCount()+1);
             updateById(blog);

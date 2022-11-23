@@ -2,6 +2,7 @@ package cn.lico.geek.modules.question.service;
 
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.modules.question.entity.Question;
+import cn.lico.geek.modules.question.form.QuestionAddForm;
 import cn.lico.geek.modules.question.form.QuestionListForm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -11,4 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface QuestionService extends IService<Question> {
     ResponseResult getList(QuestionListForm questionListForm);
+
+    ResponseResult add(QuestionAddForm questionAddForm);
 }

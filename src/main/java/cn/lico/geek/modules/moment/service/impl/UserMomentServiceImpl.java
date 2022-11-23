@@ -67,7 +67,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
     private IMessageQueueService messageQueueService;
 
     /**
-     * 获取动态内容
+     * 获取动态列表
      * @param userMomentListForm
      * @return
      */
@@ -90,21 +90,26 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
         }
         //判断是否查看关注动态
         if (Objects.nonNull(userMomentListForm.getOrderBy())&&userMomentListForm.getOrderBy().length()>0){
-            //获取当前用户id
-            String userId = SecurityUtils.getUserId();
-            LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
-            queryWrapper1.eq(UserWatch::getUserUid,userId);
-            queryWrapper1.eq(UserWatch::getStatus,1);
-            List<UserWatch> list = userWatchService.list(queryWrapper1);
-            List<String> Ids = new ArrayList<>();
-            for (UserWatch userWatch : list) {
-                Ids.add(userWatch.getToUserUid());
-            }
-            if (Objects.isNull(Ids)||Ids.size() == 0){
-                queryWrapper.eq(UserMoment::getUserUid,"-1");
+            if (SecurityUtils.isLogin()){
+                //获取当前用户id
+                String userId = SecurityUtils.getUserId();
+                LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
+                queryWrapper1.eq(UserWatch::getUserUid,userId);
+                queryWrapper1.eq(UserWatch::getStatus,1);
+                List<UserWatch> list = userWatchService.list(queryWrapper1);
+                List<String> Ids = new ArrayList<>();
+                for (UserWatch userWatch : list) {
+                    Ids.add(userWatch.getToUserUid());
+                }
+                if (Objects.isNull(Ids)||Ids.size() == 0){
+                    queryWrapper.eq(UserMoment::getUserUid,"-1");
+                }else {
+                    queryWrapper.in(UserMoment::getUserUid,Ids);
+                }
             }else {
-                queryWrapper.in(UserMoment::getUserUid,Ids);
+                queryWrapper.eq(UserMoment::getUserUid,"-1");
             }
+
         }
         //进行排序
         queryWrapper.orderByDesc(UserMoment::getCreateTime);
@@ -265,24 +270,30 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
      * @param userMomentVo
      */
     private void getPraiseInfo(String uid, UserMomentVo userMomentVo) {
-        //获取当前用户id
-        String userId = SecurityUtils.getUserId();
         PraiseInfo praiseInfo = new PraiseInfo();
-        LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(UserPraiseRecord::getResourceUid,uid);
-        queryWrapper.eq(UserPraiseRecord::getStatus,1);
-        int count = userPraiseRecordService.count(queryWrapper);
-        queryWrapper.eq(UserPraiseRecord::getUserUid,userId);
-        UserPraiseRecord userPraiseRecord = userPraiseRecordService.getOne(queryWrapper);
-        //设置点赞数量
-        praiseInfo.setPraiseCount(count);
-        //如果点赞记录不为空
-        if (Objects.nonNull(userPraiseRecord)){
-            praiseInfo.setPraise(true);
+        if (SecurityUtils.isLogin()){
+            //获取当前用户id
+            String userId = SecurityUtils.getUserId();
+            LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(UserPraiseRecord::getResourceUid,uid);
+            queryWrapper.eq(UserPraiseRecord::getStatus,1);
+            int count = userPraiseRecordService.count(queryWrapper);
+            queryWrapper.eq(UserPraiseRecord::getUserUid,userId);
+            UserPraiseRecord userPraiseRecord = userPraiseRecordService.getOne(queryWrapper);
+            //设置点赞数量
+            praiseInfo.setPraiseCount(count);
+            //如果点赞记录不为空
+            if (Objects.nonNull(userPraiseRecord)){
+                praiseInfo.setPraise(true);
 
+            }else {
+                praiseInfo.setPraise(false);
+            }
         }else {
+            praiseInfo.setPraiseCount(0);
             praiseInfo.setPraise(false);
         }
+
         userMomentVo.setPraiseInfo(praiseInfo);
     }
 

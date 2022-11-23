@@ -28,22 +28,27 @@ public class UserPraiseRecordServiceImpl extends ServiceImpl<UserPraiseRecordMap
      */
     @Override
     public ResponseResult getPraiseCount(BlogPraiseCountForm blogPraiseCountForm) {
-        //获取当前用户的uid
-        String userId = SecurityUtils.getUserId();
-        //判断用户是否为当前博客点过赞
-        LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(UserPraiseRecord::getUserUid,userId);
-        queryWrapper.eq(UserPraiseRecord::getResourceUid,blogPraiseCountForm.getResourceUid());
-        queryWrapper.eq(UserPraiseRecord::getStatus,1);
-        UserPraiseRecord praiseRecord = getOne(queryWrapper);
-        //如果没有给点过赞则设置isPraise为false
         BlogPraiseCountVo praiseRecordVo = new BlogPraiseCountVo();
-        if (Objects.isNull(praiseRecord)){
-            praiseRecordVo.setIsPraise(false);
+        if (SecurityUtils.isLogin()){
+            //获取当前用户的uid
+            String userId = SecurityUtils.getUserId();
+            //判断用户是否为当前博客点过赞
+            LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(UserPraiseRecord::getUserUid,userId);
+            queryWrapper.eq(UserPraiseRecord::getResourceUid,blogPraiseCountForm.getResourceUid());
+            queryWrapper.eq(UserPraiseRecord::getStatus,1);
+            UserPraiseRecord praiseRecord = getOne(queryWrapper);
+            //如果没有给点过赞则设置isPraise为false
+            if (Objects.isNull(praiseRecord)){
+                praiseRecordVo.setIsPraise(false);
+            }else {
+                //否则设置为true
+                praiseRecordVo.setIsPraise(true);
+            }
         }else {
-            //否则设置为true
-            praiseRecordVo.setIsPraise(true);
+            praiseRecordVo.setIsPraise(false);
         }
+
         //获取当前博客点赞的数量
         LambdaQueryWrapper<UserPraiseRecord> queryWrapper1 = new LambdaQueryWrapper<>();
         queryWrapper1.eq(UserPraiseRecord::getResourceUid,blogPraiseCountForm.getResourceUid());

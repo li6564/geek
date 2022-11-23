@@ -5,7 +5,6 @@ import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import cn.lico.geek.core.exception.SystemException;
 import cn.lico.geek.modules.blog.service.UploadService;
 import cn.lico.geek.modules.moment.dto.UploadDto;
-import cn.lico.geek.utils.JsonUtils;
 import cn.lico.geek.utils.PathUtils;
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;
@@ -95,7 +94,7 @@ public class OssUploadService implements UploadService {
                 DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
                 System.out.println(putRet.key);
                 System.out.println(putRet.hash);
-                map.put("url","http://rk9ckhzvg.bkt.clouddn.com/"+key);
+                map.put("url","http://rlsef1qrh.hd-bkt.clouddn.com/"+key);
                 map.put("uploaded",1);
                 int i = key.lastIndexOf("/");
                 int m = key.lastIndexOf(".");

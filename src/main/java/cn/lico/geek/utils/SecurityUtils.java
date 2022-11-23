@@ -6,6 +6,8 @@ import com.aliyuncs.utils.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.Objects;
+
 /**
  * @Author
  */
@@ -30,6 +32,9 @@ public class SecurityUtils
     public static Boolean isAdmin(){
         String id = getLoginUser().getUser().getUid();
         return StringUtils.isNotEmpty(id);
+    }
+    public static Boolean isLogin(){
+        return !"anonymousUser".equals(getAuthentication().getPrincipal());
     }
 
     public static String getUserId() {
