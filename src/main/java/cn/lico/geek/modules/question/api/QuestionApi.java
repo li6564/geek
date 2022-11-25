@@ -8,6 +8,7 @@ package cn.lico.geek.modules.question.api;
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.modules.question.form.PageForm;
 import cn.lico.geek.modules.question.form.QuestionAddForm;
+import cn.lico.geek.modules.question.form.QuestionInfoForm;
 import cn.lico.geek.modules.question.form.QuestionListForm;
 import cn.lico.geek.modules.question.service.QuestionService;
 import cn.lico.geek.modules.question.service.QuestionTagService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @RestController
 @RequestMapping("/question")
@@ -68,5 +71,17 @@ public class QuestionApi {
     @PostMapping("/add")
     public ResponseResult add(@RequestBody QuestionAddForm questionAddForm){
         return questionService.add(questionAddForm);
+    }
+
+    /**
+     * 根据问答oid获取问答详情
+     * @param questionInfoForm
+     * @return
+     */
+    @RequestMapping("/getQuestion")
+    public ResponseResult getQuestion(@RequestBody QuestionInfoForm questionInfoForm){
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        String remoteHost = requestAttributes.getRequest().getRemoteHost();
+        return questionService.getQuestion(remoteHost,questionInfoForm);
     }
 }

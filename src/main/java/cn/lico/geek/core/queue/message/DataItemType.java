@@ -2,6 +2,7 @@ package cn.lico.geek.core.queue.message;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.entity.Comment;
 import cn.lico.geek.modules.moment.entity.UserMoment;
+import cn.lico.geek.modules.question.entity.Question;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserStatistics;
 import lombok.Getter;
@@ -55,7 +56,7 @@ public enum DataItemType {
     /**
      * 动态
      */
-    POST(UserMoment.class);
+    POST(UserMoment.class),
 
     /**
      * 动态评论
@@ -65,12 +66,12 @@ public enum DataItemType {
     /**
      * 问答
      */
-    //QUESTION(Question.class),
+    QUESTION(Question.class),
 
     /**
      * 问题回答
      */
-    //QUESTION_REPLY(QuestionReply.class),
+    QUESTION_REPLY(Comment.class);
 
     /**
      * 回答被评论

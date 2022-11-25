@@ -23,7 +23,7 @@ public class UserStatisticsListener implements DataItemChangeListener {
 
 
     /**
-     * 博客浏览量改变或博客数量新增或新增关注
+     * 博客浏览量改变或博客数量新增或新增关注或新增问答
      * @param dataItemChangeMessage
      */
     @Override
@@ -40,6 +40,9 @@ public class UserStatisticsListener implements DataItemChangeListener {
             onDataChange(dataItemChangeMessage);
         }else if (dataItemChangeMessage.getItemType().equals(DataItemType.POST)){
             //新增动态发布量
+            onDataChange(dataItemChangeMessage);
+        }else if(dataItemChangeMessage.getItemType().equals(DataItemType.QUESTION)){
+            //新增问答发布
             onDataChange(dataItemChangeMessage);
         }
     }
@@ -117,6 +120,13 @@ public class UserStatisticsListener implements DataItemChangeListener {
                 //动态数-1
                 UserStatistics userStatistics = userStatisticsService.getById(operatorId);
                 userStatistics.setPostNum(userStatistics.getPostNum()-1);
+                userStatisticsService.updateById(userStatistics);
+            }
+        }else if(itemType.equals(DataItemType.QUESTION)){
+            //新增问答发布数
+            if (changeType.equals(DataItemChangeType.ADD)){
+                UserStatistics userStatistics = userStatisticsService.getById(operatorId);
+                userStatistics.setQuestionNum(userStatistics.getQuestionNum()+1);
                 userStatisticsService.updateById(userStatistics);
             }
         }

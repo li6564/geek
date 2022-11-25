@@ -3,28 +3,36 @@ package cn.lico.geek.modules.question.service.impl;
 import cn.lico.geek.common.dto.PageDTO;
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.core.queue.message.DataItemChangeMessage;
+import cn.lico.geek.core.queue.message.DataItemChangeType;
+import cn.lico.geek.core.queue.message.DataItemType;
 import cn.lico.geek.modules.blog.vo.BlogInfoUser;
 import cn.lico.geek.modules.moment.vo.PraiseInfo;
+import cn.lico.geek.modules.question.dto.QuestionInfoDto;
 import cn.lico.geek.modules.question.entity.Question;
 import cn.lico.geek.modules.question.entity.QuestionTag;
 import cn.lico.geek.modules.question.entity.QuestionTags;
 import cn.lico.geek.modules.question.form.QuestionAddForm;
+import cn.lico.geek.modules.question.form.QuestionInfoForm;
 import cn.lico.geek.modules.question.form.QuestionListForm;
 import cn.lico.geek.modules.question.mapper.QuestionMapper;
 import cn.lico.geek.modules.question.service.QuestionService;
 import cn.lico.geek.modules.question.service.QuestionTagService;
 import cn.lico.geek.modules.question.service.QuestionTagsService;
 import cn.lico.geek.modules.question.vo.QuestionListVo;
+import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
 import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
+import cn.lico.geek.utils.RedisCache;
 import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +40,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author：linan
@@ -50,6 +59,12 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     @Autowired
     private QuestionTagsService questionTagsService;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    @Autowired
+    private IMessageQueueService messageQueueService;
 
     /**
      * 获取问答列表
@@ -129,7 +144,62 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
             questionTags.setTagUid(s);
             questionTagsService.save(questionTags);
         }
+        //发送问答新增消息
+        DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setOperatorId(userId);
+        dataItemChangeMessage.setItemType(DataItemType.QUESTION);
+        dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+        messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
         return new ResponseResult("发布成功！", AppHttpCodeEnum.SUCCESS.getMsg());
+    }
+
+    /**
+     * 获取问答详情
+     * @param questionInfoForm
+     * @return
+     */
+    @Override
+    public ResponseResult getQuestion(String remoteHost,QuestionInfoForm questionInfoForm) {
+        //根据oid获取Question对象
+        LambdaQueryWrapper<Question> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Question::getOid,questionInfoForm.getOid());
+        Question question = getOne(queryWrapper);
+        //判断是否重复访问
+        Object cacheObject = redisCache.getCacheObject(question.getUid() + remoteHost);
+        //如果没有重复访问则将用户IP地址存入redis中
+        if (Objects.isNull(cacheObject)){
+            redisCache.setCacheObject(question.getUid()+remoteHost,1,60*60, TimeUnit.SECONDS);
+            question.setClickCount(question.getClickCount()+1);
+            updateById(question);
+        }
+        //将question转化为返回形式
+        QuestionInfoDto questionInfoDto = BeanCopyUtils.copyBean(question, QuestionInfoDto.class);
+        //获取问答uid
+        String uid = questionInfoDto.getUid();
+        //填充点赞信息
+        LambdaQueryWrapper<UserPraiseRecord> queryWrapper3 = new LambdaQueryWrapper<>();
+        queryWrapper3.eq(UserPraiseRecord::getResourceUid,uid);
+        queryWrapper3.eq(UserPraiseRecord::getStatus,1);
+        int count = userPraiseRecordService.count(queryWrapper3);
+        questionInfoDto.setCollectCount(count);
+        //填充标签
+        LambdaQueryWrapper<QuestionTags> queryWrapper1 = new LambdaQueryWrapper<>();
+        queryWrapper1.eq(QuestionTags::getQuestionUid,uid);
+        List<QuestionTags> questionTagsList = questionTagsService.list(queryWrapper1);
+        List<QuestionTag> list = new ArrayList<>();
+        for (QuestionTags questionTags : questionTagsList) {
+            LambdaQueryWrapper<QuestionTag> queryWrapper2 = new LambdaQueryWrapper<>();
+            queryWrapper2.eq(QuestionTag::getUid,questionTags.getTagUid());
+            QuestionTag tag = questionTagService.getOne(queryWrapper2);
+            list.add(tag);
+        }
+        questionInfoDto.setQuestionTag(list);
+        //填充作者信息
+        User user = userService.getById(questionInfoDto.getUserUid());
+        BlogInfoUser blogInfoUser = BeanCopyUtils.copyBean(user, BlogInfoUser.class);
+        questionInfoDto.setUser(blogInfoUser);
+
+        return new ResponseResult(questionInfoDto);
     }
 
     /**

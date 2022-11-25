@@ -2,8 +2,12 @@ package cn.lico.geek.modules.user.Service.Impl;
 
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.core.queue.message.DataItemChangeMessage;
+import cn.lico.geek.core.queue.message.DataItemChangeType;
+import cn.lico.geek.core.queue.message.DataItemType;
 import cn.lico.geek.modules.blog.form.BlogPraiseCountForm;
 import cn.lico.geek.modules.blog.vo.BlogPraiseCountVo;
+import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
 import cn.lico.geek.modules.user.mapper.UserPraiseRecordMapper;
@@ -11,6 +15,7 @@ import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.catalina.security.SecurityUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -21,6 +26,9 @@ import java.util.Objects;
  */
 @Service
 public class UserPraiseRecordServiceImpl extends ServiceImpl<UserPraiseRecordMapper, UserPraiseRecord> implements UserPraiseRecordService {
+    @Autowired
+    private IMessageQueueService messageQueueService;
+
     /**
      * 获取当前用户关于博客的点赞信息
      * @param blogPraiseCountForm
@@ -86,7 +94,15 @@ public class UserPraiseRecordServiceImpl extends ServiceImpl<UserPraiseRecordMap
             //存入数据库
             save(userPraiseRecord);
         }
-
+        //如果点赞类型为2即问答模块点赞，则发送消息
+//        if ("2".equals(blogPraiseCountForm.getResourceType())){
+//            DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+//            dataItemChangeMessage.setOperatorId(userId);
+//            dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+//            dataItemChangeMessage.setItemType(DataItemType.QUESTION);
+//            dataItemChangeMessage.setItemId(blogPraiseCountForm.getResourceUid());
+//            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+//        }
         return new ResponseResult("点赞成功！",AppHttpCodeEnum.SUCCESS.getMsg());
     }
 

@@ -86,6 +86,9 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
             }
             if (userMomentIds.size()>0){
                 queryWrapper.in(UserMoment::getUid,userMomentIds);
+            }else {
+                //说明不存在该话题的动态
+                queryWrapper.eq(UserMoment::getUserUid,-1);
             }
         }
         //判断是否查看关注动态
@@ -162,21 +165,25 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
         //获取话题列表
         String[] topicList = userMomentAddForm.getTopicUids().split(",");
         //保存动态话题表
-        for (String s : topicList) {
-            MomentTopic momentTopic = new MomentTopic();
-            momentTopic.setTopicUid(s);
-            momentTopic.setMomentUid(uid);
-            momentTopicService.save(momentTopic);
+        if (topicList.length>1){
+            for (String s : topicList) {
+                MomentTopic momentTopic = new MomentTopic();
+                momentTopic.setTopicUid(s);
+                momentTopic.setMomentUid(uid);
+                momentTopicService.save(momentTopic);
+            }
         }
 
         //获取 图片链接链表
         String[] photoUrlList = userMomentAddForm.getPictureUrl().split(",");
         //保存动态链接表
-        for (String s : photoUrlList) {
-            MomentPhoto momentPhoto = new MomentPhoto();
-            momentPhoto.setMomentUid(uid);
-            momentPhoto.setPhotoUrl(s);
-            momentPhotoService.save(momentPhoto);
+        if (photoUrlList.length>1){
+            for (String s : photoUrlList) {
+                MomentPhoto momentPhoto = new MomentPhoto();
+                momentPhoto.setMomentUid(uid);
+                momentPhoto.setPhotoUrl(s);
+                momentPhotoService.save(momentPhoto);
+            }
         }
         //
 
@@ -241,6 +248,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
             }
         }
         userMomentVo.setPhotoList(photoList);
+
     }
 
     /**

@@ -3,6 +3,9 @@ package cn.lico.geek.modules.blog.service.Impl;
 import cn.lico.geek.common.dto.PageDTO;
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.core.queue.message.DataItemChangeMessage;
+import cn.lico.geek.core.queue.message.DataItemChangeType;
+import cn.lico.geek.core.queue.message.DataItemType;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.entity.Comment;
 import cn.lico.geek.modules.blog.form.CommentDeleteForm;
@@ -12,6 +15,7 @@ import cn.lico.geek.modules.blog.service.CommentService;
 import cn.lico.geek.modules.blog.vo.CommentChildVo;
 import cn.lico.geek.modules.blog.vo.CommentUserVo;
 import cn.lico.geek.modules.blog.vo.CommentVo;
+import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.utils.BeanCopyUtils;
@@ -35,6 +39,9 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private IMessageQueueService messageQueueService;
+
     /**
      * 获取评论列表
      * @param commentListForm
@@ -45,7 +52,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
 
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
         //根据blogid获取评论集合
-        queryWrapper.eq(Comment::getBlogUid,commentListForm.getBlogUid());
+        queryWrapper.eq(Objects.nonNull(commentListForm.getBlogUid())&&commentListForm.getBlogUid().length()>0,Comment::getBlogUid,commentListForm.getBlogUid());
         //评论来源
         queryWrapper.eq(Comment::getSource,commentListForm.getSource());
         queryWrapper.eq(Comment::getStatus,1);
@@ -94,13 +101,18 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
 
         Comment comment1 = getById(comment.getUid());
         CommentChildVo commentChildVo = BeanCopyUtils.copyBean(comment1, CommentChildVo.class);
-
         User user = userService.getById(userUid);
-
         CommentUserVo commentUserVo = BeanCopyUtils.copyBean(user, CommentUserVo.class);
-
         commentChildVo.setUser(commentUserVo);
 
+        if ("QUESTION_INFO".equals(source)){
+            DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+            dataItemChangeMessage.setOperatorId(userUid);
+            dataItemChangeMessage.setItemId(blogUid);
+            dataItemChangeMessage.setItemType(DataItemType.QUESTION_REPLY);
+            dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+        }
         return new ResponseResult(commentChildVo);
     }
 
