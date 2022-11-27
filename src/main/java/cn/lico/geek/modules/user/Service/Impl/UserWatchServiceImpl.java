@@ -67,11 +67,11 @@ public class UserWatchServiceImpl extends ServiceImpl<UserWatchMapper, UserWatch
         queryWrapper.eq(UserWatch::getToUserUid,toUserUid);
         queryWrapper.eq(UserWatch::getUserUid,userId);
         UserWatch userWatch = getOne(queryWrapper);
+        UserWatch userWatch1 = new UserWatch();
         if (Objects.nonNull(userWatch)){
             userWatch.setStatus(1);
             updateById(userWatch);
         }else {//没有关注过则新增关注记录
-            UserWatch userWatch1 = new UserWatch();
             userWatch1.setUserUid(userId);
             userWatch1.setToUserUid(toUserUid);
             save(userWatch1);
@@ -82,8 +82,15 @@ public class UserWatchServiceImpl extends ServiceImpl<UserWatchMapper, UserWatch
         dataItemChangeMessage.setItemType(DataItemType.USER);
         dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
         dataItemChangeMessage.setOperatorId(userId);
+        if (Objects.nonNull(userWatch)){
+            dataItemChangeMessage.setBusinessUid(userWatch.getUid());
+        }else {
+            dataItemChangeMessage.setBusinessUid(userWatch1.getUid());
+        }
+        dataItemChangeMessage.setUserUid(toUserUid);
         messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
         return new ResponseResult("关注成功", AppHttpCodeEnum.SUCCESS.getMsg());
+
     }
 
     /**

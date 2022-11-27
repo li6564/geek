@@ -4,6 +4,8 @@ import cn.lico.geek.core.listener.DataItemChangeListener;
 import cn.lico.geek.core.queue.message.DataItemChangeMessage;
 import cn.lico.geek.core.queue.message.DataItemChangeType;
 import cn.lico.geek.core.queue.message.DataItemType;
+import cn.lico.geek.modules.notice.entity.Notice;
+import cn.lico.geek.modules.notice.service.NoticeService;
 import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.entity.UserStatistics;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,8 @@ public class UserStatisticsListener implements DataItemChangeListener {
     @Autowired
     private UserStatisticsService userStatisticsService;
 
+    @Autowired
+    private NoticeService noticeService;
 
     /**
      * 博客浏览量改变或博客数量新增或新增关注或新增问答
@@ -71,6 +75,8 @@ public class UserStatisticsListener implements DataItemChangeListener {
         DataItemType itemType = dataItemChangeMessage.getItemType();
         String itemId = dataItemChangeMessage.getItemId();
         String operatorId = dataItemChangeMessage.getOperatorId();
+        String businessUid = dataItemChangeMessage.getBusinessUid();
+        String userUid = dataItemChangeMessage.getUserUid();
         DataItemChangeType changeType = dataItemChangeMessage.getChangeType();
         //更新博客发布量
         if (itemType.equals(DataItemType.BLOG)){
@@ -100,6 +106,10 @@ public class UserStatisticsListener implements DataItemChangeListener {
                 UserStatistics userStatistics1 = userStatisticsService.getById(operatorId);
                 userStatistics1.setFollowedNum(userStatistics1.getFollowedNum()+1);
                 userStatisticsService.updateById(userStatistics1);
+                //发送关注消息
+                Notice notice = new Notice();
+                notice.setNoticeType(2).setBusinessUid(businessUid).setUserUid(userUid);
+                noticeService.save(notice);
             }else if (changeType.equals(DataItemChangeType.DELETE)){
                 //更新粉丝数
                 UserStatistics userStatistics = userStatisticsService.getById(itemId);

@@ -11,13 +11,13 @@ import java.util.Date;
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        String userId = null;
-        try {
-            userId = SecurityUtils.getUserId();
-        } catch (Exception e) {
-            e.printStackTrace();
-            //userId = -1L;//表示是自己创建
-        }
+//        String userId = null;
+//        try {
+//            userId = SecurityUtils.getUserId();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            //userId = -1L;//表示是自己创建
+//        }
         this.setFieldValByName("createTime", new Date(), metaObject);
         //this.setFieldValByName("createBy",userId , metaObject);
         this.setFieldValByName("updateTime", new Date(), metaObject);

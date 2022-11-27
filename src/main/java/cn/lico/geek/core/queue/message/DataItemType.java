@@ -1,8 +1,11 @@
 package cn.lico.geek.core.queue.message;
 import cn.lico.geek.modules.blog.entity.Blog;
+import cn.lico.geek.modules.blog.entity.BlogPraise;
 import cn.lico.geek.modules.blog.entity.Comment;
+import cn.lico.geek.modules.moment.entity.MomentPraise;
 import cn.lico.geek.modules.moment.entity.UserMoment;
 import cn.lico.geek.modules.question.entity.Question;
+import cn.lico.geek.modules.question.entity.QuestionPraise;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserStatistics;
 import lombok.Getter;
@@ -71,7 +74,7 @@ public enum DataItemType {
     /**
      * 问题回答
      */
-    QUESTION_REPLY(Comment.class);
+    QUESTION_REPLY(Comment.class),
 
     /**
      * 回答被评论
@@ -92,7 +95,7 @@ public enum DataItemType {
     /**
      * 博客点赞
      */
-    //BLOG_PRAISE(BlogPraise.class),
+    BLOG_PRAISE(BlogPraise.class),
 
     /**
      * 项目点赞
@@ -102,12 +105,12 @@ public enum DataItemType {
     /**
      * 动态点赞
      */
-    //POST_PRAISE(PostPraise.class),
+    POST_PRAISE(MomentPraise.class),
 
     /**
      * 问题点赞
      */
-    //QUESTION_PRAISE(QuestionPraise.class);
+    QUESTION_PRAISE(QuestionPraise.class);
 
     private Class<?> classOfItem;
 

@@ -11,10 +11,12 @@ import cn.lico.geek.modules.blog.entity.Comment;
 import cn.lico.geek.modules.blog.form.CommentDeleteForm;
 import cn.lico.geek.modules.blog.form.CommentListForm;
 import cn.lico.geek.modules.blog.mapper.CommentMapper;
+import cn.lico.geek.modules.blog.service.BlogService;
 import cn.lico.geek.modules.blog.service.CommentService;
 import cn.lico.geek.modules.blog.vo.CommentChildVo;
 import cn.lico.geek.modules.blog.vo.CommentUserVo;
 import cn.lico.geek.modules.blog.vo.CommentVo;
+import cn.lico.geek.modules.question.service.QuestionService;
 import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.entity.User;
@@ -41,6 +43,12 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
 
     @Autowired
     private IMessageQueueService messageQueueService;
+
+    @Autowired
+    private BlogService blogService;
+
+    @Autowired
+    private QuestionService questionService;
 
     /**
      * 获取评论列表
@@ -104,13 +112,21 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         User user = userService.getById(userUid);
         CommentUserVo commentUserVo = BeanCopyUtils.copyBean(user, CommentUserVo.class);
         commentChildVo.setUser(commentUserVo);
+        DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
 
         if ("QUESTION_INFO".equals(source)){
-            DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+            String userUid1 = questionService.getById(blogUid).getUserUid();
             dataItemChangeMessage.setOperatorId(userUid);
+            dataItemChangeMessage.setUserUid(userUid1);
             dataItemChangeMessage.setItemId(blogUid);
+            dataItemChangeMessage.setBusinessUid(comment.getUid());
             dataItemChangeMessage.setItemType(DataItemType.QUESTION_REPLY);
             dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
+            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+        }else if ("BLOG_INFO".equals(source)&&Objects.isNull(toUserUid)){
+            String userUid1 = blogService.getById(blogUid).getUserUid();
+            //发送给博客评论消息
+            dataItemChangeMessage.setOperatorId(userUid1).setItemId(comment.getUid()).setChangeType(DataItemChangeType.ADD).setItemType(DataItemType.BLOG_COMMENT);
             messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
         }
         return new ResponseResult(commentChildVo);
