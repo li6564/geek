@@ -33,10 +33,19 @@ public class SecurityUtils
         String id = getLoginUser().getUser().getUid();
         return StringUtils.isNotEmpty(id);
     }
+
+    /**
+     * 判断是否登录
+     * @return
+     */
     public static Boolean isLogin(){
         return !"anonymousUser".equals(getAuthentication().getPrincipal());
     }
 
+    /**
+     * 获取登录用户id
+     * @return
+     */
     public static String getUserId() {
         return getLoginUser().getUser().getUid();
     }

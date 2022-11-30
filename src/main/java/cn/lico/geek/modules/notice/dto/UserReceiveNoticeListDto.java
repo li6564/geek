@@ -51,7 +51,7 @@ public class UserReceiveNoticeListDto {
 
     private UserMomentVo userMoment;
 
-    private BlogInfoUser formUser;
+    private BlogInfoUser fromUser;
 
     private Question question;
 

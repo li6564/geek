@@ -2,6 +2,7 @@ package cn.lico.geek.modules.notice.service.impl;
 
 import cn.lico.geek.common.dto.PageDTO;
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.entity.Comment;
 import cn.lico.geek.modules.blog.service.BlogService;
@@ -15,6 +16,9 @@ import cn.lico.geek.modules.moment.vo.UserMomentVo;
 import cn.lico.geek.modules.notice.dto.UserReceiveNoticeCountDto;
 import cn.lico.geek.modules.notice.dto.UserReceiveNoticeListDto;
 import cn.lico.geek.modules.notice.entity.Notice;
+import cn.lico.geek.modules.notice.enums.NoticeErrorCode;
+import cn.lico.geek.modules.notice.exception.NoticeServiceException;
+import cn.lico.geek.modules.notice.form.NoticeDeleteForm;
 import cn.lico.geek.modules.notice.form.NoticeListForm;
 import cn.lico.geek.modules.notice.mapper.NoticeMapper;
 import cn.lico.geek.modules.notice.service.NoticeService;
@@ -38,6 +42,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Author：linan
@@ -91,6 +96,8 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
             receiveNoticeCountDto.setUserReceiveWatchCount(countList.get(1));
             receiveNoticeCountDto.setUserReceivePraiseCount(countList.get(2));
             receiveNoticeCountDto.setUserReceiveSystemCount(countList.get(3));
+            receiveNoticeCountDto.setUserReceiveCollectCount(0);
+            receiveNoticeCountDto.setUserReceiveMessageCount(0);
         }else{
             receiveNoticeCountDto.setUserReceiveSystemCount(0).setUserReceivePraiseCount(0).setUserReceiveWatchCount(0).setUserReceiveCommentCount(0).setUserReceiveMessageCount(0).setUserReceiveCollectCount(0);
         }
@@ -157,6 +164,10 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
                     noticeCommentVo.setBlogUid(moment.getUid());
                     userReceiveNoticeListDto.setComment(noticeCommentVo);
                 }
+                //将消息设置为已读
+                Notice notice = new Notice();
+                notice.setUid(userReceiveNoticeListDto.getUid()).setNoticeStatus(1);
+                updateById(notice);
             }else if(userReceiveNoticeListDto.getNoticeType() == 2){
                 //根据获取BusinessUid获取关注信息
                 UserWatch userWatch = userWatchService.getById(userReceiveNoticeListDto.getBusinessUid());
@@ -165,6 +176,10 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
                 BlogInfoUser blogInfoUser = BeanCopyUtils.copyBean(user, BlogInfoUser.class);
                 NoticeUserWatchVo noticeUserWatchVo = new NoticeUserWatchVo(blogInfoUser);
                 userReceiveNoticeListDto.setUserWatch(noticeUserWatchVo);
+                //将消息设置为已读
+                Notice notice = new Notice();
+                notice.setUid(userReceiveNoticeListDto.getUid()).setNoticeStatus(1);
+                updateById(notice);
             }else if (userReceiveNoticeListDto.getNoticeType() == 3){
                 //获取业务类型
                 Integer businessType = userReceiveNoticeListDto.getBusinessType();
@@ -173,7 +188,7 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
                 //根据评论uid获取点赞者信息
                 User user = userService.getById(userPraiseRecord.getUserUid());
                 BlogInfoUser blogInfoUser = BeanCopyUtils.copyBean(user, BlogInfoUser.class);
-                userReceiveNoticeListDto.setFormUser(blogInfoUser);
+                userReceiveNoticeListDto.setFromUser(blogInfoUser);
                 if (businessType == 6){
                     LambdaQueryWrapper<Blog> queryWrapper1 = new LambdaQueryWrapper<>();
                     queryWrapper1.eq(Blog::getUid,userPraiseRecord.getResourceUid());
@@ -195,6 +210,10 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
                     UserMomentVo userMomentVo = BeanCopyUtils.copyBean(userMoment, UserMomentVo.class);
                     userReceiveNoticeListDto.setUserMoment(userMomentVo);
                 }
+                //将消息设置为已读
+                Notice notice = new Notice();
+                notice.setUid(userReceiveNoticeListDto.getUid()).setNoticeStatus(1);
+                updateById(notice);
             }else if(userReceiveNoticeListDto.getNoticeType() == 4){
                 //获取业务类型
                 Integer businessType = userReceiveNoticeListDto.getBusinessType();
@@ -213,6 +232,10 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
                     userMomentVo.setUser(blogInfoUser);
                     userReceiveNoticeListDto.setUserMoment(userMomentVo);
                 }
+                //将消息设置为已读
+                Notice notice = new Notice();
+                notice.setUid(userReceiveNoticeListDto.getUid()).setNoticeStatus(1);
+                updateById(notice);
             }
         }
         PageDTO<UserReceiveNoticeListDto> pageDTO = new PageDTO<>();
@@ -221,5 +244,39 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
         pageDTO.setSize((int)page.getSize());
         pageDTO.setTotal((int)page.getTotal());
         return new ResponseResult(pageDTO);
+    }
+
+    /**
+     * 删除通知消息
+     * @param noticeDeleteForm
+     * @return
+     */
+    @Override
+    public ResponseResult delete(NoticeDeleteForm noticeDeleteForm) throws NoticeServiceException{
+        //获取要删除通知消息的uid
+        String uid = noticeDeleteForm.getUid();
+        //删除消息
+        boolean flag = removeById(uid);
+        if (flag){
+            return new ResponseResult("删除成功！", AppHttpCodeEnum.SUCCESS.getMsg());
+        }else {
+            throw new NoticeServiceException(NoticeErrorCode.NOTICE_ERROR_CODE);
+        }
+
+    }
+
+    /**
+     * 清空所有消息
+     * @param
+     * @return
+     */
+    @Override
+    public ResponseResult deleteBatch(List uids) {
+        if(Objects.nonNull(uids)&&uids.size()>0){
+            removeByIds(uids);
+            return new ResponseResult("清空消息成功！",AppHttpCodeEnum.SUCCESS.getMsg());
+        }else {
+            return new ResponseResult("暂无消息！",AppHttpCodeEnum.SUCCESS.getMsg());
+        }
     }
 }
