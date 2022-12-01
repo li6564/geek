@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421f8124-d429-4bfe-a89c-220d9e1db833" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64bbd4f9-5087-4664-bcb0-8b21386d4b3d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64bbd4f9-5087-4664-bcb0-8b21386d4b3d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/api/NoticeApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/api/NoticeApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/dto/UserReceiveNoticeListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/dto/UserReceiveNoticeListDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/NoticeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/impl/NoticeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/impl/NoticeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/SecurityUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,50 +49,53 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/api/NoticeApi.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/entity/News.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+            <state relative-caret-position="125">
+              <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="785">
+              <caret line="159" selection-start-line="159" selection-end-line="159" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/api/NewsApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#784#785#0" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
+                <element signature="e#665#666#0" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/dto/UserReceiveNoticeListDto.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/NoticeService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="361">
+              <caret line="65" column="63" lean-forward="true" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/impl/NoticeServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/service/impl/NewsServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-294">
-              <caret line="188" column="56" selection-start-line="188" selection-start-column="56" selection-end-line="188" selection-end-column="56" />
+            <state relative-caret-position="377">
+              <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,10 +104,45 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/form/NoticeDeleteForm.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="-3035">
+              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="556">
+              <caret line="267" column="64" lean-forward="true" selection-start-line="267" selection-start-column="64" selection-end-line="267" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/enums/NewsErrorCode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/exception/NewsServiceException.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/service/NewsService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,17 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/vo/QuestionListVo.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/OssUploadService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/RedisCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/QuestionTagService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionTagServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/QuestionTemplate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/QuestionTemplateMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/mapper/xml/QuestionTemplateMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/QuestionTemplateService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionTemplateServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/form/QuestionAddForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/QuestionTag.java" />
@@ -184,6 +209,17 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/api/NoticeApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/dto/UserReceiveNoticeListDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/service/impl/NoticeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/mapper/NewsMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/mapper/xml/NewsMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/dto/blogListDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/dto/newsListDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/enums/NewsErrorCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/exception/NewsServiceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/entity/News.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/api/NewsApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/service/NewsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/service/impl/NewsServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -221,7 +257,7 @@
     <option name="runMavenInBackground" value="false" />
     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="420" />
     <option name="y" value="275" />
     <option name="width" value="960" />
@@ -322,44 +358,6 @@
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -372,59 +370,7 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="lico" type="462c0819:PsiDirectoryNode" />
-              <item name="geek" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -437,7 +383,150 @@
               <item name="lico" type="462c0819:PsiDirectoryNode" />
               <item name="geek" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="Impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="exception" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="geek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="lico" type="462c0819:PsiDirectoryNode" />
+              <item name="geek" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="question" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -464,29 +553,29 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/mogu/mogu_blog_business/vue_mogu_web" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cn.lico.geek.modules.question.form" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.lico.geek.modules.news.exception" />
+      <recent name="cn.lico.geek.modules.news.enums" />
+      <recent name="cn.lico.geek.modules.notice.exception" />
+      <recent name="cn.lico.geek.modules.notice.enums" />
+      <recent name="cn.lico.geek.modules.question.exception" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\news\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\notice\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\mapper\xml" />
       <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\mapper\xml" />
-      <recent name="D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\mapper\xml" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.lico.geek.modules.notice.exception" />
-      <recent name="cn.lico.geek.modules.notice.enums" />
-      <recent name="cn.lico.geek.modules.question.exception" />
-      <recent name="cn.lico.geek.modules.question.enums" />
-      <recent name="cn.lico.geek.modules.moment.exception" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="cn.lico.geek.modules.question.form" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -589,7 +678,8 @@
       <workItem from="1669341991803" duration="21010000" />
       <workItem from="1669544818199" duration="12093000" />
       <workItem from="1669791256776" duration="16000" />
-      <workItem from="1669791279136" duration="5865000" />
+      <workItem from="1669791279136" duration="10338000" />
+      <workItem from="1669870552832" duration="5672000" />
     </task>
     <servers />
   </component>
@@ -626,7 +716,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256170000" />
+    <option name="totallyTimeSpent" value="266315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -638,10 +728,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3002699" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28812414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -651,11 +741,11 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.055474453" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.62919706" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5343066" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.055474453" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.50948906" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="6" weight="0.62335765" />
+      <window_info anchor="bottom" id="Terminal" order="6" weight="0.35182482" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.329927" />
@@ -715,103 +805,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/UserMomentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/moment/service/impl/UserMomentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-297">
-          <caret line="43" column="25" lean-forward="true" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/mapper/xml/NoticeMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/mapper/NoticeMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/form/NoticeListForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/vo/NoticeListVo.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/dto/QuestionInfoDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/entity/UserWatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/BlogInfoUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-548">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/vo/NoticeCommentVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/vo/NewBlogUserVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/vo/QuestionListVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/entity/Question.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-143">
@@ -1011,13 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="137" column="81" selection-start-line="137" selection-start-column="81" selection-end-line="137" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/listener/NoticeListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="564">
@@ -1075,7 +1061,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/form/NoticeDeleteForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="170">
           <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
@@ -1090,16 +1076,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/form/NoticeDeleteBatchForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/form/NoticeDeleteBatchForm.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/notice/api/NoticeApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-288">
@@ -1126,6 +1103,114 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-294">
           <caret line="188" column="56" selection-start-line="188" selection-start-column="56" selection-end-line="188" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/mapper/NewsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/BeanCopyUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/mapper/xml/NewsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="62" selection-start-line="2" selection-start-column="62" selection-end-line="2" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/dto/NewsListDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/enums/NewsErrorCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/exception/NewsServiceException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/entity/News.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/user/Service/Impl/UserPraiseRecordServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/api/BlogApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="65" column="63" lean-forward="true" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/api/NewsApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#665#666#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/service/NewsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/question/service/impl/QuestionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3035">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="267" column="64" lean-forward="true" selection-start-line="267" selection-start-column="64" selection-end-line="267" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/news/service/impl/NewsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

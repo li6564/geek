@@ -59,7 +59,7 @@ public class BlogApi {
     @GetMapping("/getBlogByUid")
     public ResponseResult getBlogByUid(@RequestParam Integer oid,
                                        @RequestParam Integer isLazy){
-            //获取请求主机的IP地址
+        //获取请求主机的IP地址
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         String remoteHost = requestAttributes.getRequest().getRemoteHost();
 
