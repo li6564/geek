@@ -1,7 +1,7 @@
 package cn.lico.geek.modules.user.Service.Impl;
 
 import cn.lico.geek.core.api.ResponseResult;
-import cn.lico.geek.modules.blog.entity.Blog;
+import cn.lico.geek.core.emuns.AppHttpCodeEnum;
 import cn.lico.geek.modules.blog.service.BlogService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserStatisticsService;
@@ -12,17 +12,16 @@ import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.entity.UserWatch;
 import cn.lico.geek.modules.user.enums.UserErrorCode;
 import cn.lico.geek.modules.user.exception.UserServiceException;
-import cn.lico.geek.modules.user.form.UserBlogForm;
 import cn.lico.geek.modules.user.mapper.UserMapper;
 import cn.lico.geek.modules.user.vo.UserVo;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.JwtUtil;
 import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -37,6 +36,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      *根据token获取用户信息
@@ -122,6 +124,42 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 .setWatchCount(userStatistics.getFollowedNum()).setMomentCount(userStatistics.getPostNum())
                 .setQuestionCount(userStatistics.getQuestionNum());
         return new ResponseResult(userCenterDto);
+    }
+
+    /**
+     * 编辑用户资料
+     * @param user
+     * @return
+     */
+    @Override
+    public ResponseResult editUser(User user) {
+        boolean flag = updateById(user);
+        if (flag){
+            return new ResponseResult("更新成功！", AppHttpCodeEnum.SUCCESS.getMsg());
+        }else {
+            return new ResponseResult("更新失败！",AppHttpCodeEnum.ERROR.getMsg());
+        }
+    }
+
+    /**
+     * 修改密码
+     * @param oldPwd
+     * @param newPwd
+     * @return
+     */
+    @Override
+    public ResponseResult updateUserPwd(String oldPwd, String newPwd) {
+        String userId = SecurityUtils.getUserId();
+        User user = getById(userId);
+        boolean flag = passwordEncoder.matches(oldPwd, user.getPassWord());
+        if (!flag){
+            return new ResponseResult("密码不正确！",AppHttpCodeEnum.ERROR.getMsg());
+        }else {
+            String newPassword = passwordEncoder.encode(newPwd);
+            user.setPassWord(newPassword);
+            updateById(user);
+        }
+        return new ResponseResult("修改成功！",AppHttpCodeEnum.SUCCESS.getMsg());
     }
 
 }

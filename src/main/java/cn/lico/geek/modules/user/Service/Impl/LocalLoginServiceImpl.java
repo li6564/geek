@@ -34,7 +34,12 @@ public class LocalLoginServiceImpl implements LocalLoginService {
     @Override
     public ResponseResult login(LoginForm loginForm) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginForm.getUserName(),loginForm.getPassWord());
-        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+        Authentication authenticate;
+        try {
+            authenticate = authenticationManager.authenticate(authenticationToken);
+        }catch (Exception e){
+            return new ResponseResult("用户名或密码错误！",AppHttpCodeEnum.ERROR.getMsg());
+        }
         UserDetailsForm userDetails = (UserDetailsForm) authenticate.getPrincipal();
         //若userDetails 为空  则登录失败
         if (Objects.isNull(userDetails)){

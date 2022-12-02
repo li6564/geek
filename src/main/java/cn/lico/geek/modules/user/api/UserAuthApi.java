@@ -6,6 +6,7 @@ import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.form.LoginForm;
 import cn.lico.geek.modules.user.form.PageForm;
+import cn.lico.geek.modules.user.form.PasswordUpdateForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,5 +50,11 @@ public class UserAuthApi {
     @PostMapping("/logout")
     public ResponseResult logout(){
         return localLoginService.logout();
+    }
+
+    @PostMapping("/updateUserPassword")
+    public ResponseResult updateUserPassword(@RequestBody PasswordUpdateForm passwordUpdateForm){
+        System.out.println("执行了");
+        return userService.updateUserPwd(passwordUpdateForm.getOldPwd(),passwordUpdateForm.getNewPwd());
     }
 }

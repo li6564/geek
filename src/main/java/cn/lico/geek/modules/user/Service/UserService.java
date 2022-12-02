@@ -17,4 +17,8 @@ public interface UserService extends IService<User> {
 
     ResponseResult getUserCenterByUid(String adminUid);
 
+    ResponseResult editUser(User user);
+
+
+    ResponseResult updateUserPwd(String oldPwd, String newPwd);
 }

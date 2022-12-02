@@ -7,6 +7,7 @@ import cn.lico.geek.modules.question.service.QuestionService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.Service.UserWatchService;
+import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.enums.UserErrorCode;
 import cn.lico.geek.modules.user.exception.UserServiceException;
 import cn.lico.geek.modules.user.form.PageForm;
@@ -92,8 +93,23 @@ public class UserApi {
         return questionService.getQuestionListByUser(userBlogForm);
     }
 
+    /**
+     * 获取指定用户的粉丝或关注人
+     * @param userWatchListForm
+     * @return
+     */
     @PostMapping("/getUserWatchList")
     public ResponseResult getUserWatchList(@RequestBody UserWatchListForm userWatchListForm){
         return userWatchService.getUserWatchList(userWatchListForm);
+    }
+
+    /**
+     * 编辑用户资料
+     * @param user
+     * @return
+     */
+    @PostMapping("/editUser")
+    public ResponseResult editUser(@RequestBody User user){
+        return userService.editUser(user);
     }
 }
