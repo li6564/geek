@@ -5,6 +5,7 @@ import cn.lico.geek.modules.question.entity.Question;
 import cn.lico.geek.modules.question.form.QuestionAddForm;
 import cn.lico.geek.modules.question.form.QuestionInfoForm;
 import cn.lico.geek.modules.question.form.QuestionListForm;
+import cn.lico.geek.modules.user.form.UserBlogForm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -17,4 +18,6 @@ public interface QuestionService extends IService<Question> {
     ResponseResult add(QuestionAddForm questionAddForm);
 
     ResponseResult getQuestion(String remoteHost,QuestionInfoForm questionInfoForm);
+
+    ResponseResult getQuestionListByUser(UserBlogForm userBlogForm);
 }

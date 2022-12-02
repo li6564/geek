@@ -30,6 +30,8 @@ import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
 import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.entity.UserWatch;
+import cn.lico.geek.modules.user.form.UserBlogForm;
+import cn.lico.geek.modules.user.vo.UserBlogVo;
 import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.RedisCache;
@@ -309,6 +311,60 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 
         return new ResponseResult(blogInfoVo);
     }
+
+
+    /**
+     * 获取指定用户博客列表
+     * @param userBlogForm
+     * @return
+     */
+    @Override
+    public ResponseResult getBlogListByUser(UserBlogForm userBlogForm) {
+        //进行条件匹配
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(Blog::getUserUid,userBlogForm.getUserUid());
+        if ("create_time".equals(userBlogForm.getOrderByDescColumn())){
+            queryWrapper.orderByDesc(Blog::getCreateTime);
+        }else {
+            queryWrapper.orderByDesc(Blog::getClickCount);
+        }
+        //进行分页查询
+        Page<Blog> page = new Page<>(userBlogForm.getCurrentPage(),userBlogForm.getPageSize());
+        page(page,queryWrapper);
+
+        List<UserBlogVo> userBlogVos = BeanCopyUtils.copyBeanList(page.getRecords(), UserBlogVo.class);
+        for (UserBlogVo userBlogVo : userBlogVos) {
+            //填充分类信息
+            Blog blog = getById(userBlogVo.getUid());
+            String blogSortUid = blog.getBlogSortUid();
+            BlogSort blogSort = blogSortService.getById(blogSortUid);
+            userBlogVo.setBlogSort(blogSort);
+            //填充标签信息
+            //根据blogUid获取BlogTag列表
+            LambdaQueryWrapper<BlogTag> queryWrapper1  = new LambdaQueryWrapper<>();
+            queryWrapper1.eq(BlogTag::getBlogId,userBlogVo.getUid());
+            //获取blogTag列表
+            List<BlogTag> blogTags = blogTagService.list(queryWrapper1);
+            //获取tag id列表
+            List<String> TagIds = new ArrayList<>();
+            for (BlogTag blogTag : blogTags) {
+                TagIds.add(blogTag.getTagId());
+            }
+            List<Tag> tags = new ArrayList<>();
+            //根据tagid列表 获取标签
+            if (TagIds.size()!=0){
+                tags = tagService.listByIds(TagIds);
+            }
+            userBlogVo.setTagList(tags);
+        }
+        PageDTO<UserBlogVo> pageDTO = new PageDTO<>();
+        pageDTO.setRecords(userBlogVos);
+        pageDTO.setCurrent((int)page.getCurrent());
+        pageDTO.setTotal((int)page.getTotal());
+        pageDTO.setSize((int)page.getSize());
+        return new ResponseResult(pageDTO);
+    }
+
 
     /**
      * 填充点赞数量(有bug)

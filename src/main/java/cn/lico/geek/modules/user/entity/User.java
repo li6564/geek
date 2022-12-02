@@ -82,7 +82,7 @@ public class User{
     //积分
     private Integer credits;
     //个人中心背景图片
-    private String backgroundFileUid;
+    private String backgroundFileUrl;
     //编辑器模式，(0：富文本编辑器CKEditor，1：markdown编辑器Veditor)
     private Integer editorModel;
 

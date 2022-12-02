@@ -4,6 +4,7 @@ import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.modules.blog.entity.Blog;
 import cn.lico.geek.modules.blog.form.BlogForm;
 import cn.lico.geek.modules.blog.form.PageVo;
+import cn.lico.geek.modules.user.form.UserBlogForm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -20,4 +21,6 @@ public interface BlogService extends IService<Blog> {
     ResponseResult addBlog(BlogForm blogForm);
 
     ResponseResult getBlogByUid(Integer oid, Integer isLazy,String remeteHost);
+
+    ResponseResult getBlogListByUser(UserBlogForm userBlogForm);
 }

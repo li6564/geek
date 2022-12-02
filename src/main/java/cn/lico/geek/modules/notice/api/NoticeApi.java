@@ -71,4 +71,8 @@ public class NoticeApi {
         }
         return noticeService.deleteBatch(uids);
     }
+    @PostMapping("/readUserReceiveNoticeCount")
+    public ResponseResult readUserReceiveNoticeCount(){
+        return new ResponseResult(AppHttpCodeEnum.SUCCESS.getMsg());
+    }
 }

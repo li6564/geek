@@ -25,6 +25,7 @@ import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
+import cn.lico.geek.modules.user.form.UserBlogForm;
 import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.RedisCache;
@@ -200,6 +201,38 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         questionInfoDto.setUser(blogInfoUser);
 
         return new ResponseResult(questionInfoDto);
+    }
+
+    /**
+     * 获取指定用户问答列表
+     * @param userBlogForm
+     * @return
+     */
+    @Override
+    public ResponseResult getQuestionListByUser(UserBlogForm userBlogForm) {
+        LambdaQueryWrapper<Question> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Question::getUserUid,userBlogForm.getUserUid());
+        queryWrapper.eq(Question::getStatus,1);
+        if ("create_time".equals(userBlogForm.getOrderByDescColumn())){
+            queryWrapper.orderByDesc(Question::getCreateTime);
+        }else {
+            queryWrapper.orderByDesc(Question::getClickCount);
+        }
+        //进行分页查询
+        Page<Question> page = new Page<>(userBlogForm.getCurrentPage(),userBlogForm.getPageSize());
+        page(page,queryWrapper);
+        List<QuestionListVo> questionListVos = BeanCopyUtils.copyBeanList(page.getRecords(), QuestionListVo.class);
+        for (QuestionListVo questionListVo : questionListVos) {
+            getInfoUser(questionListVo.getUserUid(),questionListVo);
+            getQuestionTag(questionListVo.getUid(),questionListVo);
+        }
+        PageDTO<QuestionListVo> pageDTO = new PageDTO<>();
+        pageDTO.setRecords(questionListVos);
+        pageDTO.setCurrent((int)page.getCurrent());
+        pageDTO.setSize((int)page.getSize());
+        pageDTO.setTotal((int)page.getTotal());
+
+        return new ResponseResult(pageDTO);
     }
 
     /**

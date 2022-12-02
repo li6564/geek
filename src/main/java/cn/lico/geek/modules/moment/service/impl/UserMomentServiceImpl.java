@@ -74,6 +74,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
     @Override
     public ResponseResult getUserMomentList(UserMomentListForm userMomentListForm) {
         LambdaQueryWrapper<UserMoment> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Objects.nonNull(userMomentListForm.getUserUid())&&userMomentListForm.getUserUid().length()>0,UserMoment::getUserUid,userMomentListForm.getUserUid());
         //判断是否按照分类标签来查找动态
         if (Objects.nonNull(userMomentListForm.getTopicUids())&&userMomentListForm.getTopicUids().length()>0){
             LambdaQueryWrapper<MomentTopic> queryWrapper1 = new LambdaQueryWrapper<>();

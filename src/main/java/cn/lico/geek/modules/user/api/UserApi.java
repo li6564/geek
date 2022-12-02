@@ -1,29 +1,41 @@
 package cn.lico.geek.modules.user.api;
 
 import cn.lico.geek.core.api.ResponseResult;
-import cn.lico.geek.modules.user.Service.LocalLoginService;
+import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.modules.blog.service.BlogService;
+import cn.lico.geek.modules.question.service.QuestionService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserStatisticsService;
-import cn.lico.geek.modules.user.form.LoginForm;
+import cn.lico.geek.modules.user.Service.UserWatchService;
+import cn.lico.geek.modules.user.enums.UserErrorCode;
+import cn.lico.geek.modules.user.exception.UserServiceException;
 import cn.lico.geek.modules.user.form.PageForm;
+import cn.lico.geek.modules.user.form.UserBlogForm;
+import cn.lico.geek.modules.user.form.UserWatchListForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author：linan
- * @Date：2022/11/12 17:48
+ * @Date：2022/12/2 14:50
  */
 @RestController
 @RequestMapping("/user")
 public class UserApi {
     @Autowired
+    private UserStatisticsService userStatisticsService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
-    private LocalLoginService localLoginService;
+    private BlogService blogService;
 
     @Autowired
-    private UserStatisticsService userStatisticsService;
+    private QuestionService questionService;
+
+    @Autowired
+    private UserWatchService userWatchService;
 
     /**
      * 获得社区精英列表
@@ -36,31 +48,52 @@ public class UserApi {
     }
 
     /**
-     * 用户账号密码登录
-     * @param loginForm
+     * 根据用户id获取用户信息
+     * @param userUid
      * @return
      */
-    @PostMapping("/login")
-    public ResponseResult localLogin(@RequestBody LoginForm loginForm){
-        return localLoginService.login(loginForm);
+    @GetMapping("/getUserByUid")
+    public ResponseResult getUserByUid(@RequestParam String userUid){
+        try {
+            return userService.getUserByUid(userUid);
+        } catch (UserServiceException e) {
+            e.printStackTrace();
+            return new ResponseResult(UserErrorCode.USER_NOT_FOUND.msg(), AppHttpCodeEnum.ERROR.getMsg());
+        }
     }
 
     /**
-     *
-     * @param token
+     * 根据uid获取用户统计信息
+     * @param userUid
      * @return
      */
-    @GetMapping("/verify/{token}")
-    public ResponseResult authVerify(@PathVariable("token") String token){
-        return userService.authVerify(token);
+    @GetMapping("/getUserCenterByUid")
+    public ResponseResult getUserCenterByUid(@RequestParam String userUid){
+        return userService.getUserCenterByUid(userUid);
     }
 
     /**
-     * 退出登录
+     * 获取指定用户博客列表
+     * @param userBlogForm
      * @return
      */
-    @PostMapping("/logout")
-    public ResponseResult logout(){
-        return localLoginService.logout();
+    @PostMapping("/getBlogListByUser")
+    public ResponseResult getBlogListByUser(@RequestBody UserBlogForm userBlogForm){
+        return blogService.getBlogListByUser(userBlogForm);
+    }
+
+    /**
+     * 获取指定用户问答列表
+     * @param userBlogForm
+     * @return
+     */
+    @PostMapping("/getQuestionListByUser")
+    public ResponseResult getQuestionListByUser(@RequestBody UserBlogForm userBlogForm){
+        return questionService.getQuestionListByUser(userBlogForm);
+    }
+
+    @PostMapping("/getUserWatchList")
+    public ResponseResult getUserWatchList(@RequestBody UserWatchListForm userWatchListForm){
+        return userWatchService.getUserWatchList(userWatchListForm);
     }
 }
