@@ -129,6 +129,13 @@
     </dependency>
     <!--    kafka end-->
 
+    <!--    es start-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+    </dependency>
+    <!--    es end-->
+
     <!-- 七牛云-->
     <dependency>
       <groupId>com.qiniu</groupId>
