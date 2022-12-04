@@ -7,6 +7,16 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mogu_blog_business?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
+
+  # elasticsearch
+  data:
+    elasticsearch:
+      repositories:
+        enabled: false
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+
   # kafka
   kafka:
     bootstrap-servers: localhost:9092

@@ -162,20 +162,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //将pages中的信息转换到NewBlogVo中
         List<NewBlogVo> newBlogVos = BeanCopyUtils.copyBeanList(page.getRecords(), NewBlogVo.class);
 
-
         //填充点赞数量
         getPraiseCount(newBlogVos);
-
         //填充uer信息
         getUserInformation(newBlogVos);
-
         //填充 标签信息
         getTagInformation(newBlogVos);
-
         //填充分类信息
         getSortInformation(newBlogVos);
-
-
 
         PageDTO<NewBlogVo> pageDto = new PageDTO<>();
         pageDto.setRecords(newBlogVos);
@@ -201,7 +195,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //填充blog对象
         Blog blog = new Blog();
         //判空
-        if (blogForm.getPhotoList().size()>0&&Objects.nonNull(blogForm.getPhotoList())){
+        if (Objects.nonNull(blogForm.getPhotoList())&&blogForm.getPhotoList().size()>0){
             blog.setPhotoList(blogForm.getPhotoList().get(0));
         }
         if (Objects.isNull(blogForm.getSummary())|| blogForm.getSummary().length() == 0){
@@ -231,6 +225,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             //发送添加博客信息
 //            DataItemChangeMessage dataItemChangeMessage = DataItemChangeMessage.addMessage(DataItemType.BLOG, userId);
             DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+            dataItemChangeMessage.setItemId(blog.getUid());
             dataItemChangeMessage.setItemType(DataItemType.BLOG);
             dataItemChangeMessage.setOperatorId(userId);
             dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
@@ -308,7 +303,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         BlogSort blogSort = blogSortService.getById(blogSortUid);
         blogInfoVo.setBlogSort(blogSort);
 
-
         return new ResponseResult(blogInfoVo);
     }
 
@@ -371,7 +365,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      * @param newBlogVos
      */
     private void getPraiseCount(List<NewBlogVo> newBlogVos) {
-
         for (NewBlogVo newBlogVo : newBlogVos) {
             LambdaQueryWrapper<UserPraiseRecord> queryWrapper = new LambdaQueryWrapper<>();
             //aa6e71e0c243b921ca657a900b4b442f
@@ -384,7 +377,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             //int praiseCount = userPraiseRecordService.list(queryWrapper).size();
             newBlogVo.setPraiseCount(praiseCount);
         }
-
     }
 
     /**
@@ -433,7 +425,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      * @param newBlogVos
      */
     public void getUserInformation(List<NewBlogVo> newBlogVos){
-
         //遍历newBlogVos为每一个newBlogVos填充user信息
         for (NewBlogVo newBlogVo : newBlogVos) {
             //获取博客
@@ -447,7 +438,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             if (Objects.nonNull(user)){
                 newBlogUserVo = BeanCopyUtils.copyBean(user, NewBlogUserVo.class);
             }
-
             //填充user信息
             newBlogVo.setUser(newBlogUserVo);
         }

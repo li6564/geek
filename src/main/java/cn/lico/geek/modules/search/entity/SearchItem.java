@@ -1,9 +1,11 @@
 package cn.lico.geek.modules.search.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -17,15 +19,21 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "search_item")
+@Document(indexName = "test3_search_items")
 public class SearchItem<T>{
+
+    public SearchItem(String uid, String resourceType) {
+        this.uid = uid;
+        this.resourceType = resourceType;
+    }
+
     @Id
     private String uid;
 
-    @Field(index = false,type = FieldType.Text)
+    @Field(type = FieldType.Keyword)
     private String resourceType;
 
-    @Field(type = FieldType.Text,analyzer = "ik_max_word",searchAnalyzer="ik_max_word")
+    @Field(type = FieldType.Text,analyzer = "ik_max_word")
     private String title;
 
     @Field(type = FieldType.Text,analyzer = "ik_max_word")
@@ -41,9 +49,9 @@ public class SearchItem<T>{
     @Field(index = false,type = FieldType.Integer)
     private Integer collectCount;
 
-    //是否开启评论(0:否 1:是)
-    @Field(index = false,type = FieldType.Integer)
-    private Integer openComment;
+//    //是否开启评论(0:否 1:是)
+//    @Field(index = false,type = FieldType.Integer)
+//    private Integer openComment;
 
     //投稿用户UID
     @Field(index = false,type = FieldType.Text)
@@ -52,14 +60,15 @@ public class SearchItem<T>{
     @Field(index = false,type = FieldType.Text)
     private String photoUrl;
 
-    @Field(index = false,type = FieldType.Integer)
-    private Integer status;
+//    @Field(index = false,type = FieldType.Integer)
+//    private Integer status;
 
-    @Field(index = false,type = FieldType.Date)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @Field(index = false,type = FieldType.Date,format = DateFormat.custom,pattern = "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_second")
     private Date createTime;
 
-    @Field(index = false,type = FieldType.Date)
-    private Date updateTime;
+//    @Field(index = false,type = FieldType.Date)
+//    private Date updateTime;
 
     private T extra;
 }

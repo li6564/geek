@@ -1,10 +1,12 @@
 package cn.lico.geek.modules.search.entity.extra;
 
-import cn.lico.geek.modules.search.entity.QuestionTag;
+import cn.lico.geek.modules.question.entity.QuestionTag;
 import cn.lico.geek.modules.search.entity.UserInfo;
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import java.util.List;
 
 /**
  * @Author：linan
@@ -25,7 +27,7 @@ public class QuestionExtra {
 //
 //    private Integer openComment;
 
-    private QuestionTag questionTagList;
+    private List<QuestionTag> questionTagList;
 
     private UserInfo user;
 }

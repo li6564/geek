@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 @Data
 public class UserExtra {
-    @Field(type = FieldType.Keyword)
+    @Field(index = false,type = FieldType.Text)
     private String nickName;
 
     @Field(index = false,type = FieldType.Integer)
@@ -22,7 +22,7 @@ public class UserExtra {
     @Field(index = false,type = FieldType.Integer)
     private Integer userTag;
 
-    @Field(index = false,type = FieldType.Integer)
+    @Field(index = false,type = FieldType.Long)
     private Integer blogPublishCount;
 
 //    private Integer commentPublishCount;
@@ -32,8 +32,11 @@ public class UserExtra {
     @Field(index = false,type = FieldType.Boolean)
     private boolean userWatchStatus;
 
-    @Field(index = false,type = FieldType.Integer)
+    @Field(index = false,type = FieldType.Long)
     private Integer userMomentCount;
+
+    @Field(index = false,type = FieldType.Long)
+    private Integer userWatchCount;
 
 //    private Integer userLevel;
 }
