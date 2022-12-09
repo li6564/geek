@@ -6,6 +6,7 @@ import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.exception.UserServiceException;
 import cn.lico.geek.modules.user.form.PageForm;
 import cn.lico.geek.modules.user.form.UserBlogForm;
+import cn.lico.geek.modules.user.form.UserRegisterForm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface UserService extends IService<User> {
@@ -21,4 +22,6 @@ public interface UserService extends IService<User> {
 
 
     ResponseResult updateUserPwd(String oldPwd, String newPwd);
+
+    ResponseResult register(UserRegisterForm userRegisterForm);
 }

@@ -57,6 +57,9 @@ public class DataItemChangeConsumer implements TopicConsumer, ApplicationContext
                             case USER_AVATAR_UPDATE:
                                 listener.onUserAvatarUpdate(dataItemChangeMessage);
                                 break;
+                            case USER_REGISTER:
+                                listener.onDataItemRegister(dataItemChangeMessage);
+                                break;
                         }
                     }catch (Exception e){
                         e.printStackTrace();

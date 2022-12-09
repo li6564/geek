@@ -263,6 +263,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 
             //发送博客浏览记录消息
             DataItemChangeMessage dataItemChangeMessage  = new DataItemChangeMessage();
+            dataItemChangeMessage.setItemId(blog.getUid());
             dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
             dataItemChangeMessage.setItemType(DataItemType.BLOG_VIEW_NUM);
             dataItemChangeMessage.setOperatorId(blog.getUserUid());

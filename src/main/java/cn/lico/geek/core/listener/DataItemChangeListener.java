@@ -51,4 +51,13 @@ public interface DataItemChangeListener {
 
     }
 
+    /**
+     * 用户注册
+     * @param dataItemChangeMessage
+     * @throws Exception
+     */
+    default void onDataItemRegister(DataItemChangeMessage dataItemChangeMessage) throws Exception {
+
+
+    }
 }

@@ -29,5 +29,10 @@ public enum DataItemChangeType {
     /**
      * 用户昵称更新
      */
-    USER_NICK_UPDATE;
+    USER_NICK_UPDATE,
+
+    /**
+     *用户注册
+     */
+    USER_REGISTER;
 }

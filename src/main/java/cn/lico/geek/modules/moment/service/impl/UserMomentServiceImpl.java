@@ -117,7 +117,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
         }
         //进行排序
         queryWrapper.orderByDesc(UserMoment::getCreateTime);
-
+        queryWrapper.eq(UserMoment::getStatus,1);
         //分页查询
         Page<UserMoment> page = new Page<>(userMomentListForm.getCurrentPage(),userMomentListForm.getPageSize());
         page(page,queryWrapper);
@@ -178,7 +178,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
         //获取 图片链接链表
         String[] photoUrlList = userMomentAddForm.getPictureUrl().split(",");
         //保存动态链接表
-        if (photoUrlList.length>1){
+        if (photoUrlList.length>0){
             for (String s : photoUrlList) {
                 MomentPhoto momentPhoto = new MomentPhoto();
                 momentPhoto.setMomentUid(uid);
@@ -190,6 +190,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
 
         //发送新增动态消息
         DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setItemId(uid);
         dataItemChangeMessage.setOperatorId(userId);
         dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
         dataItemChangeMessage.setItemType(DataItemType.POST);
@@ -225,6 +226,7 @@ public class UserMomentServiceImpl extends ServiceImpl<UserMomentMapper, UserMom
         momentPhotoService.remove(queryWrapper1);
         //发送删除动态消息
         DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setItemId(uid);
         dataItemChangeMessage.setOperatorId(userId);
         dataItemChangeMessage.setChangeType(DataItemChangeType.DELETE);
         dataItemChangeMessage.setItemType(DataItemType.POST);

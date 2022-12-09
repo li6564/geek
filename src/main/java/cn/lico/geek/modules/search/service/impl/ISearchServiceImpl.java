@@ -36,33 +36,20 @@ import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.entity.UserWatch;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.SecurityUtils;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.qiniu.util.Json;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.*;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
-import org.elasticsearch.search.sort.SortBuilders;
-import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.SearchResultMapper;
-import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
-import static cn.lico.geek.core.queue.message.DataItemType.*;
 
 /**
  * @Author：linan
@@ -159,6 +146,46 @@ public class ISearchServiceImpl implements ISearchService {
         }
         //搜索
         Page<SearchItem> searchItemPage = searchRepository.search(boolQueryBuilder, PageRequest.of(currentPage, pageSize, Sort.by(Sort.Order.desc("createTime"))));
+
+        if ("USER".equals(resourceType)){
+            for (SearchItem searchItem : searchItemPage.getContent()) {
+                Object extra = searchItem.getExtra();
+                UserExtra userExtra = JSON.parseObject(JSON.toJSONString(extra), UserExtra.class);
+                UserStatistics userStatistics = userStatisticsService.getById(searchItem.getUid());
+                userExtra.setBlogPublishCount(userStatistics.getBlogNum());
+                userExtra.setUserMomentCount(userStatistics.getPostNum());
+                LambdaQueryWrapper<UserWatch> queryWrapper = new LambdaQueryWrapper<>();
+                queryWrapper.eq(UserWatch::getUserUid,searchItem.getUid())
+                        .eq(UserWatch::getStatus,1);
+                int count = userWatchService.count(queryWrapper);
+                userExtra.setUserWatchCount(count);
+                if (!SecurityUtils.isLogin()){
+                    userExtra.setUserWatchStatus(false);
+                }else {
+                    String userId = SecurityUtils.getUserId();
+                    LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
+                    queryWrapper1.eq(UserWatch::getUserUid,userId)
+                            .eq(UserWatch::getToUserUid,searchItem.getUid())
+                            .eq(UserWatch::getStatus,1);
+                    UserWatch userWatch = userWatchService.getOne(queryWrapper1);
+                    if (Objects.nonNull(userWatch)){
+                        userExtra.setUserWatchStatus(true);
+                    }else {
+                        userExtra.setUserWatchStatus(false);
+                    }
+                }
+                searchItem.setExtra(userExtra);
+            }
+        }else if ("QUESTION".equals(resourceType)){
+            for (SearchItem searchItem : searchItemPage.getContent()) {
+                Object extra = searchItem.getExtra();
+                QuestionExtra questionExtra = JSON.parseObject(JSON.toJSONString(extra), QuestionExtra.class);
+                Question question = questionService.getById(searchItem.getUid());
+                questionExtra.setReplyCount(question.getReplyCount());
+                searchItem.setClickCount(question.getClickCount());
+                searchItem.setExtra(questionExtra);
+            }
+        }
         PageDTO<SearchItem> pageDTO = new PageDTO<>();
         pageDTO.setRecords(searchItemPage.getContent());
         pageDTO.setTotal(searchItemPage.getTotalPages());
@@ -177,12 +204,20 @@ public class ISearchServiceImpl implements ISearchService {
                     break;
                 case USER:
                     searchItem = buildSearchItemFromUser(itemId);
+                    System.out.println("USER");
                     break;
                 case QUESTION:
+                    searchItem = buildSearchItemFromQuestion(itemId);
+                    System.out.println("QUESTION");
+                    break;
+                case QUESTION_REPLY:
                     searchItem = buildSearchItemFromQuestion(itemId);
                     break;
                 case POST:
                     searchItem = buildSearchItemFromTopic(itemId);
+                    break;
+                case BLOG_VIEW_NUM:
+                    searchItem = buildSearchItemFromBlog(itemId);
                     break;
                 default:
                     throw new IllegalArgumentException("该类型不支持搜索："+ itemType.name() + ":" + itemId);
@@ -201,6 +236,7 @@ public class ISearchServiceImpl implements ISearchService {
             searchItem.setUid(userMoment.getUid());
             searchItem.setContent(userMoment.getContent());
             searchItem.setCreateTime(userMoment.getCreateTime());
+            searchItem.setUserUid(userMoment.getUserUid());
             MomentExtra momentExtra = new MomentExtra();
             momentExtra.setUrl(userMoment.getUrl());
             momentExtra.setUrlInfo(userMoment.getUrlInfo());
@@ -209,12 +245,12 @@ public class ISearchServiceImpl implements ISearchService {
             queryWrapper.eq(MomentTopic::getMomentUid, userMoment.getUid());
             List<MomentTopic> list = momentTopicService.list(queryWrapper);
             List<String> topicIds = new ArrayList<>();
-            if (Objects.nonNull(list)) {
+            if (list.size()>0) {
                 for (MomentTopic momentTopic : list) {
                     topicIds.add(momentTopic.getTopicUid());
                 }
             }
-            if (Objects.nonNull(topicIds)) {
+            if (topicIds.size()>0) {
                 LambdaQueryWrapper<UserMomentTopic> queryWrapper1 = new LambdaQueryWrapper<>();
                 queryWrapper1.in(UserMomentTopic::getUid, topicIds);
                 List<UserMomentTopic> list1 = userMomentTopicService.list(queryWrapper1);
@@ -243,10 +279,12 @@ public class ISearchServiceImpl implements ISearchService {
         Question question = questionService.getById(itemId);
         if (Objects.nonNull(question)){
             SearchItem searchItem = new SearchItem(itemId,"QUESTION");
-            searchItem.setClickCount(question.getClickCount());
+            //searchItem.setClickCount(question.getClickCount());
             searchItem.setTitle(question.getTitle());
             searchItem.setCreateTime(question.getCreateTime());
             searchItem.setUid(question.getUid());
+            searchItem.setUserUid(question.getUserUid());
+            searchItem.setContent(question.getContent());
             QuestionExtra questionExtra = new QuestionExtra();
             //填充问答标签
             LambdaQueryWrapper<QuestionTags> queryWrapper = new LambdaQueryWrapper<>();
@@ -267,7 +305,10 @@ public class ISearchServiceImpl implements ISearchService {
             User user = userService.getById(question.getUserUid());
             UserInfo userInfo = BeanCopyUtils.copyBean(user, UserInfo.class);
             questionExtra.setUser(userInfo);
+            //questionExtra.setReplyCount(question.getReplyCount());
+            questionExtra.setOid(question.getOid());
             searchItem.setExtra(questionExtra);
+            System.out.println(searchItem.toString());
             return searchItem;
         }
         return null;
@@ -281,36 +322,15 @@ public class ISearchServiceImpl implements ISearchService {
             searchItem.setSummary(user.getSummary());
             searchItem.setCreateTime(user.getCreateTime());
             searchItem.setUid(user.getUid());
+            searchItem.setUserUid(user.getUid());
             searchItem.setContent(user.getNickName());
             UserExtra userExtra = new UserExtra();
             userExtra.setNickName(user.getNickName());
             userExtra.setGender(user.getGender());
             userExtra.setOccupation(user.getOccupation());
             userExtra.setUserTag(user.getUserTag());
-            UserStatistics userStatistics = userStatisticsService.getById(user.getUid());
-            userExtra.setBlogPublishCount(userStatistics.getBlogNum());
-            userExtra.setUserMomentCount(userStatistics.getPostNum());
-            LambdaQueryWrapper<UserWatch> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(UserWatch::getUserUid,user.getUid())
-                    .eq(UserWatch::getStatus,1);
-            int count = userWatchService.count(queryWrapper);
-            userExtra.setUserWatchCount(count);
-            if (!SecurityUtils.isLogin()){
-                userExtra.setUserWatchStatus(false);
-            }else {
-                String userId = SecurityUtils.getUserId();
-                LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
-                queryWrapper1.eq(UserWatch::getUserUid,userId)
-                        .eq(UserWatch::getToUserUid,user.getUid())
-                        .eq(UserWatch::getStatus,1);
-                UserWatch userWatch = userWatchService.getOne(queryWrapper1);
-                if (Objects.nonNull(userWatch)){
-                    userExtra.setUserWatchStatus(true);
-                }else {
-                    userExtra.setUserWatchStatus(false);
-                }
-            }
             searchItem.setExtra(userExtra);
+            System.out.println(searchItem.toString());
             return searchItem;
         }
         return null;

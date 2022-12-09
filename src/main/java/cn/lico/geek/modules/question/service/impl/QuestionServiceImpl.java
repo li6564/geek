@@ -147,6 +147,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         }
         //发送问答新增消息
         DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setItemId(uid);
         dataItemChangeMessage.setOperatorId(userId);
         dataItemChangeMessage.setItemType(DataItemType.QUESTION);
         dataItemChangeMessage.setChangeType(DataItemChangeType.ADD);
@@ -172,6 +173,10 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
             redisCache.setCacheObject(question.getUid()+remoteHost,1,60*60, TimeUnit.SECONDS);
             question.setClickCount(question.getClickCount()+1);
             updateById(question);
+//            //发送问答阅读消息
+//            DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+//            dataItemChangeMessage.setItemId(question.getUid()).setItemType(DataItemType.QUESTION);
+//            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
         }
         //将question转化为返回形式
         QuestionInfoDto questionInfoDto = BeanCopyUtils.copyBean(question, QuestionInfoDto.class);

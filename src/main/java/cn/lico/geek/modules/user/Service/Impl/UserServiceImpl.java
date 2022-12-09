@@ -2,7 +2,11 @@ package cn.lico.geek.modules.user.Service.Impl;
 
 import cn.lico.geek.core.api.ResponseResult;
 import cn.lico.geek.core.emuns.AppHttpCodeEnum;
+import cn.lico.geek.core.queue.message.DataItemChangeMessage;
+import cn.lico.geek.core.queue.message.DataItemChangeType;
+import cn.lico.geek.core.queue.message.DataItemType;
 import cn.lico.geek.modules.blog.service.BlogService;
+import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.Service.UserWatchService;
@@ -12,6 +16,7 @@ import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.entity.UserWatch;
 import cn.lico.geek.modules.user.enums.UserErrorCode;
 import cn.lico.geek.modules.user.exception.UserServiceException;
+import cn.lico.geek.modules.user.form.UserRegisterForm;
 import cn.lico.geek.modules.user.mapper.UserMapper;
 import cn.lico.geek.modules.user.vo.UserVo;
 import cn.lico.geek.utils.BeanCopyUtils;
@@ -39,6 +44,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private IMessageQueueService messageQueueService;
 
     /**
      *根据token获取用户信息
@@ -135,10 +143,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public ResponseResult editUser(User user) {
         boolean flag = updateById(user);
         if (flag){
+            //发送用户昵称改变消息
+            DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+            dataItemChangeMessage.setItemId(user.getUid()).setItemType(DataItemType.USER).setChangeType(DataItemChangeType.USER_NICK_UPDATE)
+                    .setUserUid(user.getNickName());
+            messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
             return new ResponseResult("更新成功！", AppHttpCodeEnum.SUCCESS.getMsg());
         }else {
             return new ResponseResult("更新失败！",AppHttpCodeEnum.ERROR.getMsg());
         }
+
     }
 
     /**
@@ -160,6 +174,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             updateById(user);
         }
         return new ResponseResult("修改成功！",AppHttpCodeEnum.SUCCESS.getMsg());
+    }
+
+    /**
+     * 用户注册
+     * @param userRegisterForm
+     * @return
+     */
+    @Override
+    public ResponseResult register(UserRegisterForm userRegisterForm) {
+        //先判断当前用户名是否存在，如果存在返回注册失败
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getUserName,userRegisterForm.getUserName());
+        queryWrapper.eq(User::getStatus,1);
+        User user = getOne(queryWrapper);
+        if (Objects.nonNull(user)){
+            return new ResponseResult("注册失败,用户名已存在!",AppHttpCodeEnum.ERROR.getMsg());
+        }
+        User user1 = new User();
+        user1.setUserName(userRegisterForm.getUserName()).setEmail(userRegisterForm.getEmail())
+                .setNickName(userRegisterForm.getNickName());
+        String encode = passwordEncoder.encode(userRegisterForm.getPassWord());
+        user1.setPassWord(encode);
+        save(user1);
+        //创建用户统计信息
+        UserStatistics userStatistics = new UserStatistics();
+        userStatistics.setUid(user1.getUid());
+        userStatisticsService.save(userStatistics);
+        //发送用户注册消息
+        DataItemChangeMessage dataItemChangeMessage = new DataItemChangeMessage();
+        dataItemChangeMessage.setItemId(user1.getUid()).setChangeType(DataItemChangeType.USER_REGISTER).setItemType(DataItemType.USER);
+        messageQueueService.sendDataItemChangeMessage(dataItemChangeMessage);
+        return new ResponseResult("注册成功！",AppHttpCodeEnum.SUCCESS.getMsg());
     }
 
 }
