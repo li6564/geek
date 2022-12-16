@@ -23,4 +23,6 @@ public interface BlogService extends IService<Blog> {
     ResponseResult getBlogByUid(Integer oid, Integer isLazy,String remeteHost);
 
     ResponseResult getBlogListByUser(UserBlogForm userBlogForm);
+
+    ResponseResult searchBlogByTag(String tagUid, Integer currentPage, Integer pageSize);
 }

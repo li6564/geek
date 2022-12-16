@@ -20,6 +20,8 @@ import cn.lico.geek.modules.blog.vo.BlogInfoVo;
 import cn.lico.geek.modules.blog.vo.NewBlogUserVo;
 import cn.lico.geek.modules.blog.vo.NewBlogVo;
 import cn.lico.geek.modules.queue.service.IMessageQueueService;
+import cn.lico.geek.modules.search.entity.SearchItem;
+import cn.lico.geek.modules.search.entity.extra.BlogExtra;
 import cn.lico.geek.modules.tag.entity.Tag;
 import cn.lico.geek.modules.tag.service.TagService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
@@ -354,6 +356,60 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         }
         PageDTO<UserBlogVo> pageDTO = new PageDTO<>();
         pageDTO.setRecords(userBlogVos);
+        pageDTO.setCurrent((int)page.getCurrent());
+        pageDTO.setTotal((int)page.getTotal());
+        pageDTO.setSize((int)page.getSize());
+        return new ResponseResult(pageDTO);
+    }
+
+    /**
+     * 根据标签查询博客列表
+     * @param tagUid
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public ResponseResult searchBlogByTag(String tagUid, Integer currentPage, Integer pageSize) {
+        LambdaQueryWrapper<BlogTag> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(BlogTag::getTagId,tagUid);
+        List<BlogTag> list = blogTagService.list(queryWrapper);
+        List<String> blogIds = new ArrayList<>();
+        if (list.size()>0){
+            for (BlogTag blogTag : list) {
+                blogIds.add(blogTag.getBlogId());
+            }
+        }
+        LambdaQueryWrapper<Blog> queryWrapper1 = new LambdaQueryWrapper<>();
+        if (blogIds.size()>0){
+            queryWrapper1.in(Blog::getUid,blogIds)
+                    .orderByDesc(Blog::getClickCount);
+        }else {
+            queryWrapper1.eq(Blog::getUid,-1);
+        }
+        Page<Blog> page = new Page<>(currentPage,pageSize);
+        page(page,queryWrapper1);
+        List<SearchItem<BlogExtra>> searchItems = new ArrayList<>();
+        for (Blog pageRecord : page.getRecords()) {
+            //填充分类信息
+            LambdaQueryWrapper<BlogSort> queryWrapper2 = new LambdaQueryWrapper<>();
+            queryWrapper2.eq(BlogSort::getUid,pageRecord.getBlogSortUid());
+            BlogSort blogSort = blogSortService.getOne(queryWrapper2);
+            SearchItem searchItem1 = BeanCopyUtils.copyBean(pageRecord, SearchItem.class);
+            BlogExtra blogExtra = new BlogExtra();
+            blogExtra.setOid(pageRecord.getOid());
+            blogExtra.setIsVip(pageRecord.getIsVip());
+            blogExtra.setOutsideLink(pageRecord.getOutsideLink());
+            blogExtra.setBlogSortName(blogSort.getSortName());
+            blogExtra.setAuthor(pageRecord.getAuthor());
+            blogExtra.setBlogSortUid(pageRecord.getBlogSortUid());
+            blogExtra.setType(pageRecord.getType());
+            searchItem1.setResourceType("BLOG");
+            searchItem1.setExtra(blogExtra);
+            searchItems.add(searchItem1);
+        }
+        PageDTO<SearchItem<BlogExtra>> pageDTO = new PageDTO<>();
+        pageDTO.setRecords(searchItems);
         pageDTO.setCurrent((int)page.getCurrent());
         pageDTO.setTotal((int)page.getTotal());
         pageDTO.setSize((int)page.getSize());
