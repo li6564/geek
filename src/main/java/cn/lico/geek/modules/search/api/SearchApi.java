@@ -42,4 +42,18 @@ public class SearchApi {
                                           @RequestParam Integer pageSize){
         return blogService.searchBlogByTag(tagUid,currentPage,pageSize);
     }
+
+    /**
+     * 根据博客分类查询博客
+     * @param blogSortUid
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/searchBlogBySort")
+    public ResponseResult searchBlogBySort(@RequestParam String blogSortUid,
+                                           @RequestParam Integer currentPage,
+                                           @RequestParam Integer pageSize){
+        return blogService.searchBlogBySort(blogSortUid,currentPage,pageSize);
+    }
 }

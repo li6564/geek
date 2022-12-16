@@ -416,6 +416,48 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         return new ResponseResult(pageDTO);
     }
 
+    /**
+     * 根据博客分类ID查询博客列表
+     * @param blogSortUid
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public ResponseResult searchBlogBySort(String blogSortUid, Integer currentPage, Integer pageSize) {
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Blog::getBlogSortUid,blogSortUid)
+                .eq(Blog::getStatus,1)
+                .orderByDesc(Blog::getClickCount);
+        Page<Blog> page = new Page<>(currentPage,pageSize);
+        page(page,queryWrapper);
+        List<SearchItem<BlogExtra>> searchItems = new ArrayList<>();
+        for (Blog pageRecord : page.getRecords()) {
+            //填充分类信息
+            LambdaQueryWrapper<BlogSort> queryWrapper2 = new LambdaQueryWrapper<>();
+            queryWrapper2.eq(BlogSort::getUid,pageRecord.getBlogSortUid());
+            BlogSort blogSort = blogSortService.getOne(queryWrapper2);
+            SearchItem searchItem1 = BeanCopyUtils.copyBean(pageRecord, SearchItem.class);
+            BlogExtra blogExtra = new BlogExtra();
+            blogExtra.setOid(pageRecord.getOid());
+            blogExtra.setIsVip(pageRecord.getIsVip());
+            blogExtra.setOutsideLink(pageRecord.getOutsideLink());
+            blogExtra.setBlogSortName(blogSort.getSortName());
+            blogExtra.setAuthor(pageRecord.getAuthor());
+            blogExtra.setBlogSortUid(pageRecord.getBlogSortUid());
+            blogExtra.setType(pageRecord.getType());
+            searchItem1.setResourceType("BLOG");
+            searchItem1.setExtra(blogExtra);
+            searchItems.add(searchItem1);
+        }
+        PageDTO<SearchItem<BlogExtra>> pageDTO = new PageDTO<>();
+        pageDTO.setRecords(searchItems);
+        pageDTO.setCurrent((int)page.getCurrent());
+        pageDTO.setTotal((int)page.getTotal());
+        pageDTO.setSize((int)page.getSize());
+        return new ResponseResult(pageDTO);
+    }
+
 
     /**
      * 填充点赞数量(有bug)

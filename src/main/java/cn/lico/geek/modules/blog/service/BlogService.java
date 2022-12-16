@@ -25,4 +25,6 @@ public interface BlogService extends IService<Blog> {
     ResponseResult getBlogListByUser(UserBlogForm userBlogForm);
 
     ResponseResult searchBlogByTag(String tagUid, Integer currentPage, Integer pageSize);
+
+    ResponseResult searchBlogBySort(String blogSortUid, Integer currentPage, Integer pageSize);
 }
