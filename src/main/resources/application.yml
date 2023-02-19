@@ -4,7 +4,7 @@ spring:
   # 数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/mogu_blog_business?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://47.113.197.253:3306/mogu_blog_business?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
 
@@ -15,11 +15,11 @@ spring:
         enabled: false
   elasticsearch:
     rest:
-      uris: http://localhost:9200
+      uris: http://127.0.0.1:9200
 
   # kafka
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 47.113.197.253:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -28,6 +28,12 @@ spring:
       enable-auto-commit: true
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    listener:
+      missing-topics-fatal: false
+  #reids
+  redis:
+    host: 47.113.197.253
+    port: 6379
 
 # mybatis-plus
 mybatis-plus:
@@ -44,7 +50,7 @@ logging:
 oss:
   accessKey: JHNbeGgqjKENX-mWDHpXu5CBuiXmMW8YHSNuC-cq
   secretKey: tbUM1edpmMGrcThk3JH3TksOUcJm74CARNQZBvrv
-  bucket: ln-blog2
+  bucket: ln-log3
 
 geek:
   kafka:

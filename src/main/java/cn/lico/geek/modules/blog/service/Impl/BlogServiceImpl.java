@@ -131,20 +131,23 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         if (Objects.nonNull(pageVo.getOrderBy())&&pageVo.getOrderBy().length()>0){
             //获取用戶id
-            String userId = SecurityUtils.getUserId();
-            LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
-            queryWrapper1.eq(UserWatch::getUserUid,userId);
-            List<UserWatch> list = userWatchService.list(queryWrapper1);
-            List Ids = new ArrayList();
-            for (UserWatch userWatch : list) {
-                Ids.add(userWatch.getToUserUid());
-            }
-            if (Objects.isNull(Ids)||Ids.size()== 0){
-                queryWrapper.eq(Blog::getUserUid,"-1");
+            if (SecurityUtils.isLogin()){
+                String userId = SecurityUtils.getUserId();
+                LambdaQueryWrapper<UserWatch> queryWrapper1 = new LambdaQueryWrapper<>();
+                queryWrapper1.eq(UserWatch::getUserUid,userId);
+                List<UserWatch> list = userWatchService.list(queryWrapper1);
+                List Ids = new ArrayList();
+                for (UserWatch userWatch : list) {
+                    Ids.add(userWatch.getToUserUid());
+                }
+                if (Objects.isNull(Ids)||Ids.size()== 0){
+                    queryWrapper.eq(Blog::getUserUid,"-1");
+                }else {
+                    queryWrapper.in(Blog::getUserUid,Ids);
+                }
             }else {
-                queryWrapper.in(Blog::getUserUid,Ids);
+                queryWrapper.eq(Blog::getUserUid,"-1");
             }
-
         }
         //判断blogSortUid是否为空，如果不为空则加入判断条件
         queryWrapper.eq(Objects.nonNull(pageVo.getBlogSortUid())&&pageVo.getBlogSortUid().length()>0,Blog::getBlogSortUid,pageVo.getBlogSortUid());
@@ -156,14 +159,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         }else {
             queryWrapper.orderByDesc(Blog::getCreateTime);
         }
-
-
         Page<Blog> page  = new Page<>(pageVo.getCurrentPage(),pageVo.getPageSize());
         page(page, queryWrapper);
 
         //将pages中的信息转换到NewBlogVo中
         List<NewBlogVo> newBlogVos = BeanCopyUtils.copyBeanList(page.getRecords(), NewBlogVo.class);
-
         //填充点赞数量
         getPraiseCount(newBlogVos);
         //填充uer信息

@@ -38,7 +38,7 @@ public class UserStatisticsServiceImpl extends ServiceImpl<UserStatisticsMapper,
     public ResponseResult getUserTopN(PageForm pageForm) {
 
         LambdaQueryWrapper<UserStatistics> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.orderByDesc(UserStatistics::getBlogNum);
+        queryWrapper.orderByDesc(UserStatistics::getBlogNum,UserStatistics::getPostNum,UserStatistics::getQuestionNum);
 
         Page<UserStatistics> page = new Page<>(pageForm.getCurrentPage(),pageForm.getPageSize());
         page(page,queryWrapper);

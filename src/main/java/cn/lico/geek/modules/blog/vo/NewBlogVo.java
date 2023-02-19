@@ -33,6 +33,8 @@ public class NewBlogVo {
 
     private Date createTime;
 
+    private String userUid;
+
     private String outsideLink;
 
     //类型【0 博客， 1：推广】

@@ -30,7 +30,6 @@ public class DataItemChangeConsumer implements TopicConsumer, ApplicationContext
     @Override
     @KafkaListener(topics = "topic1")
     public void onMessage(ConsumerRecord<?, String> record) {
-
         Optional<String> kafkaMessage = Optional.ofNullable(record.value());
         if(kafkaMessage.isPresent()){
             DataItemChangeMessage dataItemChangeMessage;
