@@ -18,5 +18,5 @@ public class ProjectForm {
 
     private String orderByDescColumn;
 
-    private Integer projectTagUid;
+    private Integer problemTagUid;
 }

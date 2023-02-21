@@ -15,6 +15,7 @@ import cn.lico.geek.modules.user.Service.UserService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
 import cn.lico.geek.utils.BeanCopyUtils;
+import cn.lico.geek.utils.RedisCache;
 import cn.lico.geek.utils.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author：linan
@@ -42,11 +44,14 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
     @Autowired
     private ProjectCategoryService projectCategoryService;
 
+    @Autowired
+    private RedisCache redisCache;
+
     @Override
     public ResponseResult queryPage(Integer currentPage, Integer pageSize, String orderByDescColumn, Integer projectTagUid) {
         LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Project::getStatus,1);
-        if (Objects.nonNull(projectTagUid)){
+        if (Objects.nonNull(projectTagUid)&&projectTagUid!=6){
             queryWrapper.eq(Project::getProjectCategoryId,projectTagUid);
         }
         if (orderByDescColumn.length()==0||Objects.isNull(orderByDescColumn)||"create_time".equals(orderByDescColumn)){
@@ -78,6 +83,45 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
         pageDTO.setCurrent((int)page.getCurrent());
         return new ResponseResult(pageDTO);
     }
+
+    @Override
+    public ResponseResult getProjectByOid(Integer oid, Integer isLazy, String remoteHost) {
+        LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Project::getOid,oid)
+                .eq(Project::getStatus,1);
+        Project project = getOne(queryWrapper);
+        Object cacheObject = redisCache.getCacheObject(oid+remoteHost);
+        //如果查询结果为空，则新增记录到redids中，并且将该博客浏览量加1
+        if (Objects.isNull(cacheObject)){
+            //新增记录到redids中
+            redisCache.setCacheObject(oid+remoteHost,"1",60*60, TimeUnit.SECONDS);
+            //将博客浏览量+1
+            project.setClickcount(project.getClickcount()+1);
+            updateById(project);
+        }
+        ProjectVo projectVo = BeanCopyUtils.copyBean(project, ProjectVo.class);
+        setUserInfo(projectVo.getUseruid(),projectVo);
+
+        if (SecurityUtils.isLogin()){
+            setPraiseInfo(SecurityUtils.getUserId(),projectVo);
+        }else {
+            setPraiseInfo("-1",projectVo);
+        }
+
+        setProjectCategoryList(projectVo);
+        return new ResponseResult(projectVo);
+    }
+
+    @Override
+    public ResponseResult addProject(Project project) {
+        String userId = SecurityUtils.getUserId();
+        project.setUseruid(userId);
+        project.setProjectCategoryId(2);
+        save(project);
+        return ResponseResult.okResult();
+    }
+
+
 
     private void setUserInfo(String userid,ProjectVo projectVo){
         User user = userService.getById(userid);

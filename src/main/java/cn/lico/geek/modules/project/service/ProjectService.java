@@ -10,4 +10,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ProjectService extends IService<Project> {
     ResponseResult queryPage(Integer currentPage, Integer pageSize, String orderByDescColumn, Integer projectTagUid);
+
+    ResponseResult addProject(Project project);
+
+    ResponseResult getProjectByOid(Integer oid, Integer isLazy, String remoteHost);
 }
