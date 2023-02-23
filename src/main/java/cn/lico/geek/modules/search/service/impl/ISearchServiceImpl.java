@@ -308,7 +308,7 @@ public class ISearchServiceImpl implements ISearchService {
             //questionExtra.setReplyCount(question.getReplyCount());
             questionExtra.setOid(question.getOid());
             searchItem.setExtra(questionExtra);
-            System.out.println(searchItem.toString());
+            //System.out.println(searchItem.toString());
             return searchItem;
         }
         return null;
@@ -330,7 +330,7 @@ public class ISearchServiceImpl implements ISearchService {
             userExtra.setOccupation(user.getOccupation());
             userExtra.setUserTag(user.getUserTag());
             searchItem.setExtra(userExtra);
-            System.out.println(searchItem.toString());
+            //System.out.println(searchItem.toString());
             return searchItem;
         }
         return null;
@@ -361,7 +361,7 @@ public class ISearchServiceImpl implements ISearchService {
             blogExtra.setType(blog.getType());
             searchItem.setExtra(blogExtra);
 
-            System.out.println(searchItem.toString());
+            //System.out.println(searchItem.toString());
             return searchItem;
         }
         return null;

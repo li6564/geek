@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author：linan
@@ -51,7 +52,7 @@ public class LocalLoginServiceImpl implements LocalLoginService {
         //用jwt进行加密生成token
         String token = JwtUtil.createJWT(uid);
         //将 userDetails 对象存入redis以id为健
-        redisCache.setCacheObject("login"+uid,userDetails);
+        redisCache.setCacheObject("login"+uid,userDetails,7, TimeUnit.DAYS);
         //将token返回给前端
         Map<String,String> map = new HashMap<>();
         map.put("token",token);

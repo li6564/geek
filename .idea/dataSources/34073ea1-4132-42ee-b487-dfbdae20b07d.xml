@@ -2405,7 +2405,7 @@ oid</ColNames>
     </column>
     <column id="512" parent="304" name="label">
       <Position>6</Position>
-      <Comment>标签 </Comment>
+      <Comment>标签</Comment>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>

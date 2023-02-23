@@ -51,7 +51,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
     public ResponseResult queryPage(Integer currentPage, Integer pageSize, String orderByDescColumn, Integer projectTagUid) {
         LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Project::getStatus,1);
-        if (Objects.nonNull(projectTagUid)&&projectTagUid!=6){
+        if (Objects.nonNull(projectTagUid)&&projectTagUid!=1){
             queryWrapper.eq(Project::getProjectCategoryId,projectTagUid);
         }
         if (orderByDescColumn.length()==0||Objects.isNull(orderByDescColumn)||"create_time".equals(orderByDescColumn)){
