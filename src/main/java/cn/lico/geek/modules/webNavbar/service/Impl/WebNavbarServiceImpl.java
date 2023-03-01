@@ -1,18 +1,22 @@
 package cn.lico.geek.modules.webNavbar.service.Impl;
 
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.core.constant.RedisConstants;
 import cn.lico.geek.modules.webNavbar.entity.WebNavbar;
 import cn.lico.geek.modules.webNavbar.mapper.WebNavbarMapper;
 import cn.lico.geek.modules.webNavbar.service.WebNavbarService;
 import cn.lico.geek.modules.webNavbar.vo.WebNavbarVo;
 import cn.lico.geek.utils.BeanCopyUtils;
+import cn.lico.geek.utils.RedisCache;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author：linan
@@ -20,6 +24,9 @@ import java.util.Objects;
  */
 @Service
 public class WebNavbarServiceImpl extends ServiceImpl<WebNavbarMapper, WebNavbar> implements WebNavbarService {
+    @Autowired
+    private RedisCache redisCache;
+
     /**
      * 获取导航栏列表
      * @param isShow
@@ -27,6 +34,11 @@ public class WebNavbarServiceImpl extends ServiceImpl<WebNavbarMapper, WebNavbar
      */
     @Override
     public ResponseResult getWebNavbarList(Integer isShow) {
+        List<Object> cacheList = redisCache.getCacheList(RedisConstants.WEB_NAVBAR);
+        if (cacheList.size()>0){
+            return new ResponseResult(cacheList);
+        }
+
         LambdaQueryWrapper<WebNavbar> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(WebNavbar::getStatus,1);
         //判断导航栏是否可展示
@@ -48,6 +60,9 @@ public class WebNavbarServiceImpl extends ServiceImpl<WebNavbarMapper, WebNavbar
                 webNavbarVo.setChildWebNavbar(childWebNavbarList);
             }
         }
+        //在redis中缓存导航栏信息并设置有效日期
+        redisCache.setCacheList(RedisConstants.WEB_NAVBAR,webNavbarVos);
+        redisCache.expire(RedisConstants.WEB_NAVBAR,8, TimeUnit.DAYS);
         return new ResponseResult(webNavbarVos);
     }
 }

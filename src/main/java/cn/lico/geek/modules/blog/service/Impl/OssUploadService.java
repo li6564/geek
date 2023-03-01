@@ -94,7 +94,7 @@ public class OssUploadService implements UploadService {
                 DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
                 System.out.println(putRet.key);
                 System.out.println(putRet.hash);
-                map.put("url","http://rn6gf1sz9.hb-bkt.clouddn.com/"+key);
+                map.put("url","http://qn.yunwaishequ.cn/"+key);
                 map.put("uploaded",1);
                 int i = key.lastIndexOf("/");
                 int m = key.lastIndexOf(".");
