@@ -6,18 +6,12 @@ package cn.lico.geek.modules.question.api;
  */
 
 import cn.lico.geek.core.api.ResponseResult;
-import cn.lico.geek.modules.question.form.PageForm;
-import cn.lico.geek.modules.question.form.QuestionAddForm;
-import cn.lico.geek.modules.question.form.QuestionInfoForm;
-import cn.lico.geek.modules.question.form.QuestionListForm;
+import cn.lico.geek.modules.question.form.*;
 import cn.lico.geek.modules.question.service.QuestionService;
 import cn.lico.geek.modules.question.service.QuestionTagService;
 import cn.lico.geek.modules.question.service.QuestionTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -83,5 +77,24 @@ public class QuestionApi {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         String remoteHost = requestAttributes.getRequest().getRemoteHost();
         return questionService.getQuestion(remoteHost,questionInfoForm);
+    }
+
+    /**
+     * 获取用户问答列表
+     * @param pageForm
+     * @return
+     */
+    @PostMapping("/getMeQuestionList")
+    public ResponseResult getMeQuestionList(@RequestBody PageForm pageForm){
+        return questionService.getMeQuestionList(pageForm.getCurrentPage(),pageForm.getPageSize());
+    }
+
+    /**
+     * 删除问答
+     * @return
+     */
+    @PostMapping("/delete")
+    public ResponseResult delete(@RequestBody QuestionDeleteForm questionDeleteForm){
+        return questionService.delete(questionDeleteForm.getUid());
     }
 }

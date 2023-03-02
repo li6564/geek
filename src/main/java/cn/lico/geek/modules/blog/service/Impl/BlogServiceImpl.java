@@ -19,6 +19,7 @@ import cn.lico.geek.modules.blog.vo.BlogInfoUser;
 import cn.lico.geek.modules.blog.vo.BlogInfoVo;
 import cn.lico.geek.modules.blog.vo.NewBlogUserVo;
 import cn.lico.geek.modules.blog.vo.NewBlogVo;
+import cn.lico.geek.modules.question.entity.Question;
 import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.search.entity.SearchItem;
 import cn.lico.geek.modules.search.entity.extra.BlogExtra;
@@ -153,6 +154,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         queryWrapper.eq(Objects.nonNull(pageVo.getBlogSortUid())&&pageVo.getBlogSortUid().length()>0,Blog::getBlogSortUid,pageVo.getBlogSortUid());
         //去除1级推荐文章
         queryWrapper.ne(Blog::getLevel,1);
+        queryWrapper.eq(Blog::getIsPublish,"1");
         //进行分页查询
         if ("create_time".equals(pageVo.getOrderByDescColumn())){
             queryWrapper.orderByDesc(Blog::getCreateTime);
@@ -458,6 +460,93 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         pageDTO.setTotal((int)page.getTotal());
         pageDTO.setSize((int)page.getSize());
         return new ResponseResult(pageDTO);
+    }
+
+    /**
+     * 获取用户博客列表
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public ResponseResult getMeBlogList(Integer currentPage, Integer pageSize) {
+        //获取当前用户uid
+        String userId = SecurityUtils.getUserId();
+        //根据条件查询博客
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Blog::getUserUid,userId)
+                .eq(Blog::getStatus,1);
+        Page<Blog> page = new Page<>(currentPage,pageSize);
+        page(page, queryWrapper);
+        List<UserBlogVo> userBlogVos = BeanCopyUtils.copyBeanList(page.getRecords(), UserBlogVo.class);
+        for (UserBlogVo userBlogVo : userBlogVos) {
+            //填充分类信息
+            Blog blog = getById(userBlogVo.getUid());
+            String blogSortUid = blog.getBlogSortUid();
+            BlogSort blogSort = blogSortService.getById(blogSortUid);
+            userBlogVo.setBlogSort(blogSort);
+            //填充标签信息
+            //根据blogUid获取BlogTag列表
+            LambdaQueryWrapper<BlogTag> queryWrapper1  = new LambdaQueryWrapper<>();
+            queryWrapper1.eq(BlogTag::getBlogId,userBlogVo.getUid());
+            //获取blogTag列表
+            List<BlogTag> blogTags = blogTagService.list(queryWrapper1);
+            //获取tag id列表
+            List<String> TagIds = new ArrayList<>();
+            for (BlogTag blogTag : blogTags) {
+                TagIds.add(blogTag.getTagId());
+            }
+            List<Tag> tags = new ArrayList<>();
+            //根据tagid列表 获取标签
+            if (TagIds.size()!=0){
+                tags = tagService.listByIds(TagIds);
+            }
+            userBlogVo.setTagList(tags);
+        }
+        PageDTO<UserBlogVo> pageDTO = new PageDTO<>();
+        pageDTO.setRecords(userBlogVos);
+        pageDTO.setCurrent((int)page.getCurrent());
+        pageDTO.setTotal((int)page.getTotal());
+        pageDTO.setSize((int)page.getSize());
+        return new ResponseResult(pageDTO);
+    }
+
+    /**
+     * 下架博客
+     * @param isPublish
+     * @param uid
+     * @return
+     */
+    @Override
+    public ResponseResult publish(String isPublish, String uid) {
+        Blog blog = getById(uid);
+        blog.setIsPublish(isPublish);
+        boolean flag = updateById(blog);
+        if (!flag){
+            return new ResponseResult().error("下架失败");
+        }
+        return new ResponseResult(AppHttpCodeEnum.SUCCESS);
+    }
+
+
+    /**
+     * 删除博客
+     * @param uid
+     * @return
+     */
+    @Override
+    public ResponseResult deleteByUid(String uid) {
+        Blog blog = getById(uid);
+        blog.setStatus(0);
+        boolean flag = updateById(blog);
+        if (!flag){
+            return new ResponseResult().error("删除失败！");
+        }
+        //删除博客标签表中的信息
+        LambdaQueryWrapper<BlogTag> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(BlogTag::getBlogId,uid);
+        blogTagService.remove(queryWrapper);
+        return new ResponseResult(AppHttpCodeEnum.SUCCESS);
     }
 
 

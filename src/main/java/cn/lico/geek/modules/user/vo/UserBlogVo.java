@@ -48,4 +48,8 @@ public class UserBlogVo {
     private BlogSort blogSort;
 
     private List tagList;
+
+    private Integer auditStatus = 2;
+
+    private String isPublish;
 }

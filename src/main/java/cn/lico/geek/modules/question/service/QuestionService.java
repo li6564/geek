@@ -20,4 +20,8 @@ public interface QuestionService extends IService<Question> {
     ResponseResult getQuestion(String remoteHost,QuestionInfoForm questionInfoForm);
 
     ResponseResult getQuestionListByUser(UserBlogForm userBlogForm);
+
+    ResponseResult getMeQuestionList(Integer currentPage, Integer pageSize);
+
+    ResponseResult delete(String uid);
 }

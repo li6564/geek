@@ -240,6 +240,50 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         return new ResponseResult(pageDTO);
     }
 
+    @Override
+    public ResponseResult getMeQuestionList(Integer currentPage, Integer pageSize) {
+        //获取当前用户uid
+        String userId = SecurityUtils.getUserId();
+        //根据用户uid查询问答
+        LambdaQueryWrapper<Question> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Question::getUserUid,userId)
+                .eq(Question::getStatus,1);
+        Page<Question> page = new Page<>(currentPage,pageSize);
+        page(page,queryWrapper);
+        List<QuestionListVo> questionListVos = BeanCopyUtils.copyBeanList(page.getRecords(), QuestionListVo.class);
+        for (QuestionListVo questionListVo : questionListVos) {
+            getInfoUser(questionListVo.getUserUid(),questionListVo);
+            getQuestionTag(questionListVo.getUid(),questionListVo);
+        }
+        PageDTO<QuestionListVo> pageDTO = new PageDTO<>();
+        pageDTO.setRecords(questionListVos);
+        pageDTO.setCurrent((int)page.getCurrent());
+        pageDTO.setSize((int)page.getSize());
+        pageDTO.setTotal((int)page.getTotal());
+
+        return new ResponseResult(pageDTO);
+    }
+
+    /**
+     * 删除问答
+     * @param uid
+     * @return
+     */
+    @Override
+    public ResponseResult delete(String uid) {
+        Question question = getById(uid);
+        question.setStatus(0);
+        boolean flag = updateById(question);
+        if (!flag){
+            return new ResponseResult().error("删除失败！");
+        }
+        //删除问答标签表信息
+        LambdaQueryWrapper<QuestionTags> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(QuestionTags::getQuestionUid,uid);
+        boolean b = questionTagsService.remove(queryWrapper);
+        return new ResponseResult(AppHttpCodeEnum.SUCCESS);
+    }
+
     /**
      * 填充点赞信息
      * @param uid

@@ -1,7 +1,10 @@
 package cn.lico.geek.modules.blog.api;
 
 import cn.lico.geek.core.api.ResponseResult;
+import cn.lico.geek.modules.blog.form.BlogDeleteForm;
+import cn.lico.geek.modules.blog.form.MeBlogListForm;
 import cn.lico.geek.modules.blog.form.PageVo;
+import cn.lico.geek.modules.blog.form.PublishForm;
 import cn.lico.geek.modules.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -61,6 +64,38 @@ public class BlogApi {
 
         return blogService.getBlogByUid(oid,isLazy,remoteHost);
     }
+
+    /**
+     * 获取用户博客列表
+     * @param form
+     * @return
+     */
+    @PostMapping("/getMeBlogList")
+    public ResponseResult getMeBlogList(@RequestBody MeBlogListForm form){
+        return blogService.getMeBlogList(form.getCurrentPage(),form.getPageSize());
+    }
+
+    /**
+     * 下架或发布博客
+     * @param publishForm
+     * @return
+     */
+    @PostMapping("/publish")
+    public ResponseResult publish(@RequestBody PublishForm publishForm){
+        return blogService.publish(publishForm.getIsPublish(),publishForm.getUid());
+    }
+
+    /**
+     * 删除博客
+     * @param blogDeleteForm
+     * @return
+     */
+    @PostMapping("/delete")
+    public ResponseResult delete(@RequestBody BlogDeleteForm blogDeleteForm){
+        return blogService.deleteByUid(blogDeleteForm.getUid());
+    }
+
+
 
 
 }
