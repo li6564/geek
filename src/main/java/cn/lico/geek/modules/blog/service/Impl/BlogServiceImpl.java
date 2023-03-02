@@ -151,6 +151,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         }
         //判断blogSortUid是否为空，如果不为空则加入判断条件
         queryWrapper.eq(Objects.nonNull(pageVo.getBlogSortUid())&&pageVo.getBlogSortUid().length()>0,Blog::getBlogSortUid,pageVo.getBlogSortUid());
+        //去除1级推荐文章
+        queryWrapper.ne(Blog::getLevel,1);
         //进行分页查询
         if ("create_time".equals(pageVo.getOrderByDescColumn())){
             queryWrapper.orderByDesc(Blog::getCreateTime);

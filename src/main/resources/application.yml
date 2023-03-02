@@ -50,7 +50,7 @@ logging:
 oss:
   accessKey: JHNbeGgqjKENX-mWDHpXu5CBuiXmMW8YHSNuC-cq
   secretKey: tbUM1edpmMGrcThk3JH3TksOUcJm74CARNQZBvrv
-  bucket: ln-log3
+  bucket: yunwaicunchu
 
 geek:
   kafka:
