@@ -21,14 +21,18 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\exception\UserMomentT
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\service\MomentPhotoService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\vo\UserMomentVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\form\BlogForm.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\service\ProjectCategoryService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\tag\service\TagService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\webNavbar\mapper\WebNavbarMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\exception\ServiceException.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\tag\api\TagApi.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\report\entity\Report.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\entity\MomentPhoto.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\IErrorCode.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\form\ProjectForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\news\enums\NewsErrorCode.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\service\QuestionTemplateService.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\report\mapper\ReportMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\api\BlogSortApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\utils\JwtUtil.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\service\QuestionTagService.java
@@ -63,7 +67,9 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\notice\form\NoticeDeleteForm
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\enums\BlogPraiseErrorCode.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\api\CreateBlog.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\exception\BlogSortServiceException.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\form\BlogDeleteForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\vo\QuestionListVo.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\report\service\ReportService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\dto\UserWatchDto.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\entity\UserStatistics.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\webNavbar\api\WebNavbarApi.java
@@ -78,11 +84,15 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\form\PageForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\search\entity\extra\MomentExtra.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\api\UserWatchApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\search\entity\extra\BlogExtra.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\service\impl\ProjectCategoryServiceImpl.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\utils\BeanCopyUtils.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\service\Impl\BlogTagServiceImpl.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\Service\LocalLoginService.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\mapper\ProjectMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\Service\Impl\UserServiceImpl.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\api\ProjectApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\exception\UserServiceException.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\entity\Project.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\enums\BlogPraiseType.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\service\QuestionTagsService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\api\BlogApi.java
@@ -108,6 +118,7 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\dto\QuestionInfoDto
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\news\entity\News.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\entity\QuestionTemplate.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\form\CommentDeleteForm.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\service\impl\ProjectServiceImpl.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\listener\QuestionListener.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\webNavbar\vo\WebNavbarVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\api\UploadApi.java
@@ -130,6 +141,7 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\service\impl\Questi
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\service\BlogTagService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\form\QuestionListForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\vo\UserTopVo.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\form\MeBlogListForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\service\UploadService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\notice\api\NoticeApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\GeekApplication.java
@@ -149,6 +161,8 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\service\impl\MomentPh
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\emuns\AuthorizationErrorCode.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\notice\vo\NoticeUserWatchVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\vo\UserVo.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\vo\ProjectVo.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\form\PublishForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\mapper\QuestionMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\common\form\PageForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\queue\service\impl\IMessageQueueServiceImpl.java
@@ -159,7 +173,9 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\vo\UserBlogVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\dto\UploadDto.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\search\listener\SearchItemItemChangeListener.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\form\UserDetailsForm.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\report\api\ReportApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\Service\UserService.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\form\QuestionDeleteForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\form\QuestionInfoForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\config\properties\GeekKafkaTopicProperties.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\mapper\BlogSortMapper.java
@@ -178,11 +194,14 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\service\impl\UserMome
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\utils\PathUtils.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\service\CommentService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\mapper\UserPraiseRecordMapper.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\constant\RedisConstants.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\Service\Impl\UserWatchServiceImpl.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\utils\JsonUtils.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\entity\ProjectCategory.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\mapper\QuestionTemplateMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\form\ToUserUidForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\mapper\UserWatchMapper.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\service\ProjectService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\vo\CommentVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\Service\UserStatisticsService.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\listener\BlogListener.java
@@ -191,6 +210,7 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\utils\SecurityUtils.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\entity\UserWatch.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\api\BlogPraiseApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\common\dto\PageDTO.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\report\form\ReportSubmitForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\api\CommentApi.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\exception\BlogPraiseServiceException.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\search\repository\ISearchRepository.java
@@ -199,6 +219,7 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\service\impl\Questi
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\vo\CommentUserVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\config\RedisConfig.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\service\BlogService.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\mapper\ProjectCategoryMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\filter\JwtSecurityFilter.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\mapper\BlogMapper.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\listener\DataItemChangeListener.java
@@ -215,6 +236,7 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\enums\QuestionError
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\config\SecurityConfig.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\notice\vo\NoticeCommentVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\core\api\ResponseResult.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\project\vo\ProjectCategoryVo.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\search\entity\SearchItem.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\news\exception\NewsServiceException.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\form\CommentForm.java
@@ -227,6 +249,7 @@ D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\form\UserMomentListFo
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\user\form\LoginForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\blog\entity\Blog.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\utils\RedisCache.java
+D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\report\service\Impl\ReportServiceImpl.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\question\enums\QuestionTagErrorCode.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\form\UserMomentDeleteForm.java
 D:\Java_EXP\geek\src\main\java\cn\lico\geek\modules\moment\service\MomentTopicService.java

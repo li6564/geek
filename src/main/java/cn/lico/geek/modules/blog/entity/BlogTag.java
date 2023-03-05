@@ -23,4 +23,6 @@ public class BlogTag {
     private String blogId;
 
     private String tagId;
+
+    private Integer status;
 }

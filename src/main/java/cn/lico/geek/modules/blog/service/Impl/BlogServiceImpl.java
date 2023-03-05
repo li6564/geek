@@ -96,6 +96,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //根据level条件进行判断
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Blog::getLevel,level);
+        queryWrapper.eq(Blog::getStatus,1);
+        queryWrapper.eq(Blog::getIsPublish,"1");
         //进行二三级推荐
         PageDTO<NewBlogVo> pageDTO = new PageDTO<>();
         if (Objects.nonNull(currentPage)&&Objects.nonNull(pageSize)){
@@ -155,6 +157,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //去除1级推荐文章
         queryWrapper.ne(Blog::getLevel,1);
         queryWrapper.eq(Blog::getIsPublish,"1");
+        queryWrapper.eq(Blog::getStatus,1);
         //进行分页查询
         if ("create_time".equals(pageVo.getOrderByDescColumn())){
             queryWrapper.orderByDesc(Blog::getCreateTime);
@@ -324,6 +327,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //进行条件匹配
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.eq(Blog::getUserUid,userBlogForm.getUserUid());
+        queryWrapper.eq(Blog::getStatus,1);
         if ("create_time".equals(userBlogForm.getOrderByDescColumn())){
             queryWrapper.orderByDesc(Blog::getCreateTime);
         }else {
@@ -377,6 +381,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public ResponseResult searchBlogByTag(String tagUid, Integer currentPage, Integer pageSize) {
         LambdaQueryWrapper<BlogTag> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(BlogTag::getTagId,tagUid);
+        queryWrapper.eq(BlogTag::getStatus,1);
         List<BlogTag> list = blogTagService.list(queryWrapper);
         List<String> blogIds = new ArrayList<>();
         if (list.size()>0){
@@ -521,6 +526,18 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public ResponseResult publish(String isPublish, String uid) {
         Blog blog = getById(uid);
         blog.setIsPublish(isPublish);
+        //修改博客标签状态
+        LambdaQueryWrapper<BlogTag> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(BlogTag::getBlogId,uid);
+        List<BlogTag> list = blogTagService.list(queryWrapper);
+        for (BlogTag blogTag : list){
+            if ("0".equals(isPublish)){
+                blogTag.setStatus(0);
+            }else {
+                blogTag.setStatus(1);
+            }
+            blogTagService.updateById(blogTag);
+        }
         boolean flag = updateById(blog);
         if (!flag){
             return new ResponseResult().error("下架失败");
