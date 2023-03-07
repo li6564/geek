@@ -23,8 +23,10 @@ import cn.lico.geek.modules.question.vo.QuestionListVo;
 import cn.lico.geek.modules.queue.service.IMessageQueueService;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
+import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
+import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.modules.user.form.UserBlogForm;
 import cn.lico.geek.utils.AbstractUtils;
 import cn.lico.geek.utils.BeanCopyUtils;
@@ -63,6 +65,9 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     @Autowired
     private RedisCache redisCache;
+
+    @Autowired
+    private UserStatisticsService userStatisticsService;
 
     @Autowired
     private IMessageQueueService messageQueueService;
@@ -281,6 +286,12 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
         LambdaQueryWrapper<QuestionTags> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(QuestionTags::getQuestionUid,uid);
         boolean b = questionTagsService.remove(queryWrapper);
+        //问题数量-1
+        LambdaQueryWrapper<UserStatistics> queryWrapper1 = new LambdaQueryWrapper<>();
+        queryWrapper1.eq(UserStatistics::getUid,question.getUserUid());
+        UserStatistics one = userStatisticsService.getOne(queryWrapper1);
+        one.setQuestionNum(one.getQuestionNum()-1);
+        userStatisticsService.updateById(one);
         return new ResponseResult(AppHttpCodeEnum.SUCCESS);
     }
 

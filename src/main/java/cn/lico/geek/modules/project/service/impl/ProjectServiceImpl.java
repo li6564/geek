@@ -12,8 +12,10 @@ import cn.lico.geek.modules.project.service.ProjectService;
 import cn.lico.geek.modules.project.vo.ProjectVo;
 import cn.lico.geek.modules.user.Service.UserPraiseRecordService;
 import cn.lico.geek.modules.user.Service.UserService;
+import cn.lico.geek.modules.user.Service.UserStatisticsService;
 import cn.lico.geek.modules.user.entity.User;
 import cn.lico.geek.modules.user.entity.UserPraiseRecord;
+import cn.lico.geek.modules.user.entity.UserStatistics;
 import cn.lico.geek.utils.BeanCopyUtils;
 import cn.lico.geek.utils.RedisCache;
 import cn.lico.geek.utils.SecurityUtils;
@@ -46,6 +48,9 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
 
     @Autowired
     private RedisCache redisCache;
+
+    @Autowired
+    private UserStatisticsService userStatisticsService;
 
     @Override
     public ResponseResult queryPage(Integer currentPage, Integer pageSize, String orderByDescColumn, Integer projectTagUid) {
@@ -118,6 +123,12 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
         project.setUseruid(userId);
         project.setProjectCategoryId(2);
         save(project);
+        //项目数量+1
+        LambdaQueryWrapper<UserStatistics> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserStatistics::getUid,userId);
+        UserStatistics userStatistics = userStatisticsService.getOne(queryWrapper);
+        userStatistics.setProjectNum(userStatistics.getProjectNum()+1);
+        userStatisticsService.updateById(userStatistics);
         return ResponseResult.okResult();
     }
 

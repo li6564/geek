@@ -563,6 +563,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         LambdaQueryWrapper<BlogTag> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(BlogTag::getBlogId,uid);
         blogTagService.remove(queryWrapper);
+        //将博主博客发表数量-1
+        LambdaQueryWrapper<UserStatistics> queryWrapper1 = new LambdaQueryWrapper<>();
+        queryWrapper1.eq(UserStatistics::getUid,blog.getUserUid());
+        UserStatistics userStatistics = userStatisticsService.getOne(queryWrapper1);
+        userStatistics.setBlogNum(userStatistics.getBlogNum()-1);
+        userStatisticsService.updateById(userStatistics);
         return new ResponseResult(AppHttpCodeEnum.SUCCESS);
     }
 
