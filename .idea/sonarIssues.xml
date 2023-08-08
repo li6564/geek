@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="$PROJECT_DIR$/../LNBlog/yun-blog/src/main/java/com/li/config/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/cn/lico/geek/core/constant/RedisConstants.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/blog/service/Impl/BlogServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/tag/entity/TagCache.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/cn/lico/geek/modules/tag/service/Impl/TagServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/CacheData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/cn/lico/geek/utils/RedisCache.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/Python_Exp/springboot-dubbo/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/Python_Exp/springboot-dubbo/springboot-dubbo-provider/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/Python_Exp/springboot-dubbo/springboot-dubbo-provider/src/main/java/com/li/SprinbBootDubboProvicerApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/Python_Exp/springboot-dubbo/springboot-dubbo-provider/src/main/java/com/li/provider/service/UserServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/Python_Exp/springboot-dubbo/springboot-dubbo-provider/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

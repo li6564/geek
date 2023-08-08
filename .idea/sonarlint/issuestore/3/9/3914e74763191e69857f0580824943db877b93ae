@@ -1,0 +1,10 @@
+
+K
+java:S1066‰"/Merge this if statement with the enclosing one.(çò±ÿÿÿÿÿ
+_
+java:S1128"IRemove this unused import 'org.apache.kafka.common.protocol.types.Field'.(Ì“„
+S	java:S106$"9Replace this use of System.out or System.err by a logger.(÷ê¢Øúÿÿÿÿ
+g
+java:S1871?"LThis branch's code block is the same as the block for the branch on line 61.(Ø‡Óšüÿÿÿÿ
+h
+java:S3776J"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Ú¿‹Ë

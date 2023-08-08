@@ -1,0 +1,10 @@
+
+D
+java:S3740"/Provide the parametrized type for this generic.(¶ý±
+`	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(É¬´ïûÿÿÿÿ
+l
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ
+`
+java:S1854#"ERemove this useless assignment to local variable "multipartFileList".(ÎÉŠÃÿÿÿÿÿ
+Q
+java:S1481#"6Remove this unused "multipartFileList" local variable.(ÎÉŠÃÿÿÿÿÿ

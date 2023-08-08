@@ -4,7 +4,7 @@ spring:
   # 数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.113.197.253:3306/yunwai?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/yunwai?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
 
@@ -32,7 +32,7 @@ spring:
       missing-topics-fatal: false
   #reids
   redis:
-    host: 47.113.197.253
+    host: 127.0.0.1
     port: 6379
 
 # mybatis-plus

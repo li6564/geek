@@ -1,5 +1,6 @@
 package cn.lico.geek.utils;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.HashOperations;
@@ -238,5 +239,25 @@ public class RedisCache
     {
         return redisTemplate.keys(pattern);
     }
+
+    /**
+     * 利用redis加锁
+     * @param key
+     * @return
+     */
+    public boolean tryLock(String key,Long expireTime){
+        boolean flag = redisTemplate.opsForValue().setIfAbsent(key,"1",10,TimeUnit.SECONDS);
+        return BooleanUtils.isTrue(flag);
+    }
+
+    /**
+     * 释放锁
+     * @param key
+     */
+    public void unlock(String key){
+        redisTemplate.delete(key);
+    }
+
+
 }
 

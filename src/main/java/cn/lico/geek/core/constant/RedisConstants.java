@@ -19,4 +19,16 @@ public class RedisConstants {
      * redis中缓存系统配置Key
      */
     public static final String WEB_NAVBAR = "Web_Navbar";
+
+    /**
+     * redis中缓存系统配置标签锁的key
+     */
+    public static final String LOCK_TAG = "lock:tag";
+
+    /**
+     * 标签锁的过期时间
+     */
+    public static final Long LOCK_TAG_TTL = 20L;
+
+
 }

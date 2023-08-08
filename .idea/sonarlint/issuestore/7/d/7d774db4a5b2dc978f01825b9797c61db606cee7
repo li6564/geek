@@ -1,0 +1,10 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(éÉÎÓûÿÿÿÿ
+`	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(É¬´ïûÿÿÿÿ
+X
+java:S1128"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+\
+java:S1128"ARemove this unused import 'cn.lico.geek.core.api.ResponseResult'.(û¼ÿÿÿÿÿ

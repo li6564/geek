@@ -1,0 +1,67 @@
+
+F
+java:S3740—"/Provide the parametrized type for this generic.(™üì†
+Z
+java:S1155ƒ">Use isEmpty() to check whether the collection is empty or not.(É€°Îøÿÿÿÿ
+F
+java:S3740È"/Provide the parametrized type for this generic.(é£Ñú
+K
+java:S3740"/Provide the parametrized type for this generic.(ÎÿÎ’ıÿÿÿÿ
+F
+java:S3740¼"/Provide the parametrized type for this generic.(À­ß
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†Ì®
+E
+java:S3740z"/Provide the parametrized type for this generic.(ª×¾ğ
+Q	java:S125ë"<This block of commented-out lines of code should be removed.(ãëó+
+g	java:S117ô"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å­é‘
+g	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å­é‘
+F
+java:S3740¼"/Provide the parametrized type for this generic.(‰»™ñ
+O
+java:S2589’"8Remove this expression which always evaluates to "false"(¨ø®æ
+E
+java:S3740½"/Provide the parametrized type for this generic.(ôóÿ"
+F
+java:S3740¡"/Provide the parametrized type for this generic.(‰»™ñ
+g	java:S117â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å­é‘
+F
+java:S5411‰"*Use the primitive boolean expression here.(¢·«¹ÿÿÿÿÿ
+Z
+java:S1155è">Use isEmpty() to check whether the collection is empty or not.(Á×Â·ûÿÿÿÿ
+W	java:S125Î"<This block of commented-out lines of code should be removed.(¶À´­ÿÿÿÿÿ
+W	java:S125É"<This block of commented-out lines of code should be removed.(Î¥êùşÿÿÿÿ
+F
+java:S3740°"/Provide the parametrized type for this generic.(ûä•¹
+F
+java:S3740Ó"/Provide the parametrized type for this generic.(ª×¾ğ
+Z
+java:S1155ú">Use isEmpty() to check whether the collection is empty or not.(Á×Â·ûÿÿÿÿ
+U
+java:S1155’">Use isEmpty() to check whether the collection is empty or not.(¨ø®æ
+Z
+java:S1155‰">Use isEmpty() to check whether the collection is empty or not.(¹ÁÊ§øÿÿÿÿ
+F
+java:S3740ò"/Provide the parametrized type for this generic.(öÇ¬û
+E
+java:S3740ô"/Provide the parametrized type for this generic.(Ï–‰
+K
+java:S3740Ÿ"/Provide the parametrized type for this generic.(À“íãùÿÿÿÿ
+Z
+java:S1155Ï">Use isEmpty() to check whether the collection is empty or not.(§ú¢èùÿÿÿÿ
+F
+java:S3740„"/Provide the parametrized type for this generic.(ª×¾ğ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÿÎ’ıÿÿÿÿ
+`
+java:S1128"JRemove this unused import 'cn.lico.geek.modules.question.entity.Question'.(Ò‰·ğ
+F
+java:S3740©"/Provide the parametrized type for this generic.(ª×¾ğ
+Z
+java:S1155õ">Use isEmpty() to check whether the collection is empty or not.(Á×Â·ûÿÿÿÿ
+n
+java:S3776„"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ä®ƒ¿ıÿÿÿÿ
+F
+java:S3740Á"/Provide the parametrized type for this generic.(™üì†
+K
+java:S3740"/Provide the parametrized type for this generic.(ÎÿÎ’ıÿÿÿÿ
+F
+java:S3740ò"/Provide the parametrized type for this generic.(ª×¾ğ
